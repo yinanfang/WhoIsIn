@@ -6,20 +6,28 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "GCAppDelegate.h"
+#import "GCCoverViewController.h"
 
-@interface AppDelegate ()
+@interface GCAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation GCAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [GCAppAPI setupApplicationWithProductionMode:YES];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor clearColor];
+    UINavigationController *navigationController = [[UINavigationController alloc] init];
+    self.window.rootViewController = navigationController;
+    GCCoverViewController *coverViewController = [[GCCoverViewController alloc] init];
+    [navigationController pushViewController:coverViewController animated:NO];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

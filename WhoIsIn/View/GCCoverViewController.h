@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  GCCoverViewController.h
 //  WhoIsIn
 //
 //  Created by Golden Compass on 10/5/14.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface GCCoverViewController : UIViewController
 
 @end
-

@@ -9,10 +9,15 @@
 /* Begin PBXBuildFile section */
 		67F3EAE0513DED44226A7BEC /* libPods-WhoIsIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01F22DB612F9228894D4173 /* libPods-WhoIsIn.a */; };
 		D425455C19E189EC004B5AE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D425455B19E189EC004B5AE3 /* main.m */; };
-		D425455F19E189EC004B5AE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D425455E19E189EC004B5AE3 /* AppDelegate.m */; };
 		D425456119E189EC004B5AE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D425456019E189EC004B5AE3 /* Images.xcassets */; };
 		D425456419E189EC004B5AE3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D425456219E189EC004B5AE3 /* LaunchScreen.xib */; };
 		D425457019E189EC004B5AE3 /* WhoIsInTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D425456F19E189EC004B5AE3 /* WhoIsInTests.m */; };
+		D425457B19E1AA45004B5AE3 /* GCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D425457A19E1AA45004B5AE3 /* GCAppDelegate.m */; };
+		D425458019E1ABE6004B5AE3 /* GCAppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D425457F19E1ABE6004B5AE3 /* GCAppAPI.m */; };
+		D425458819E1ABF2004B5AE3 /* GCAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458319E1ABF2004B5AE3 /* GCAppConfig.m */; };
+		D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458519E1ABF2004B5AE3 /* GCConstant.m */; };
+		D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */; };
+		D425459219E1ADD6004B5AE3 /* GCCoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D425459119E1ADD6004B5AE3 /* GCCoverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,13 +37,24 @@
 		D425455619E189EC004B5AE3 /* WhoIsIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoIsIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D425455A19E189EC004B5AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D425455B19E189EC004B5AE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D425455D19E189EC004B5AE3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		D425455E19E189EC004B5AE3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D425456019E189EC004B5AE3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D425456319E189EC004B5AE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D425456919E189EC004B5AE3 /* WhoIsInTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhoIsInTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D425456E19E189EC004B5AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D425456F19E189EC004B5AE3 /* WhoIsInTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WhoIsInTests.m; sourceTree = "<group>"; };
+		D425457919E1AA45004B5AE3 /* GCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppDelegate.h; sourceTree = "<group>"; };
+		D425457A19E1AA45004B5AE3 /* GCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppDelegate.m; sourceTree = "<group>"; };
+		D425457C19E1AAF5004B5AE3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		D425457E19E1ABE6004B5AE3 /* GCAppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppAPI.h; sourceTree = "<group>"; };
+		D425457F19E1ABE6004B5AE3 /* GCAppAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppAPI.m; sourceTree = "<group>"; };
+		D425458219E1ABF2004B5AE3 /* GCAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppConfig.h; sourceTree = "<group>"; };
+		D425458319E1ABF2004B5AE3 /* GCAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppConfig.m; sourceTree = "<group>"; };
+		D425458419E1ABF2004B5AE3 /* GCConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCConstant.h; sourceTree = "<group>"; };
+		D425458519E1ABF2004B5AE3 /* GCConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCConstant.m; sourceTree = "<group>"; };
+		D425458619E1ABF2004B5AE3 /* GCCustomLogFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCustomLogFormatters.h; sourceTree = "<group>"; };
+		D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCustomLogFormatters.m; sourceTree = "<group>"; };
+		D425459019E1ADD6004B5AE3 /* GCCoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCCoverViewController.h; path = View/GCCoverViewController.h; sourceTree = "<group>"; };
+		D425459119E1ADD6004B5AE3 /* GCCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCCoverViewController.m; path = View/GCCoverViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +116,14 @@
 		D425455819E189EC004B5AE3 /* WhoIsIn */ = {
 			isa = PBXGroup;
 			children = (
-				D425455D19E189EC004B5AE3 /* AppDelegate.h */,
-				D425455E19E189EC004B5AE3 /* AppDelegate.m */,
+				D425457919E1AA45004B5AE3 /* GCAppDelegate.h */,
+				D425457A19E1AA45004B5AE3 /* GCAppDelegate.m */,
+				D425458B19E1AC65004B5AE3 /* View */,
+				D425457D19E1ABE6004B5AE3 /* AppAPI */,
+				D425458119E1ABF2004B5AE3 /* Store */,
+				D425455919E189EC004B5AE3 /* Supporting Files */,
 				D425456019E189EC004B5AE3 /* Images.xcassets */,
 				D425456219E189EC004B5AE3 /* LaunchScreen.xib */,
-				D425455919E189EC004B5AE3 /* Supporting Files */,
 			);
 			path = WhoIsIn;
 			sourceTree = "<group>";
@@ -114,6 +133,7 @@
 			children = (
 				D425455A19E189EC004B5AE3 /* Info.plist */,
 				D425455B19E189EC004B5AE3 /* main.m */,
+				D425457C19E1AAF5004B5AE3 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -133,6 +153,45 @@
 				D425456E19E189EC004B5AE3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D425457D19E1ABE6004B5AE3 /* AppAPI */ = {
+			isa = PBXGroup;
+			children = (
+				D425457E19E1ABE6004B5AE3 /* GCAppAPI.h */,
+				D425457F19E1ABE6004B5AE3 /* GCAppAPI.m */,
+			);
+			path = AppAPI;
+			sourceTree = "<group>";
+		};
+		D425458119E1ABF2004B5AE3 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				D425458219E1ABF2004B5AE3 /* GCAppConfig.h */,
+				D425458319E1ABF2004B5AE3 /* GCAppConfig.m */,
+				D425458419E1ABF2004B5AE3 /* GCConstant.h */,
+				D425458519E1ABF2004B5AE3 /* GCConstant.m */,
+				D425458619E1ABF2004B5AE3 /* GCCustomLogFormatters.h */,
+				D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		D425458B19E1AC65004B5AE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D425458F19E1ACFC004B5AE3 /* Cover */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D425458F19E1ACFC004B5AE3 /* Cover */ = {
+			isa = PBXGroup;
+			children = (
+				D425459019E1ADD6004B5AE3 /* GCCoverViewController.h */,
+				D425459119E1ADD6004B5AE3 /* GCCoverViewController.m */,
+			);
+			name = Cover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,8 +329,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D425455F19E189EC004B5AE3 /* AppDelegate.m in Sources */,
+				D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */,
+				D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */,
+				D425458019E1ABE6004B5AE3 /* GCAppAPI.m in Sources */,
+				D425458819E1ABF2004B5AE3 /* GCAppConfig.m in Sources */,
+				D425459219E1ADD6004B5AE3 /* GCCoverViewController.m in Sources */,
 				D425455C19E189EC004B5AE3 /* main.m in Sources */,
+				D425457B19E1AA45004B5AE3 /* GCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +453,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = WhoIsIn/PrefixHeader.pch;
 				INFOPLIST_FILE = WhoIsIn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -401,7 +467,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = WhoIsIn/PrefixHeader.pch;
 				INFOPLIST_FILE = WhoIsIn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
