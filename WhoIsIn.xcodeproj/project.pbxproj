@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67F3EAE0513DED44226A7BEC /* libPods-WhoIsIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01F22DB612F9228894D4173 /* libPods-WhoIsIn.a */; };
 		D425455C19E189EC004B5AE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D425455B19E189EC004B5AE3 /* main.m */; };
 		D425455F19E189EC004B5AE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D425455E19E189EC004B5AE3 /* AppDelegate.m */; };
 		D425456119E189EC004B5AE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D425456019E189EC004B5AE3 /* Images.xcassets */; };
@@ -25,6 +26,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		222FCFFDD8D14EFDD86B6395 /* Pods-WhoIsIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhoIsIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhoIsIn/Pods-WhoIsIn.debug.xcconfig"; sourceTree = "<group>"; };
+		79B8446B3835995823D7F228 /* Pods-WhoIsIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhoIsIn.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhoIsIn/Pods-WhoIsIn.release.xcconfig"; sourceTree = "<group>"; };
+		D01F22DB612F9228894D4173 /* libPods-WhoIsIn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WhoIsIn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D425455619E189EC004B5AE3 /* WhoIsIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoIsIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D425455A19E189EC004B5AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D425455B19E189EC004B5AE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67F3EAE0513DED44226A7BEC /* libPods-WhoIsIn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,12 +60,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13C80A667AB026D3972D5EA5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				222FCFFDD8D14EFDD86B6395 /* Pods-WhoIsIn.debug.xcconfig */,
+				79B8446B3835995823D7F228 /* Pods-WhoIsIn.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		70D115765CC952EBB5DFDFF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D01F22DB612F9228894D4173 /* libPods-WhoIsIn.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D425454D19E189EC004B5AE3 = {
 			isa = PBXGroup;
 			children = (
 				D425455819E189EC004B5AE3 /* WhoIsIn */,
 				D425456C19E189EC004B5AE3 /* WhoIsInTests */,
 				D425455719E189EC004B5AE3 /* Products */,
+				13C80A667AB026D3972D5EA5 /* Pods */,
+				70D115765CC952EBB5DFDFF9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,9 +142,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D425457319E189EC004B5AE3 /* Build configuration list for PBXNativeTarget "WhoIsIn" */;
 			buildPhases = (
+				44382E2AE0A273260DBAC656 /* Check Pods Manifest.lock */,
 				D425455219E189EC004B5AE3 /* Sources */,
 				D425455319E189EC004B5AE3 /* Frameworks */,
 				D425455419E189EC004B5AE3 /* Resources */,
+				2E15D6942EA61065C4C4B2BB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -155,6 +181,7 @@
 		D425454E19E189EC004B5AE3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GC;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Golden Compass";
 				TargetAttributes = {
@@ -204,6 +231,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E15D6942EA61065C4C4B2BB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhoIsIn/Pods-WhoIsIn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44382E2AE0A273260DBAC656 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D425455219E189EC004B5AE3 /* Sources */ = {
@@ -325,8 +385,10 @@
 		};
 		D425457419E189EC004B5AE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 222FCFFDD8D14EFDD86B6395 /* Pods-WhoIsIn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = WhoIsIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -335,8 +397,10 @@
 		};
 		D425457519E189EC004B5AE3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79B8446B3835995823D7F228 /* Pods-WhoIsIn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = WhoIsIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -396,6 +460,7 @@
 				D425457519E189EC004B5AE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D425457619E189EC004B5AE3 /* Build configuration list for PBXNativeTarget "WhoIsInTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +469,7 @@
 				D425457819E189EC004B5AE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
