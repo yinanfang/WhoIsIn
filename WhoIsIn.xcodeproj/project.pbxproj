@@ -13,11 +13,16 @@
 		D425456419E189EC004B5AE3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D425456219E189EC004B5AE3 /* LaunchScreen.xib */; };
 		D425457019E189EC004B5AE3 /* WhoIsInTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D425456F19E189EC004B5AE3 /* WhoIsInTests.m */; };
 		D425457B19E1AA45004B5AE3 /* GCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D425457A19E1AA45004B5AE3 /* GCAppDelegate.m */; };
-		D425458019E1ABE6004B5AE3 /* GCAppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D425457F19E1ABE6004B5AE3 /* GCAppAPI.m */; };
 		D425458819E1ABF2004B5AE3 /* GCAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458319E1ABF2004B5AE3 /* GCAppConfig.m */; };
 		D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458519E1ABF2004B5AE3 /* GCConstant.m */; };
 		D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */; };
-		D425459219E1ADD6004B5AE3 /* GCCoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D425459119E1ADD6004B5AE3 /* GCCoverViewController.m */; };
+		D4C767CC19F4130B005B2683 /* GCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767CB19F4130B005B2683 /* GCSignInViewController.m */; };
+		D4C767CF19F4131D005B2683 /* GCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767CE19F4131D005B2683 /* GCRegisterViewController.m */; };
+		D4C767D519F41363005B2683 /* GCRegisterScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767D419F41363005B2683 /* GCRegisterScrollView.m */; };
+		D4C767D819F43F4B005B2683 /* GCSignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767D719F43F4B005B2683 /* GCSignInView.m */; };
+		D4F777E419F410630061F62C /* GCAppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777DF19F410630061F62C /* GCAppAPI.m */; };
+		D4F777E519F410630061F62C /* GCAppSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777E119F410630061F62C /* GCAppSetup.m */; };
+		D4F777E619F410630061F62C /* GCNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777E319F410630061F62C /* GCNetwork.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,16 +50,26 @@
 		D425457919E1AA45004B5AE3 /* GCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppDelegate.h; sourceTree = "<group>"; };
 		D425457A19E1AA45004B5AE3 /* GCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppDelegate.m; sourceTree = "<group>"; };
 		D425457C19E1AAF5004B5AE3 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		D425457E19E1ABE6004B5AE3 /* GCAppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppAPI.h; sourceTree = "<group>"; };
-		D425457F19E1ABE6004B5AE3 /* GCAppAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppAPI.m; sourceTree = "<group>"; };
 		D425458219E1ABF2004B5AE3 /* GCAppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppConfig.h; sourceTree = "<group>"; };
 		D425458319E1ABF2004B5AE3 /* GCAppConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppConfig.m; sourceTree = "<group>"; };
 		D425458419E1ABF2004B5AE3 /* GCConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCConstant.h; sourceTree = "<group>"; };
 		D425458519E1ABF2004B5AE3 /* GCConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCConstant.m; sourceTree = "<group>"; };
 		D425458619E1ABF2004B5AE3 /* GCCustomLogFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCustomLogFormatters.h; sourceTree = "<group>"; };
 		D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCustomLogFormatters.m; sourceTree = "<group>"; };
-		D425459019E1ADD6004B5AE3 /* GCCoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCCoverViewController.h; path = View/GCCoverViewController.h; sourceTree = "<group>"; };
-		D425459119E1ADD6004B5AE3 /* GCCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCCoverViewController.m; path = View/GCCoverViewController.m; sourceTree = "<group>"; };
+		D4C767CA19F4130B005B2683 /* GCSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCSignInViewController.h; path = View/GCSignInViewController.h; sourceTree = "<group>"; };
+		D4C767CB19F4130B005B2683 /* GCSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSignInViewController.m; path = View/GCSignInViewController.m; sourceTree = "<group>"; };
+		D4C767CD19F4131D005B2683 /* GCRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCRegisterViewController.h; path = View/GCRegisterViewController.h; sourceTree = "<group>"; };
+		D4C767CE19F4131D005B2683 /* GCRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCRegisterViewController.m; path = View/GCRegisterViewController.m; sourceTree = "<group>"; };
+		D4C767D319F41363005B2683 /* GCRegisterScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCRegisterScrollView.h; path = View/GCRegisterScrollView.h; sourceTree = "<group>"; };
+		D4C767D419F41363005B2683 /* GCRegisterScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCRegisterScrollView.m; path = View/GCRegisterScrollView.m; sourceTree = "<group>"; };
+		D4C767D619F43F4B005B2683 /* GCSignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCSignInView.h; path = View/GCSignInView.h; sourceTree = "<group>"; };
+		D4C767D719F43F4B005B2683 /* GCSignInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSignInView.m; path = View/GCSignInView.m; sourceTree = "<group>"; };
+		D4F777DE19F410630061F62C /* GCAppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppAPI.h; sourceTree = "<group>"; };
+		D4F777DF19F410630061F62C /* GCAppAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppAPI.m; sourceTree = "<group>"; };
+		D4F777E019F410630061F62C /* GCAppSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppSetup.h; sourceTree = "<group>"; };
+		D4F777E119F410630061F62C /* GCAppSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppSetup.m; sourceTree = "<group>"; };
+		D4F777E219F410630061F62C /* GCNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCNetwork.h; sourceTree = "<group>"; };
+		D4F777E319F410630061F62C /* GCNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCNetwork.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +173,12 @@
 		D425457D19E1ABE6004B5AE3 /* AppAPI */ = {
 			isa = PBXGroup;
 			children = (
-				D425457E19E1ABE6004B5AE3 /* GCAppAPI.h */,
-				D425457F19E1ABE6004B5AE3 /* GCAppAPI.m */,
+				D4F777DE19F410630061F62C /* GCAppAPI.h */,
+				D4F777DF19F410630061F62C /* GCAppAPI.m */,
+				D4F777E019F410630061F62C /* GCAppSetup.h */,
+				D4F777E119F410630061F62C /* GCAppSetup.m */,
+				D4F777E219F410630061F62C /* GCNetwork.h */,
+				D4F777E319F410630061F62C /* GCNetwork.m */,
 			);
 			path = AppAPI;
 			sourceTree = "<group>";
@@ -188,8 +207,14 @@
 		D425458F19E1ACFC004B5AE3 /* Cover */ = {
 			isa = PBXGroup;
 			children = (
-				D425459019E1ADD6004B5AE3 /* GCCoverViewController.h */,
-				D425459119E1ADD6004B5AE3 /* GCCoverViewController.m */,
+				D4C767CA19F4130B005B2683 /* GCSignInViewController.h */,
+				D4C767CB19F4130B005B2683 /* GCSignInViewController.m */,
+				D4C767D619F43F4B005B2683 /* GCSignInView.h */,
+				D4C767D719F43F4B005B2683 /* GCSignInView.m */,
+				D4C767CD19F4131D005B2683 /* GCRegisterViewController.h */,
+				D4C767CE19F4131D005B2683 /* GCRegisterViewController.m */,
+				D4C767D319F41363005B2683 /* GCRegisterScrollView.h */,
+				D4C767D419F41363005B2683 /* GCRegisterScrollView.m */,
 			);
 			name = Cover;
 			sourceTree = "<group>";
@@ -329,12 +354,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C767CC19F4130B005B2683 /* GCSignInViewController.m in Sources */,
+				D4C767D819F43F4B005B2683 /* GCSignInView.m in Sources */,
 				D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */,
 				D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */,
-				D425458019E1ABE6004B5AE3 /* GCAppAPI.m in Sources */,
+				D4F777E419F410630061F62C /* GCAppAPI.m in Sources */,
+				D4F777E519F410630061F62C /* GCAppSetup.m in Sources */,
 				D425458819E1ABF2004B5AE3 /* GCAppConfig.m in Sources */,
-				D425459219E1ADD6004B5AE3 /* GCCoverViewController.m in Sources */,
+				D4C767D519F41363005B2683 /* GCRegisterScrollView.m in Sources */,
+				D4C767CF19F4131D005B2683 /* GCRegisterViewController.m in Sources */,
 				D425455C19E189EC004B5AE3 /* main.m in Sources */,
+				D4F777E619F410630061F62C /* GCNetwork.m in Sources */,
 				D425457B19E1AA45004B5AE3 /* GCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

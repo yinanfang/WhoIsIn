@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-// AppUtility
-#import "GCAppConfig.h"
-#import "GCConstant.h"
-
 // AFNetworking
 #import <AFNetworking.h>
 // CocoaLumberjack
@@ -30,6 +26,8 @@
 #import <Mantle/Mantle.h>
 // Masonry
 #import <Masonry.h>
+// MBProgressHUD
+#import "MBProgressHUD.h"
 // TSMessage
 #import <TSMessages/TSMessage.h>
 // POP
@@ -41,21 +39,39 @@
 // Tweaks
 #import <Tweaks/FBTweak.h>
 
+// Data Model
+
+// View Model
+//#import "GCAppViewModel.h"
+
+// App Import
+#import "GCAppSetup.h"
+#import "GCAppConfig.h"
+#import "GCConstant.h"
+#import "GCNetwork.h"
+
 
 @interface GCAppAPI : NSObject
 
 // Accessor for Singleton class
 + (GCAppAPI *)sharedInstance;
 
-#pragma mark - Basic Setup
-+ (void)setupApplicationWithProductionMode:(BOOL)mode;
-
 #pragma mark - Basic Utilities
 + (NSString *)getCurrentDomain;
 + (UIColor *)getColorWithRGBAinHex:(NSUInteger)color;
 + (void)setHasShownTour:(BOOL)mode;
++ (BOOL)didRunAppBefore;
 + (UIImageView *)getFullScreenImageView:(NSString *)name;
 + (CGPoint)getCGPointZeroWithStatusbarAndNavigationBar:(UIViewController *)controller;
++ (CGRect)getScreenBoundsDependOnOrientation;
+
+#pragma mark - Mantle
++ (id)getMantleModelWithDictionary:(NSDictionary *)dictionary modelClass:(Class)modelClass;
+
+
+
+
+
 
 
 

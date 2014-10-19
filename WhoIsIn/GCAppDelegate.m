@@ -7,7 +7,7 @@
 //
 
 #import "GCAppDelegate.h"
-#import "GCCoverViewController.h"
+#import "GCSignInViewController.h"
 
 @interface GCAppDelegate ()
 
@@ -17,18 +17,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [GCAppAPI setupApplicationWithProductionMode:YES];
+    [GCAppSetup setupApplicationWithProductionMode:YES];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor clearColor];
     UINavigationController *navigationController = [[UINavigationController alloc] init];
     self.window.rootViewController = navigationController;
-    GCCoverViewController *coverViewController = [[GCCoverViewController alloc] init];
-    [navigationController pushViewController:coverViewController animated:NO];
+    GCSignInViewController *signInViewController = [[GCSignInViewController alloc] init];
+    [navigationController pushViewController:signInViewController animated:NO];
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+// Overwrite setting in the Summary/Info.plist
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -52,5 +58,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end

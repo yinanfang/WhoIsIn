@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "52C15D317075D2109BC2F4BD"
+               BlueprintIdentifier = "8CF85245FE1C2B013621575D"
                BuildableName = "libPods-WhoIsIn-FlatUIKit.a"
                BlueprintName = "Pods-WhoIsIn-FlatUIKit"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -12,8 +12,15 @@
 
 #pragma mark - Domain
 // Change the domain for server here
-NSString *const DevelopmentDomain = @"http://Story2Movie.152.23.81.41.xip.io";
-NSString *const ProductionDomain = @"http://story2movie.yinanfang.webfactional.com";
+NSString *const DevelopmentDomain = @"https://secure28.webhostinghub.com";
+NSString *const ProductionDomain = @"https://secure28.webhostinghub.com";
+NSString *const URIPathToUsersPHP = @"/~pocket14/forsyth.im/caterpillars/users.php";
+NSString *const URIPathToSubmissionPHP = @"/~pocket14/forsyth.im/caterpillars/submission.php";
+
+#pragma mark - NSUserDefaults values
+NSString *const NSUserDefaultsKeyForDidShownTour = @"didShownTour";
+NSString *const NSUserDefaultsKeyForDidRunAppBefore = @"didRunAppBefore";
+NSString *const NSUserDefaultsKeyForAppData = @"AppData";
 
 + (GCAppConfig *)sharedInstance
 {
