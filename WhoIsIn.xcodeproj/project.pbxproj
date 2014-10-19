@@ -20,6 +20,7 @@
 		D4C767CF19F4131D005B2683 /* GCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767CE19F4131D005B2683 /* GCRegisterViewController.m */; };
 		D4C767D519F41363005B2683 /* GCRegisterScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767D419F41363005B2683 /* GCRegisterScrollView.m */; };
 		D4C767D819F43F4B005B2683 /* GCSignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767D719F43F4B005B2683 /* GCSignInView.m */; };
+		D4C767DF19F457C9005B2683 /* GCAppViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767DE19F457C9005B2683 /* GCAppViewModel.m */; };
 		D4F777E419F410630061F62C /* GCAppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777DF19F410630061F62C /* GCAppAPI.m */; };
 		D4F777E519F410630061F62C /* GCAppSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777E119F410630061F62C /* GCAppSetup.m */; };
 		D4F777E619F410630061F62C /* GCNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777E319F410630061F62C /* GCNetwork.m */; };
@@ -64,6 +65,8 @@
 		D4C767D419F41363005B2683 /* GCRegisterScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCRegisterScrollView.m; path = View/GCRegisterScrollView.m; sourceTree = "<group>"; };
 		D4C767D619F43F4B005B2683 /* GCSignInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCSignInView.h; path = View/GCSignInView.h; sourceTree = "<group>"; };
 		D4C767D719F43F4B005B2683 /* GCSignInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSignInView.m; path = View/GCSignInView.m; sourceTree = "<group>"; };
+		D4C767DD19F457C9005B2683 /* GCAppViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppViewModel.h; path = ViewModel/GCAppViewModel.h; sourceTree = "<group>"; };
+		D4C767DE19F457C9005B2683 /* GCAppViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppViewModel.m; path = ViewModel/GCAppViewModel.m; sourceTree = "<group>"; };
 		D4F777DE19F410630061F62C /* GCAppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppAPI.h; sourceTree = "<group>"; };
 		D4F777DF19F410630061F62C /* GCAppAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppAPI.m; sourceTree = "<group>"; };
 		D4F777E019F410630061F62C /* GCAppSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppSetup.h; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 				D425457919E1AA45004B5AE3 /* GCAppDelegate.h */,
 				D425457A19E1AA45004B5AE3 /* GCAppDelegate.m */,
 				D425458B19E1AC65004B5AE3 /* View */,
+				D4C767D919F45745005B2683 /* ViewModel */,
 				D425457D19E1ABE6004B5AE3 /* AppAPI */,
 				D425458119E1ABF2004B5AE3 /* Store */,
 				D425455919E189EC004B5AE3 /* Supporting Files */,
@@ -217,6 +221,15 @@
 				D4C767D419F41363005B2683 /* GCRegisterScrollView.m */,
 			);
 			name = Cover;
+			sourceTree = "<group>";
+		};
+		D4C767D919F45745005B2683 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D4C767DD19F457C9005B2683 /* GCAppViewModel.h */,
+				D4C767DE19F457C9005B2683 /* GCAppViewModel.m */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +374,7 @@
 				D4F777E419F410630061F62C /* GCAppAPI.m in Sources */,
 				D4F777E519F410630061F62C /* GCAppSetup.m in Sources */,
 				D425458819E1ABF2004B5AE3 /* GCAppConfig.m in Sources */,
+				D4C767DF19F457C9005B2683 /* GCAppViewModel.m in Sources */,
 				D4C767D519F41363005B2683 /* GCRegisterScrollView.m in Sources */,
 				D4C767CF19F4131D005B2683 /* GCRegisterViewController.m in Sources */,
 				D425455C19E189EC004B5AE3 /* main.m in Sources */,

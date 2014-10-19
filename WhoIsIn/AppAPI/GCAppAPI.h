@@ -42,7 +42,7 @@
 // Data Model
 
 // View Model
-//#import "GCAppViewModel.h"
+#import "GCAppViewModel.h"
 
 // App Import
 #import "GCAppSetup.h"

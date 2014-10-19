@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GCSignInView.h"
 
-@interface GCSignInViewController : UIViewController
+@interface GCSignInViewController : UIViewController <UITextFieldDelegate>
 
 // View
 @property GCSignInView *signInView;

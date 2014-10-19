@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class GCSignInViewController;
 
-@interface GCSignInView : UIView <UITextFieldDelegate>
+@interface GCSignInView : UIView 
 
 // Self
 @property GCSignInViewController *parentController;
@@ -37,6 +37,8 @@
 
 // Factory Method
 + (UITextField *)SignInViewTextFieldWithPlaceHolder:(NSString *)placeHolder;
++ (UIButton *)ButtonWithTitle:(NSString *)title;
+
 
 @end
 

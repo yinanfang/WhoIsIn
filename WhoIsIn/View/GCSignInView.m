@@ -42,7 +42,8 @@
         [self addSubview:self.view_LogIn];
         // User name
         self.entry_Username = [GCSignInView SignInViewTextFieldWithPlaceHolder:@"Email Login"];
-        self.entry_Username.delegate = self;
+        self.entry_Username.returnKeyType = UIReturnKeyNext;
+        self.entry_Username.tag = 1;
         [self.view_LogIn addSubview:self.entry_Username];
         // Separator
         self.separator_Username = [UIView new];
@@ -50,18 +51,19 @@
         [self.view_LogIn addSubview:self.separator_Username];
         // Password
         self.entry_Password = [GCSignInView SignInViewTextFieldWithPlaceHolder:@"Password"];
-        self.entry_Password.delegate = self;
+        self.entry_Password.returnKeyType = UIReturnKeyGo;
+        self.entry_Password.tag = 2;
         [self.view_LogIn addSubview:self.entry_Password];
         
         // Other Field
         self.view_Others = [UIView new];
-        self.view_Others.backgroundColor = [UIColor lightGrayColor];
+//        self.view_Others.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:self.view_Others];
         // Register
-        self.btn_Register = [UIButton ButtonWithTitle:@"Register" inBold:NO horizontalAlign:UIControlContentHorizontalAlignmentCenter];
+        self.btn_Register = [GCSignInView ButtonWithTitle:@"Register"];
         [self.view_Others addSubview:self.btn_Register];
         // Help Me
-        self.btn_HelpMe = [UIButton ButtonWithTitle:@"Help Me" inBold:NO horizontalAlign:UIControlContentHorizontalAlignmentCenter];
+        self.btn_HelpMe = [GCSignInView ButtonWithTitle:@"Help Me"];
         [self.view_Others addSubview:self.btn_HelpMe];
     }
     return self;
@@ -108,15 +110,22 @@
             make.right.equalTo(self.view_LogIn.mas_right);
             make.height.mas_equalTo(FontSize_LogInTextField+5);
         }];
-        
-        
-        
-        
+
         // Other Field
         [self.view_Others mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
             make.bottom.equalTo(self.mas_bottom).with.offset(mas_Padding_Page_Large.bottom);
             make.size.mas_equalTo(CGSizeMake(ScreenWidth-2*mas_Padding_Page_Large.left, ScreenWidth/4));
+        }];
+        [self.btn_HelpMe mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.view_Others.mas_centerX);
+            make.bottom.equalTo(self.view_Others.mas_bottom).with.offset(mas_Padding_Page_Default.bottom);
+            make.size.mas_equalTo(CGSizeMake(100, 20));
+        }];
+        [self.btn_Register mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.view_Others.mas_centerX);
+            make.bottom.equalTo(self.btn_HelpMe.mas_top).with.offset(mas_Padding_Page_Large.bottom);
+            make.size.mas_equalTo(CGSizeMake(100, 20));
         }];
         
 
@@ -127,58 +136,31 @@
     [super updateConstraints];
 }
 
-#pragma mark - UITextField Delegate
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    DDLogVerbose(@"textFieldShouldBeginEditing");
-    [self layoutIfNeeded];
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        // App Logo
-        [self.appName mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.mas_top).with.offset(ScreenHeight/8);
-        }];
-        // Login Field
-        [self.view_LogIn mas_updateConstraints:^(MASConstraintMaker *make){
-            make.top.equalTo(self.mas_top).with.offset(ScreenHeight/3);
-        }];
-        [self layoutIfNeeded];
-    }completion:nil];
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    DDLogVerbose(@"textFieldShouldReturn:");
-    [textField resignFirstResponder];
-    [self layoutIfNeeded];
-    [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        // App Logo
-        [self.appName mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.mas_top).with.offset(ScreenHeight/5);
-        }];
-        // Login Field
-        [self.view_LogIn mas_updateConstraints:^(MASConstraintMaker *make){
-            make.top.equalTo(self.mas_top).with.offset(ScreenHeight/2);
-        }];
-        [self layoutIfNeeded];
-    }completion:nil];
-    return YES;
-}
-
+#pragma mark - Factory Methods
 + (UITextField *)SignInViewTextFieldWithPlaceHolder:(NSString *)placeHolderString
 {
-    UITextField *textField = [[UITextField alloc] init];
+    UITextField *textField = [UITextField new];
     textField.backgroundColor = [UIColor clearColor];
     textField.borderStyle = UITextBorderStyleNone;
     textField.font = [UIFont systemFontOfSize:FontSize_LogInTextField];
-    textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolderString attributes:@{NSForegroundColorAttributeName:[GCAppAPI getColorWithRGBAinHex:WhiteFading]}];
+    textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolderString attributes:@{NSForegroundColorAttributeName:[GCAppAPI getColorWithRGBAinHex:WhiteFading], NSFontAttributeName:[UIFont fontWithName:Font_Title size:FontSize_LogInTextField]}];
     textField.autocorrectionType = UITextAutocorrectionTypeYes;
     textField.keyboardType = UIKeyboardTypeDefault;
-    textField.returnKeyType = UIReturnKeyDone;
+    textField.enablesReturnKeyAutomatically = YES;
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentLeft;
     textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     return textField;
 }
 
++ (UIButton *)ButtonWithTitle:(NSString *)title
+{
+    UIButton *button = [UIButton new];
+    [button setTitleColor:[GCAppAPI getColorWithRGBAinHex:WhiteFading] forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:Font_Title size:FontSize_H1];
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    return button;
+}
 @end
 

@@ -20,11 +20,15 @@
 #define Font_Title                  @"AppleGothic"
 #define Font_Paragraph              @"AppleGothic"
 #define FontSize_LogInTextField     22.0f
-#define FontSize_h1                 18.0f
-#define FontSize_h2                 16.0f
-#define FontSize_p1                 16.0f
+#define FontSize_H1                 18.0f
+#define FontSize_H2                 16.0f
+#define FontSize_P1                 16.0f
 #define WidthForEntryfieldBorder    1.0f
 #define CornerRadius_General        10.0f
+
+// Animation
+#define AnimationDuration_Short     0.25
+#define AnimationDelay_Short        0
 
 // General Layout Metrics
 // For MASConstraintMaker
