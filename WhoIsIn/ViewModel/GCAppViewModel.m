@@ -7,6 +7,7 @@
 //
 
 #import "GCAppViewModel.h"
+#import "GCMainContainerViewController.h"
 
 @implementation GCAppViewModel
 
@@ -38,6 +39,12 @@
     DDLogVerbose(@"start to login...");
 }
 
+
++ (void)enterMainContainerViewController:(UIViewController *)controller
+{
+    GCMainContainerViewController *mainContainerViewController = [[GCMainContainerViewController alloc] init];
+    [controller.navigationController pushViewController:mainContainerViewController animated:YES];
+}
 
 
 @end

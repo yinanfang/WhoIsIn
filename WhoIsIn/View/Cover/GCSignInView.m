@@ -30,8 +30,8 @@
         self.appName = [[FBShimmeringView alloc] initWithFrame:ScreenBounds];
         self.appName.shimmering = NO;
         self.appName.shimmeringBeginFadeDuration = 0.3;
-        self.appName.shimmeringPauseDuration = 3;
-        self.appName.shimmeringSpeed = 250;
+        self.appName.shimmeringPauseDuration = 0.3;
+        self.appName.shimmeringSpeed = ScreenWidth;
         self.appName.shimmeringOpacity = 0.5;
         self.appName.contentView = appNameLabel;
         [self addSubview:self.appName];
@@ -142,7 +142,8 @@
     UITextField *textField = [UITextField new];
     textField.backgroundColor = [UIColor clearColor];
     textField.borderStyle = UITextBorderStyleNone;
-    textField.font = [UIFont systemFontOfSize:FontSize_LogInTextField];
+    textField.font = [UIFont fontWithName:Font_Title size:FontSize_LogInTextField];
+    textField.textColor = [UIColor whiteColor];
     textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolderString attributes:@{NSForegroundColorAttributeName:[GCAppAPI getColorWithRGBAinHex:WhiteFading], NSFontAttributeName:[UIFont fontWithName:Font_Title size:FontSize_LogInTextField]}];
     textField.autocorrectionType = UITextAutocorrectionTypeYes;
     textField.keyboardType = UIKeyboardTypeDefault;

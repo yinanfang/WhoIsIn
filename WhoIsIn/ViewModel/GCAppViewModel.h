@@ -19,6 +19,7 @@
 + (void)loginWithCredential:(NSDictionary *)credential;
 //+ (void)registerWithCredential:(NSDictionary *)credential;
 
++ (void)enterMainContainerViewController:(UIViewController *)controller;
 
 
 

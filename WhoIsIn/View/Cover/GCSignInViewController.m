@@ -28,7 +28,11 @@
     self.signInView.entry_Password.delegate = self;
 
     
-    
+    // Short cut
+    [[self.signInView.btn_HelpMe rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"Help Me button tapped");
+        [GCAppViewModel enterMainContainerViewController:self];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,7 +64,7 @@
     } else {
         // Not found, so remove keyboard.
         [textField resignFirstResponder];
-        [self moveDownContent];
+        [self showLoginProgress];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, AnimationDuration_Short*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [GCAppViewModel loginWithCredential:nil];
         });
@@ -113,6 +117,31 @@
         }];
         [self.signInView layoutIfNeeded];
     }completion:nil];
+}
+
+- (void)showLoginProgress
+{
+    [self.signInView layoutIfNeeded];
+    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_Short options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        // App Logo
+        [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/2-80);
+        }];
+        self.signInView.appName.shimmering = YES;
+        // Login Field
+        [self.signInView.view_LogIn mas_updateConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/2);
+        }];
+        [self.signInView layoutIfNeeded];
+    }completion:nil];
+    // Fade
+    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    anim.toValue = @(0.0);
+    anim.duration = AnimationDuration_Short;
+    [self.signInView.view_LogIn pop_addAnimation:anim forKey:@"fade"];
+    [self.signInView.view_Others pop_addAnimation:anim forKey:@"fade"];
+
 }
 
 @end
