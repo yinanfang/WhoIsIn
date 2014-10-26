@@ -15,12 +15,12 @@
 // Accessor for Singleton class
 + (GCAppViewModel *)sharedInstance;
 
-// Cover
+#pragma mark - Log In
 + (void)loginWithCredential:(NSDictionary *)credential;
-//+ (void)registerWithCredential:(NSDictionary *)credential;
-
 + (void)enterMainContainerViewController:(UIViewController *)controller;
 
+#pragma mark - Fetch Data
++ (BOOL)getCurrentActivitiesWithParameter:(NSDictionary *)parameter;
 
 
 @end

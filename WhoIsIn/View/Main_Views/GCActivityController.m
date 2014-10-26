@@ -13,11 +13,113 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    DDLogInfo(@"====================  Entered Activity container controller  ====================");
-    
     // Initialize Variables
     self.view.backgroundColor = [UIColor blueColor];
+    
+    // Activity Scroll View
+    self.activitScrollView = [UITableView new];
+    self.activitScrollView.backgroundColor = [UIColor lightGrayColor];
+    self.activitScrollView.separatorInset = UIEdgeInsetsZero;
+    [self.view addSubview:self.activitScrollView];
+    [self updateViewConstraints];
 
+    // Fetch Activities
+//    [self fetchActivityDataWithParameter:nil];
+    
+    DDLogVerbose(@"test");
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+//    manager.responseSerializer.stringEncoding = NSUTF8StringEncoding;
+    [manager GET:@"https://story2movie.com/API201425PKS238K89DJK/service.php?method=getActivities&origin=35.749087%2C-78.885771&showExpired=0&sortBy=distance" parameters:nil success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        
+        NSDictionary *firstObject = responseObject[0];
+        NSLog(@"first object: %@", firstObject);
+        NSLog(@"description: %@", firstObject[@"description"]);
+        
+        NSMutableDictionary *testObject = [NSMutableDictionary new];
+        [testObject setValue:firstObject[@"first_name"] forKey:@"first_name"];
+        [testObject setValue:firstObject[@"last_name"] forKey:@"last_name"];
+        [testObject setValue:firstObject[@"contact_phone"] forKey:@"contact_phone"];
+        [testObject setValue:firstObject[@"contact_email"] forKey:@"contact_email"];
+        
+        
+        
+        NSLog(@"test object: %@", testObject);
+        
+        NSError *error;
+        GCActivityTest *activity = [MTLJSONAdapter modelOfClass:[GCActivityTest class] fromJSONDictionary:firstObject error:&error];
+        if (error) {
+            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
+        }
+        DDLogVerbose(@"appData Current value: %@", activity);
+        
+//        NSError *error;
+//        GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:firstObject error:&error];
+//        if (error) {
+//            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
+//        }
+//        DDLogVerbose(@"appData Current value: %@", activity);
+        
+        
+        
+//        NSError *error;
+//        NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:responseObject error:&error];
+//        if (error) {
+//            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
+//        }
+//        DDLogVerbose(@"appData Current value: %@", activities);
+        
+        
+        
+//        NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:responseObject error:&error];
+//        if (error) {
+//            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
+//            return nil;
+//        }
+        
+//        NSLog(@"%@", [NSString stringWithCString:[responseObject[0][@"description"] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding]);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
 }
+
+- (void)fetchActivityDataWithParameter:(NSDictionary *)parameter
+{
+    DDLogVerbose(@"fetchActivityDataWithParameter");
+    if (!parameter) {
+        // Fetch default activity list
+        parameter = @{
+                      @"method": @"getActivities",
+                      @"sortBy": @"distance",
+                      @"origin": @"35.749087,-78.885771",
+                      @"showExpired": @"0",
+                      };
+        BOOL shouldReloadTable = [GCAppViewModel getCurrentActivitiesWithParameter:parameter];
+        if (shouldReloadTable) {
+            DDLogVerbose(@"shouldReloadTable");
+            [self.activitScrollView reloadData];
+        }
+    }
+}
+
+
+
+- (void)updateViewConstraints
+{
+    DDLogVerbose(@"GCActivityController updateViewConstraints");
+    [GCAppSetup setConstraints_FillFullScreenWithView:self.activitScrollView superview:self.view];
+    
+    [super updateViewConstraints];
+}
+
+
+
+
+
+
 
 @end

@@ -12,10 +12,10 @@
 
 #pragma mark - Domain
 // Change the domain for server here
-NSString *const DevelopmentDomain = @"https://secure28.webhostinghub.com";
-NSString *const ProductionDomain = @"https://secure28.webhostinghub.com";
-NSString *const URIPathToUsersPHP = @"/~pocket14/forsyth.im/caterpillars/users.php";
-NSString *const URIPathToSubmissionPHP = @"/~pocket14/forsyth.im/caterpillars/submission.php";
+NSString *const DevelopmentDomain = @"https://story2movie.com";
+NSString *const ProductionDomain = @"https://story2movie.com";
+NSString *const URIToServicePHP = @"/API201425PKS238K89DJK/service.php";
+NSString *const URLToServicePHP = @"https://story2movie.com/API201425PKS238K89DJK/service.php";
 
 #pragma mark - NSUserDefaults values
 NSString *const NSUserDefaultsKeyForDidShownTour = @"didShownTour";

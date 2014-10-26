@@ -62,8 +62,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #pragma mark - Domain
 FOUNDATION_EXPORT NSString *const DevelopmentDomain;
 FOUNDATION_EXPORT NSString *const ProductionDomain;
-FOUNDATION_EXPORT NSString *const URIPathToUsersPHP;
-FOUNDATION_EXPORT NSString *const URIPathToSubmissionPHP;
+FOUNDATION_EXPORT NSString *const URIToServicePHP;
+FOUNDATION_EXPORT NSString *const URLToServicePHP;
 
 #pragma mark - NSUserDefaults values
 FOUNDATION_EXPORT NSString *const NSUserDefaultsKeyForDidShownTour;

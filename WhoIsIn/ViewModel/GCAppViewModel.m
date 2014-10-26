@@ -33,7 +33,7 @@
     return self;
 }
 
-#pragma mark - Cover Function
+#pragma mark - Log In
 + (void)loginWithCredential:(NSDictionary *)credential
 {
     DDLogVerbose(@"start to login...");
@@ -45,6 +45,19 @@
     GCMainContainerViewController *mainContainerViewController = [[GCMainContainerViewController alloc] init];
     [controller.navigationController pushViewController:mainContainerViewController animated:YES];
 }
+
+#pragma mark - Fetch Data
++ (BOOL)getCurrentActivitiesWithParameter:(NSDictionary *)parameter
+{
+    DDLogVerbose(@"getCurrentActivities");
+    NSURL *url = [NSURL URLWithString:URLToServicePHP];
+    [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSDictionary *userInfoDictionary){
+        DDLogVerbose(@"Getting User object");
+    }];
+    
+    return NO;
+}
+
 
 
 @end
