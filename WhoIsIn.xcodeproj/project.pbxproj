@@ -16,6 +16,12 @@
 		D425458819E1ABF2004B5AE3 /* GCAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458319E1ABF2004B5AE3 /* GCAppConfig.m */; };
 		D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458519E1ABF2004B5AE3 /* GCConstant.m */; };
 		D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */; };
+		D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = D441BCCC19FC932D00311151 /* GCMainTabController.m */; };
+		D476998319FD28B000BEECA8 /* GCUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998219FD28B000BEECA8 /* GCUserInfoController.m */; };
+		D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998519FD28C200BEECA8 /* GCAccountController.m */; };
+		D476998919FD2F6700BEECA8 /* GCFloatController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998819FD2F6700BEECA8 /* GCFloatController.m */; };
+		D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998B19FD32E400BEECA8 /* GCActivityController.m */; };
+		D476998F19FD37E100BEECA8 /* leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = D476998E19FD37E100BEECA8 /* leaf.png */; };
 		D4C767DF19F457C9005B2683 /* GCAppViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767DE19F457C9005B2683 /* GCAppViewModel.m */; };
 		D4C767E319F461C3005B2683 /* GCMainContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767E219F461C3005B2683 /* GCMainContainerViewController.m */; };
 		D4C767EC19F461F5005B2683 /* GCRegisterScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767E519F461F5005B2683 /* GCRegisterScrollView.m */; };
@@ -58,6 +64,17 @@
 		D425458519E1ABF2004B5AE3 /* GCConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCConstant.m; sourceTree = "<group>"; };
 		D425458619E1ABF2004B5AE3 /* GCCustomLogFormatters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCCustomLogFormatters.h; sourceTree = "<group>"; };
 		D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCustomLogFormatters.m; sourceTree = "<group>"; };
+		D441BCCB19FC932D00311151 /* GCMainTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCMainTabController.h; path = View/Main_Views/GCMainTabController.h; sourceTree = "<group>"; };
+		D441BCCC19FC932D00311151 /* GCMainTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCMainTabController.m; path = View/Main_Views/GCMainTabController.m; sourceTree = "<group>"; };
+		D476998119FD28B000BEECA8 /* GCUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCUserInfoController.h; path = View/Main_Views/GCUserInfoController.h; sourceTree = "<group>"; };
+		D476998219FD28B000BEECA8 /* GCUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCUserInfoController.m; path = View/Main_Views/GCUserInfoController.m; sourceTree = "<group>"; };
+		D476998419FD28C200BEECA8 /* GCAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAccountController.h; path = View/Main_Views/GCAccountController.h; sourceTree = "<group>"; };
+		D476998519FD28C200BEECA8 /* GCAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAccountController.m; path = View/Main_Views/GCAccountController.m; sourceTree = "<group>"; };
+		D476998719FD2F6700BEECA8 /* GCFloatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCFloatController.h; path = View/Main_Views/GCFloatController.h; sourceTree = "<group>"; };
+		D476998819FD2F6700BEECA8 /* GCFloatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCFloatController.m; path = View/Main_Views/GCFloatController.m; sourceTree = "<group>"; };
+		D476998A19FD32E400BEECA8 /* GCActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityController.h; path = View/Main_Views/GCActivityController.h; sourceTree = "<group>"; };
+		D476998B19FD32E400BEECA8 /* GCActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityController.m; path = View/Main_Views/GCActivityController.m; sourceTree = "<group>"; };
+		D476998E19FD37E100BEECA8 /* leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf.png; sourceTree = "<group>"; };
 		D4C767DD19F457C9005B2683 /* GCAppViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppViewModel.h; path = ViewModel/GCAppViewModel.h; sourceTree = "<group>"; };
 		D4C767DE19F457C9005B2683 /* GCAppViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppViewModel.m; path = ViewModel/GCAppViewModel.m; sourceTree = "<group>"; };
 		D4C767E119F461C3005B2683 /* GCMainContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCMainContainerViewController.h; path = View/Main_Views/GCMainContainerViewController.h; sourceTree = "<group>"; };
@@ -143,6 +160,7 @@
 				D4C767D919F45745005B2683 /* ViewModel */,
 				D425457D19E1ABE6004B5AE3 /* AppAPI */,
 				D425458119E1ABF2004B5AE3 /* Store */,
+				D476998D19FD37CD00BEECA8 /* Images */,
 				D425455919E189EC004B5AE3 /* Supporting Files */,
 				D425456019E189EC004B5AE3 /* Images.xcassets */,
 				D425456219E189EC004B5AE3 /* LaunchScreen.xib */,
@@ -227,6 +245,15 @@
 			name = Cover;
 			sourceTree = "<group>";
 		};
+		D476998D19FD37CD00BEECA8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D476998E19FD37E100BEECA8 /* leaf.png */,
+			);
+			name = Images;
+			path = Store;
+			sourceTree = "<group>";
+		};
 		D4C767D919F45745005B2683 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +268,16 @@
 			children = (
 				D4C767E119F461C3005B2683 /* GCMainContainerViewController.h */,
 				D4C767E219F461C3005B2683 /* GCMainContainerViewController.m */,
+				D441BCCB19FC932D00311151 /* GCMainTabController.h */,
+				D441BCCC19FC932D00311151 /* GCMainTabController.m */,
+				D476998719FD2F6700BEECA8 /* GCFloatController.h */,
+				D476998819FD2F6700BEECA8 /* GCFloatController.m */,
+				D476998A19FD32E400BEECA8 /* GCActivityController.h */,
+				D476998B19FD32E400BEECA8 /* GCActivityController.m */,
+				D476998119FD28B000BEECA8 /* GCUserInfoController.h */,
+				D476998219FD28B000BEECA8 /* GCUserInfoController.m */,
+				D476998419FD28C200BEECA8 /* GCAccountController.h */,
+				D476998519FD28C200BEECA8 /* GCAccountController.m */,
 			);
 			name = Main_Views;
 			sourceTree = "<group>";
@@ -330,6 +367,7 @@
 			files = (
 				D425456419E189EC004B5AE3 /* LaunchScreen.xib in Resources */,
 				D425456119E189EC004B5AE3 /* Images.xcassets in Resources */,
+				D476998F19FD37E100BEECA8 /* leaf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,16 +420,21 @@
 			files = (
 				D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */,
 				D4C767EE19F461F5005B2683 /* GCSignInView.m in Sources */,
+				D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */,
 				D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */,
 				D4F777E419F410630061F62C /* GCAppAPI.m in Sources */,
 				D4C767EC19F461F5005B2683 /* GCRegisterScrollView.m in Sources */,
 				D4F777E519F410630061F62C /* GCAppSetup.m in Sources */,
+				D476998919FD2F6700BEECA8 /* GCFloatController.m in Sources */,
 				D425458819E1ABF2004B5AE3 /* GCAppConfig.m in Sources */,
 				D4C767E319F461C3005B2683 /* GCMainContainerViewController.m in Sources */,
 				D4C767EF19F461F5005B2683 /* GCSignInViewController.m in Sources */,
 				D4C767DF19F457C9005B2683 /* GCAppViewModel.m in Sources */,
 				D425455C19E189EC004B5AE3 /* main.m in Sources */,
+				D476998319FD28B000BEECA8 /* GCUserInfoController.m in Sources */,
 				D4F777E619F410630061F62C /* GCNetwork.m in Sources */,
+				D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */,
+				D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */,
 				D425457B19E1AA45004B5AE3 /* GCAppDelegate.m in Sources */,
 				D4C767ED19F461F5005B2683 /* GCRegisterViewController.m in Sources */,
 			);

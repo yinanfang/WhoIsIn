@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GCMainTabController;
 
 @interface GCMainContainerViewController : UIViewController
 
-
+@property GCMainTabController *mainTabController;
 
 
 
