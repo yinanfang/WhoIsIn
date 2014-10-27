@@ -33,7 +33,7 @@
              @"distanceString": @"distanceText",
              
              @"shouldstickToTop": @"stick_to_top",
-             @"isActiveActivity": @"active",
+//             @"isActiveActivity": @"active",
              };
 }
 
@@ -202,14 +202,15 @@
     }];
 }
 
-+ (NSValueTransformer *)isActiveActivityJSONTransformer
-{
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
-        return number;
-    }reverseBlock:^(NSNumber *number){
-        return number;
-    }];
-}
+//+ (NSValueTransformer *)isActiveActivityJSONTransformer
+//{
+////    return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
+//    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
+//        return number;
+//    }reverseBlock:^(NSNumber *number){
+//        return number;
+//    }];
+//}
 // TODO: Can't use BOOL transformer
 // return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
 

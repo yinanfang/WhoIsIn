@@ -31,7 +31,7 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.securityPolicy.allowInvalidCertificates = YES;
-//    manager.responseSerializer.stringEncoding = NSUTF8StringEncoding;
+    //    manager.responseSerializer.stringEncoding = NSUTF8StringEncoding;
     [manager GET:@"https://story2movie.com/API201425PKS238K89DJK/service.php?method=getActivities&origin=35.749087%2C-78.885771&showExpired=0&sortBy=distance" parameters:nil success:^(AFHTTPRequestOperation *operation, NSArray *responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
@@ -56,44 +56,44 @@
         [testObject setValue:firstObject[@"distance"] forKey:@"distance"];
         [testObject setValue:firstObject[@"distanceText"] forKey:@"distanceText"];
         [testObject setValue:firstObject[@"stick_to_top"] forKey:@"stick_to_top"];
-        [testObject setValue:firstObject[@"active"] forKey:@"active"];
-
-
+//        [testObject setValue:firstObject[@"active"] forKey:@"active"];
+        
+        
         
         NSLog(@"test object: %@", testObject);
         
         NSError *error;
-        GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:responseObject[0] error:&error];
+        GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:testObject error:&error];
         if (error) {
             NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
         }
         DDLogVerbose(@"activity value: %@", [MTLJSONAdapter JSONDictionaryFromModel:activity]);
         
-//        NSError *error;
-//        GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:firstObject error:&error];
-//        if (error) {
-//            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
-//        }
-//        DDLogVerbose(@"appData Current value: %@", activity);
+        //        NSError *error;
+        //        GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:firstObject error:&error];
+        //        if (error) {
+        //            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
+        //        }
+        //        DDLogVerbose(@"appData Current value: %@", activity);
         
         
         
-//        NSError *error;
-//        NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:responseObject error:&error];
-//        if (error) {
-//            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
-//        }
-//        DDLogVerbose(@"appData Current value: %@", activities);
+        //        NSError *error;
+        //        NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:responseObject error:&error];
+        //        if (error) {
+        //            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
+        //        }
+        //        DDLogVerbose(@"appData Current value: %@", activities);
         
         
         
-//        NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:responseObject error:&error];
-//        if (error) {
-//            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
-//            return nil;
-//        }
+        //        NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:responseObject error:&error];
+        //        if (error) {
+        //            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
+        //            return nil;
+        //        }
         
-//        NSLog(@"%@", [NSString stringWithCString:[responseObject[0][@"description"] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding]);
+        //        NSLog(@"%@", [NSString stringWithCString:[responseObject[0][@"description"] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
@@ -109,7 +109,7 @@
                       @"method": @"getActivities",
                       @"sortBy": @"distance",
                       @"origin": @"35.749087,-78.885771",
-                      @"showExpired": @"0",
+                      @"showExpired": @"1",
                       };
         BOOL shouldReloadTable = [GCAppViewModel getCurrentActivitiesWithParameter:parameter];
         if (shouldReloadTable) {

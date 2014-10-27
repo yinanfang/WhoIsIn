@@ -40,6 +40,7 @@
 #import <Tweaks/FBTweak.h>
 
 // Data Model
+#import "GCActivity.h"
 
 // View Model
 #import "GCAppViewModel.h"

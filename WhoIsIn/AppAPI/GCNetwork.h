@@ -10,7 +10,7 @@
 
 @interface GCNetwork : NSObject
 
-+ (void)requestGETWithURL:(NSURL *)url parameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded, NSDictionary *responseDictionary))completionBlock;
++ (void)requestGETWithURL:(NSURL *)url parameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *responseData))completionBlock;
 
     
 @end

@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "GCActivity.h"
-#import "GCActivityTest.h"
-
-
 @interface GCActivityController : UIViewController
 
 @property UITableView *activitScrollView;

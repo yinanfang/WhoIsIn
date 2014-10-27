@@ -23,7 +23,6 @@
 		D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998B19FD32E400BEECA8 /* GCActivityController.m */; };
 		D476998F19FD37E100BEECA8 /* leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = D476998E19FD37E100BEECA8 /* leaf.png */; };
 		D476999319FD43FC00BEECA8 /* GCActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = D476999219FD43FC00BEECA8 /* GCActivity.m */; };
-		D476999919FD9A7500BEECA8 /* GCActivityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D476999819FD9A7500BEECA8 /* GCActivityTest.m */; };
 		D4C767DF19F457C9005B2683 /* GCAppViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767DE19F457C9005B2683 /* GCAppViewModel.m */; };
 		D4C767E319F461C3005B2683 /* GCMainContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767E219F461C3005B2683 /* GCMainContainerViewController.m */; };
 		D4C767EC19F461F5005B2683 /* GCRegisterScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767E519F461F5005B2683 /* GCRegisterScrollView.m */; };
@@ -79,8 +78,6 @@
 		D476998E19FD37E100BEECA8 /* leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf.png; sourceTree = "<group>"; };
 		D476999119FD43FC00BEECA8 /* GCActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivity.h; path = Model/GCActivity.h; sourceTree = "<group>"; };
 		D476999219FD43FC00BEECA8 /* GCActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivity.m; path = Model/GCActivity.m; sourceTree = "<group>"; };
-		D476999719FD9A7500BEECA8 /* GCActivityTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityTest.h; path = Model/GCActivityTest.h; sourceTree = "<group>"; };
-		D476999819FD9A7500BEECA8 /* GCActivityTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityTest.m; path = Model/GCActivityTest.m; sourceTree = "<group>"; };
 		D4C767DD19F457C9005B2683 /* GCAppViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppViewModel.h; path = ViewModel/GCAppViewModel.h; sourceTree = "<group>"; };
 		D4C767DE19F457C9005B2683 /* GCAppViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppViewModel.m; path = ViewModel/GCAppViewModel.m; sourceTree = "<group>"; };
 		D4C767E119F461C3005B2683 /* GCMainContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCMainContainerViewController.h; path = View/Main_Views/GCMainContainerViewController.h; sourceTree = "<group>"; };
@@ -266,8 +263,6 @@
 			children = (
 				D476999119FD43FC00BEECA8 /* GCActivity.h */,
 				D476999219FD43FC00BEECA8 /* GCActivity.m */,
-				D476999719FD9A7500BEECA8 /* GCActivityTest.h */,
-				D476999819FD9A7500BEECA8 /* GCActivityTest.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -453,7 +448,6 @@
 				D476998319FD28B000BEECA8 /* GCUserInfoController.m in Sources */,
 				D4F777E619F410630061F62C /* GCNetwork.m in Sources */,
 				D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */,
-				D476999919FD9A7500BEECA8 /* GCActivityTest.m in Sources */,
 				D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */,
 				D425457B19E1AA45004B5AE3 /* GCAppDelegate.m in Sources */,
 				D4C767ED19F461F5005B2683 /* GCRegisterViewController.m in Sources */,
