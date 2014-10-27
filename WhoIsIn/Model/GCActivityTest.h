@@ -33,5 +33,7 @@
 @property BOOL shouldstickToTop;
 @property BOOL isActiveActivity;
 
+// Class property
++ (NSDateFormatter *)dateFormatter;
 
 @end

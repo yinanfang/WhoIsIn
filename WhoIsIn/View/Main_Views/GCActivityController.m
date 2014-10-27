@@ -44,8 +44,12 @@
         [testObject setValue:firstObject[@"last_name"] forKey:@"last_name"];
         [testObject setValue:firstObject[@"contact_phone"] forKey:@"contact_phone"];
         [testObject setValue:firstObject[@"contact_email"] forKey:@"contact_email"];
-        
-        
+        [testObject setValue:firstObject[@"idactivity"] forKey:@"idactivity"];
+        [testObject setValue:firstObject[@"creation_time"] forKey:@"creation_time"];
+        [testObject setValue:firstObject[@"update_time"] forKey:@"update_time"];
+        [testObject setValue:firstObject[@"start_time"] forKey:@"start_time"];
+        [testObject setValue:firstObject[@"location"] forKey:@"location"];
+
         
         NSLog(@"test object: %@", testObject);
         
