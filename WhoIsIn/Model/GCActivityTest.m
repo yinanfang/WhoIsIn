@@ -24,7 +24,16 @@
              @"timeUpdate": @"update_time",
              @"timeStart": @"start_time",
              @"locationString": @"location",
-
+             @"activityTitle": @"title",
+             @"activityDescription": @"description",
+             @"activityDuration": @"duration",
+             @"countWatch": @"watcher_count",
+             @"countParticipants": @"partitipant_count",
+             @"distanceMeter": @"distance",
+             @"distanceString": @"distanceText",
+             
+             @"shouldStickToTop": @"stick_to_top",
+             @"isActiveActivity": @"active",
              };
 }
 
@@ -105,28 +114,6 @@
 + (NSValueTransformer *)timeStartJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *timeString){
-        
-        NSLog(@"timeString: %@", timeString);
-        NSDateFormatter *dateFor = self.dateFormatter;
-        NSLog(@"date formatter: %@", [dateFor description]);
-        NSLog(@"date: %@", [self.dateFormatter dateFromString:timeString]);
-        
-        
-        NSLog(@"test____");
-        NSString *str = @"2012-10-30"; /// here this is your date with format yyyy-MM-dd
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; // here we create NSDateFormatter object for change the Format of date..
-        dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"]; //// here set format of date which is in your output date (means above str with format)
-        NSDate *date = [dateFormatter dateFromString: str];
-        NSLog(@"date11: %@", [date description]);
-        
-        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-        date = [dateFormatter dateFromString: @"2014-11-11 19:00:00"];
-//        date = [dateFormatter dateFromString: timeString];
-
-        NSLog(@"date22: %@", [date description]);
-        
         return [self.dateFormatter dateFromString:timeString];
     }reverseBlock:^(NSDate *date){
         return [self.dateFormatter stringFromDate:date];
@@ -142,6 +129,90 @@
     }];
 }
 
+
++ (NSValueTransformer *)activityTitleJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *string){
+        return string;
+    }reverseBlock:^(NSString *string){
+        return string;
+    }];
+}
+
++ (NSValueTransformer *)activityDescriptionJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *string){
+        return string;
+    }reverseBlock:^(NSString *string){
+        return string;
+    }];
+}
+
++ (NSValueTransformer *)activityDurationJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
+        return number;
+    }reverseBlock:^(NSNumber *number){
+        return number;
+    }];
+}
+
++ (NSValueTransformer *)countWatchJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
+        return number;
+    }reverseBlock:^(NSNumber *number){
+        return number;
+    }];
+}
+
++ (NSValueTransformer *)countParticipantsJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
+        return number;
+    }reverseBlock:^(NSNumber *number){
+        return number;
+    }];
+}
+
++ (NSValueTransformer *)distanceMeterJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
+        return number;
+    }reverseBlock:^(NSNumber *number){
+        return number;
+    }];
+}
+
++ (NSValueTransformer *)distanceStringJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *string){
+        return string;
+    }reverseBlock:^(NSString *string){
+        return string;
+    }];
+}
+
+// State
++ (NSValueTransformer *)shouldStickToTopJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *string){
+        return string;
+    }reverseBlock:^(NSString *string){
+        return string;
+    }];
+}
+
++ (NSValueTransformer *)isActiveActivityJSONTransformer
+{
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *string){
+        return string;
+    }reverseBlock:^(NSString *string){
+        return string;
+    }];
+}
+
+
 + (NSDateFormatter *)dateFormatter {
     
     static NSDateFormatter *kDateFormatter = nil;
@@ -153,7 +224,6 @@
     });
     return kDateFormatter;
 }
-
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError *__autoreleasing *)error{
     self = [super initWithDictionary:dictionaryValue error:error];

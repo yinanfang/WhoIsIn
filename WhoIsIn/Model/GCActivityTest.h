@@ -30,10 +30,7 @@
 @property NSNumber *distanceMeter;
 @property NSString *distanceString;
 // State
-@property BOOL shouldstickToTop;
+@property BOOL shouldStickToTop;
 @property BOOL isActiveActivity;
-
-// Class property
-+ (NSDateFormatter *)dateFormatter;
 
 @end

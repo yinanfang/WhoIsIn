@@ -195,13 +195,23 @@
 // State
 + (NSValueTransformer *)shouldstickToTopJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
+        return number;
+    }reverseBlock:^(NSNumber *number){
+        return number;
+    }];
 }
 
 + (NSValueTransformer *)isActiveActivityJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
+        return number;
+    }reverseBlock:^(NSNumber *number){
+        return number;
+    }];
 }
+// TODO: Can't use BOOL transformer
+// return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
 
 + (NSDateFormatter *)dateFormatter {
     
@@ -210,7 +220,7 @@
     dispatch_once(&onceToken, ^{
         kDateFormatter = [[NSDateFormatter alloc] init];
         kDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        kDateFormatter.dateFormat = @"yyyy-MM-dd hh:mm:ss";  // you configure this based on the strings that your webservice uses!!
+        kDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";  // you configure this based on the strings that your webservice uses!!
     });
     return kDateFormatter;
 }

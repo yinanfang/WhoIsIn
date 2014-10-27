@@ -49,16 +49,25 @@
         [testObject setValue:firstObject[@"update_time"] forKey:@"update_time"];
         [testObject setValue:firstObject[@"start_time"] forKey:@"start_time"];
         [testObject setValue:firstObject[@"location"] forKey:@"location"];
+        [testObject setValue:firstObject[@"title"] forKey:@"title"];
+        [testObject setValue:firstObject[@"description"] forKey:@"description"];
+        [testObject setValue:firstObject[@"watcher_count"] forKey:@"watcher_count"];
+        [testObject setValue:firstObject[@"partitipant_count"] forKey:@"partitipant_count"];
+        [testObject setValue:firstObject[@"distance"] forKey:@"distance"];
+        [testObject setValue:firstObject[@"distanceText"] forKey:@"distanceText"];
+        [testObject setValue:firstObject[@"stick_to_top"] forKey:@"stick_to_top"];
+        [testObject setValue:firstObject[@"active"] forKey:@"active"];
+
 
         
         NSLog(@"test object: %@", testObject);
         
         NSError *error;
-        GCActivityTest *activity = [MTLJSONAdapter modelOfClass:[GCActivityTest class] fromJSONDictionary:firstObject error:&error];
+        GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:responseObject[0] error:&error];
         if (error) {
             NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
         }
-        DDLogVerbose(@"appData Current value: %@", activity);
+        DDLogVerbose(@"activity value: %@", [MTLJSONAdapter JSONDictionaryFromModel:activity]);
         
 //        NSError *error;
 //        GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:firstObject error:&error];
