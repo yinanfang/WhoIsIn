@@ -24,7 +24,7 @@
     [self updateViewConstraints];
 
     // Fetch Activities
-//    [self fetchActivityDataWithParameter:nil];
+    //    [self fetchActivityDataWithParameter:nil];
     
     DDLogVerbose(@"test");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -40,10 +40,12 @@
         NSLog(@"description: %@", firstObject[@"description"]);
         
         NSMutableDictionary *testObject = [NSMutableDictionary new];
+        [testObject setValue:firstObject[@"iduser"] forKey:@"iduser"];
         [testObject setValue:firstObject[@"first_name"] forKey:@"first_name"];
         [testObject setValue:firstObject[@"last_name"] forKey:@"last_name"];
         [testObject setValue:firstObject[@"contact_phone"] forKey:@"contact_phone"];
         [testObject setValue:firstObject[@"contact_email"] forKey:@"contact_email"];
+        
         [testObject setValue:firstObject[@"idactivity"] forKey:@"idactivity"];
         [testObject setValue:firstObject[@"creation_time"] forKey:@"creation_time"];
         [testObject setValue:firstObject[@"update_time"] forKey:@"update_time"];
@@ -51,13 +53,14 @@
         [testObject setValue:firstObject[@"location"] forKey:@"location"];
         [testObject setValue:firstObject[@"title"] forKey:@"title"];
         [testObject setValue:firstObject[@"description"] forKey:@"description"];
+        [testObject setValue:firstObject[@"duration"] forKey:@"duration"];
         [testObject setValue:firstObject[@"watcher_count"] forKey:@"watcher_count"];
         [testObject setValue:firstObject[@"partitipant_count"] forKey:@"partitipant_count"];
         [testObject setValue:firstObject[@"distance"] forKey:@"distance"];
         [testObject setValue:firstObject[@"distanceText"] forKey:@"distanceText"];
-        [testObject setValue:firstObject[@"stick_to_top"] forKey:@"stick_to_top"];
-//        [testObject setValue:firstObject[@"active"] forKey:@"active"];
         
+        [testObject setValue:firstObject[@"stick_to_top"] forKey:@"stick_to_top"];
+        [testObject setValue:firstObject[@"active"] forKey:@"active"];
         
         
         NSLog(@"test object: %@", testObject);
@@ -67,37 +70,12 @@
         if (error) {
             NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
         }
-        DDLogVerbose(@"activity value: %@", [MTLJSONAdapter JSONDictionaryFromModel:activity]);
+        //        DDLogVerbose(@"activity value: %@", [MTLJSONAdapter JSONDictionaryFromModel:activity]);
+        DDLogVerbose(@"activity value: %@", activity);
         
-        //        NSError *error;
-        //        GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:firstObject error:&error];
-        //        if (error) {
-        //            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
-        //        }
-        //        DDLogVerbose(@"appData Current value: %@", activity);
-        
-        
-        
-        //        NSError *error;
-        //        NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:responseObject error:&error];
-        //        if (error) {
-        //            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
-        //        }
-        //        DDLogVerbose(@"appData Current value: %@", activities);
-        
-        
-        
-        //        NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:responseObject error:&error];
-        //        if (error) {
-        //            NSLog(@"Couldn't convert app infos JSON to ChoosyAppInfo models: %@", error);
-        //            return nil;
-        //        }
-        
-        //        NSLog(@"%@", [NSString stringWithCString:[responseObject[0][@"description"] cStringUsingEncoding:NSISOLatin1StringEncoding] encoding:NSUTF8StringEncoding]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
 }
 
 - (void)fetchActivityDataWithParameter:(NSDictionary *)parameter
