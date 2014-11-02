@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GCActivityController : UIViewController
+@interface GCActivityController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property UITableView *activitScrollView;
 

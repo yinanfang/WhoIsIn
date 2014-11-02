@@ -29,6 +29,7 @@
 		D4C767ED19F461F5005B2683 /* GCRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767E719F461F5005B2683 /* GCRegisterViewController.m */; };
 		D4C767EE19F461F5005B2683 /* GCSignInView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767E919F461F5005B2683 /* GCSignInView.m */; };
 		D4C767EF19F461F5005B2683 /* GCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767EB19F461F5005B2683 /* GCSignInViewController.m */; };
+		D4F2077F1A06DE40009351CC /* GCActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */; };
 		D4F777E419F410630061F62C /* GCAppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777DF19F410630061F62C /* GCAppAPI.m */; };
 		D4F777E519F410630061F62C /* GCAppSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777E119F410630061F62C /* GCAppSetup.m */; };
 		D4F777E619F410630061F62C /* GCNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777E319F410630061F62C /* GCNetwork.m */; };
@@ -90,6 +91,8 @@
 		D4C767E919F461F5005B2683 /* GCSignInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSignInView.m; path = View/Cover/GCSignInView.m; sourceTree = "<group>"; };
 		D4C767EA19F461F5005B2683 /* GCSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCSignInViewController.h; path = View/Cover/GCSignInViewController.h; sourceTree = "<group>"; };
 		D4C767EB19F461F5005B2683 /* GCSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSignInViewController.m; path = View/Cover/GCSignInViewController.m; sourceTree = "<group>"; };
+		D4F2077D1A06DE40009351CC /* GCActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityTableViewCell.h; path = View/Main_Views/GCActivityTableViewCell.h; sourceTree = "<group>"; };
+		D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityTableViewCell.m; path = View/Main_Views/GCActivityTableViewCell.m; sourceTree = "<group>"; };
 		D4F777DE19F410630061F62C /* GCAppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppAPI.h; sourceTree = "<group>"; };
 		D4F777DF19F410630061F62C /* GCAppAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAppAPI.m; sourceTree = "<group>"; };
 		D4F777E019F410630061F62C /* GCAppSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppSetup.h; sourceTree = "<group>"; };
@@ -287,6 +290,8 @@
 				D476998819FD2F6700BEECA8 /* GCFloatController.m */,
 				D476998A19FD32E400BEECA8 /* GCActivityController.h */,
 				D476998B19FD32E400BEECA8 /* GCActivityController.m */,
+				D4F2077D1A06DE40009351CC /* GCActivityTableViewCell.h */,
+				D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */,
 				D476998119FD28B000BEECA8 /* GCUserInfoController.h */,
 				D476998219FD28B000BEECA8 /* GCUserInfoController.m */,
 				D476998419FD28C200BEECA8 /* GCAccountController.h */,
@@ -436,6 +441,7 @@
 				D476999319FD43FC00BEECA8 /* GCActivity.m in Sources */,
 				D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */,
 				D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */,
+				D4F2077F1A06DE40009351CC /* GCActivityTableViewCell.m in Sources */,
 				D4F777E419F410630061F62C /* GCAppAPI.m in Sources */,
 				D4C767EC19F461F5005B2683 /* GCRegisterScrollView.m in Sources */,
 				D4F777E519F410630061F62C /* GCAppSetup.m in Sources */,

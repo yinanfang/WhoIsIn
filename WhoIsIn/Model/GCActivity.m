@@ -195,24 +195,22 @@
 // State
 + (NSValueTransformer *)shouldstickToTopJSONTransformer
 {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
-        return number;
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *numberString){
+        return [[[NSNumberFormatter alloc] init] numberFromString:numberString];
     }reverseBlock:^(NSNumber *number){
-        return number;
+        return [NSString stringWithFormat:@"%@", number];
     }];
 }
 
 + (NSValueTransformer *)isActiveActivityJSONTransformer
 {
-    return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
-//    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
-//        return number;
-//    }reverseBlock:^(NSNumber *number){
-//        return number;
-//    }];
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *numberString){
+        return [[[NSNumberFormatter alloc] init] numberFromString:numberString];
+    }reverseBlock:^(NSNumber *number){
+        return [NSString stringWithFormat:@"%@", number];
+    }];
 }
-// TODO: Can't use BOOL transformer
-// return [NSValueTransformer valueTransformerForName:MTLBooleanValueTransformerName];
+
 
 + (NSDateFormatter *)dateFormatter {
     

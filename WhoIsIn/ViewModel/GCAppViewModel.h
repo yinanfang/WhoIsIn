@@ -10,10 +10,11 @@
 
 @interface GCAppViewModel : NSObject
 
-// App Data
-
 // Accessor for Singleton class
 + (GCAppViewModel *)sharedInstance;
+
+// App Data
+@property NSMutableArray *sortedActivities;
 
 #pragma mark - Log In
 + (void)loginWithCredential:(NSDictionary *)credential;
