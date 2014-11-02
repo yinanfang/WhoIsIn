@@ -40,7 +40,7 @@
 #define Insets_Button               UIEdgeInsetsMake(8, 10, 8, 10)
 
 // Table View Configuration
-#define CellIdentifierForOrderTableViewCell @"OrderTableViewCellIdentifier"
+#define CellIdentifierForActivityTableViewCell      @"ActivityTableViewCellIdentifier"
 
 // Don't change this
 #pragma mark - CocoaLumberjack Logging Constant

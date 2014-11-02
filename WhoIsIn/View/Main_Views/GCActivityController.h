@@ -10,7 +10,7 @@
 
 @interface GCActivityController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property UITableView *activitScrollView;
+@property UITableView *activityTableView;
 
 
 

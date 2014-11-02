@@ -47,12 +47,10 @@
 }
 
 #pragma mark - Fetch Data
-+ (BOOL)getCurrentActivitiesWithParameter:(NSDictionary *)parameter
++ (void)getCurrentActivitiesWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion
 {
     DDLogVerbose(@"getCurrentActivities");
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
-    
-    
     [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data){
         if (succeeded) {
             DDLogVerbose(@"Generating GCAvtivity object...");
@@ -64,10 +62,17 @@
                 NSLog(@"Couldn't convert app infos JSON to GCActivity models: %@", error);
             }
             DDLogVerbose(@"GCActivity value: %@", activities);
-            
+            completion(YES);
         }
     }];
-    
-    return NO;
 }
+
+
+
+
+
+
+
+
+
 @end

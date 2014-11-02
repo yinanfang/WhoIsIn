@@ -21,7 +21,7 @@
 + (void)enterMainContainerViewController:(UIViewController *)controller;
 
 #pragma mark - Fetch Data
-+ (BOOL)getCurrentActivitiesWithParameter:(NSDictionary *)parameter;
++ (void)getCurrentActivitiesWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
 
 
 @end
