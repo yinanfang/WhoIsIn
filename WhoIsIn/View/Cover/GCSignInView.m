@@ -11,7 +11,7 @@
 
 @implementation GCSignInView
 
-- (id)initWithParentController:(GCSignInViewController *)controller
+- (instancetype)initWithParentController:(GCSignInViewController *)controller
 {
     self = [super init];
     if (self) {
@@ -37,7 +37,7 @@
         [self addSubview:self.appName];
         
         // Login Field
-        self.view_LogIn = [UIView new];
+        self.view_LogIn = [[UIView alloc] init];
 //        self.view_LogIn.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:self.view_LogIn];
         // User name
@@ -46,7 +46,7 @@
         self.entry_Username.tag = 1;
         [self.view_LogIn addSubview:self.entry_Username];
         // Separator
-        self.separator_Username = [UIView new];
+        self.separator_Username = [[UIView alloc] init];
         self.separator_Username.backgroundColor = [GCAppAPI getColorWithRGBAinHex:WhiteFading];
         [self.view_LogIn addSubview:self.separator_Username];
         // Password
@@ -56,7 +56,7 @@
         [self.view_LogIn addSubview:self.entry_Password];
         
         // Other Field
-        self.view_Others = [UIView new];
+        self.view_Others = [[UIView alloc] init];
 //        self.view_Others.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:self.view_Others];
         // Register
@@ -131,15 +131,13 @@
 
         self.didSetupConstraints = YES;
     }
-    
-    
     [super updateConstraints];
 }
 
 #pragma mark - Factory Methods
 + (UITextField *)SignInViewTextFieldWithPlaceHolder:(NSString *)placeHolderString
 {
-    UITextField *textField = [UITextField new];
+    UITextField *textField = [[UITextField alloc] init];
     textField.backgroundColor = [UIColor clearColor];
     textField.borderStyle = UITextBorderStyleNone;
     textField.font = [UIFont fontWithName:Font_Title size:FontSize_LogInTextField];
@@ -156,7 +154,7 @@
 
 + (UIButton *)ButtonWithTitle:(NSString *)title
 {
-    UIButton *button = [UIButton new];
+    UIButton *button = [[UIButton alloc] init];
     [button setTitleColor:[GCAppAPI getColorWithRGBAinHex:WhiteFading] forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont fontWithName:Font_Title size:FontSize_H1];

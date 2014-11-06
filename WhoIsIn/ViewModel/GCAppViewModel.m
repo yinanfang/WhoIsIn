@@ -23,7 +23,7 @@
     return shareInstance;
 }
 
-- (id)init
+- (instancetype)init
 {
     DDLogVerbose(@"Initializing GCAppDataViewModel...");
     self = [super init];

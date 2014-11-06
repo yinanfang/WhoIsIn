@@ -9,6 +9,7 @@ target "WhoIsIn" do
     pod 'Facebook-iOS-SDK'
     pod 'FlatUIKit'
     pod 'FXBlurView'
+    pod 'JVFloatLabeledTextField'
     pod 'Mantle'
     pod 'Masonry'
     pod 'MBProgressHUD'

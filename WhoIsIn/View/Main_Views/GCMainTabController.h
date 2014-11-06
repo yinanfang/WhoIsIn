@@ -21,6 +21,6 @@
 @property GCAccountController *accountController;
 
 
-- (id)initWithParentController:(GCMainContainerViewController *)controller;
+- (instancetype)initWithParentController:(GCMainContainerViewController *)controller;
 
 @end

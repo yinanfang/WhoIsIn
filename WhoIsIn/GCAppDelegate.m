@@ -19,7 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [GCAppSetup setupApplicationWithProductionMode:YES];
     
+    // Set up window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Set global tint color
+    [self.window setTintColor:[UIColor whiteColor]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor clearColor];
     UINavigationController *navigationController = [[UINavigationController alloc] init];

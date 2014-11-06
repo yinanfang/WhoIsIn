@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GCRegisterScrollView.h"
 
 @interface GCRegisterViewController : UIViewController
+
+// View
+@property GCRegisterScrollView *registerView;
 
 @end

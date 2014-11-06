@@ -11,7 +11,7 @@
 
 @implementation GCMainTabController
 
-- (id)initWithParentController:(GCMainContainerViewController *)controller
+- (instancetype)initWithParentController:(GCMainContainerViewController *)controller
 {
     self = [super init];
     if (self) {

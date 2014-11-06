@@ -7,6 +7,7 @@
 //
 
 #import "GCSignInViewController.h"
+#import "GCRegisterViewController.h"
 
 @implementation GCSignInViewController
 
@@ -16,7 +17,7 @@
     
     
     // UI Navigation Bar
-    [GCAppSetup configureNavigationViewController:self withNavigationTitle:@"Sign In"];
+    [GCAppSetup configureNavigationViewController:self withNavigationTitle:@""];
     
     // Add Sign In View
     self.signInView = [[GCSignInView alloc] initWithParentController:self];
@@ -27,6 +28,12 @@
     self.signInView.entry_Username.delegate = self;
     self.signInView.entry_Password.delegate = self;
 
+    // Register Button
+    [[self.signInView.btn_Register rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"Register button tapped");
+        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
+        [self.navigationController pushViewController:registerViewController animated:YES];
+    }];
     
     // Short cut
     [[self.signInView.btn_HelpMe rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

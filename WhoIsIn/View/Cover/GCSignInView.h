@@ -25,7 +25,7 @@
 @property UITextField *entry_Username, *entry_Password;
 @property UIView *separator_Username;
 
-// Other field
+// Controls
 @property UIView *view_Others;
 // Register
 @property UIButton *btn_Register;
@@ -33,7 +33,7 @@
 @property UIButton *btn_HelpMe;
 
 #pragma mark -  Method
-- (id)initWithParentController:(GCSignInViewController *)controller;
+- (instancetype)initWithParentController:(GCSignInViewController *)controller;
 
 // Factory Method
 + (UITextField *)SignInViewTextFieldWithPlaceHolder:(NSString *)placeHolder;
