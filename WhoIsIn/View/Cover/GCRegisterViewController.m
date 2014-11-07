@@ -22,23 +22,21 @@
     self.registerView = [[GCRegisterScrollView alloc] initWithParentController:self];
     [self.registerView setNeedsUpdateConstraints];
     [self.registerView updateConstraintsIfNeeded];
-//
-//    // Sign In View Text Delegate
-//    self.signInView.entry_Username.delegate = self;
-//    self.signInView.entry_Password.delegate = self;
-//    
-//    // Register Button
-//    [[self.signInView.btn_Register rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"Register button tapped");
+    // Assign Delegates
+    self.registerView.entry_Email.delegate = self;
+    self.registerView.entry_Password.delegate = self;
+    self.registerView.entry_Firstname.delegate = self;
+    self.registerView.entry_LastName.delegate = self;
+    self.registerView.entry_PhoneNumber.delegate = self;
+    self.registerView.entry_Gender.delegate = self;
+    
+    // Register Button
+    [[self.registerView.btn_Register rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"Register button tapped");
 //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
 //        [self.navigationController pushViewController:registerViewController animated:YES];
-//    }];
-//    
-//    // Short cut
-//    [[self.signInView.btn_HelpMe rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"Help Me button tapped");
-//        [GCAppViewModel enterMainContainerViewController:self];
-//    }];
+    }];
+
 }
 
 

@@ -24,7 +24,7 @@
 @property JVFloatLabeledTextField *entry_Password;
 @property UIView *separator_Password;
 @property JVFloatLabeledTextField *entry_Firstname;
-@property UIView *separator_FIrstName;
+@property UIView *separator_FirstName;
 @property JVFloatLabeledTextField *entry_LastName;
 @property UIView *separator_LastName;
 @property JVFloatLabeledTextField *entry_PhoneNumber;
@@ -32,6 +32,8 @@
 @property JVFloatLabeledTextField *entry_Gender;
 @property UIView *separator_Gender;
 
+// Register Button
+@property FUIButton *btn_Register;
 #pragma mark -  Method
 - (instancetype)initWithParentController:(GCRegisterViewController *)controller;
 

@@ -52,6 +52,7 @@
         // Password
         self.entry_Password = [GCSignInView SignInViewTextFieldWithPlaceHolder:@"Password"];
         self.entry_Password.returnKeyType = UIReturnKeyGo;
+        self.entry_Password.secureTextEntry = YES;
         self.entry_Password.tag = 2;
         [self.view_LogIn addSubview:self.entry_Password];
         
@@ -86,25 +87,22 @@
         [self.view_LogIn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
             make.top.equalTo(self.mas_top).with.offset(ScreenHeight/2);
-            make.size.mas_equalTo(CGSizeMake(ScreenWidth-2*mas_Padding_Page_Large.left, ScreenWidth/3));
+            make.size.mas_equalTo(CGSizeMake(ScreenWidth-2*mas_Padding_Page_Large.left, ScreenHeight/3));
         }];
         // User Name
         [self.entry_Username mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view_LogIn.mas_centerX);
             make.top.equalTo(self.view_LogIn.mas_top);
             make.left.equalTo(self.view_LogIn.mas_left);
             make.right.equalTo(self.view_LogIn.mas_right);
             make.height.mas_equalTo(FontSize_LogInTextField+5);
         }];
         [self.separator_Username mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view_LogIn.mas_centerX);
             make.top.equalTo(self.entry_Username.mas_bottom).with.offset(mas_Padding_Page_Default.top);
             make.left.equalTo(self.view_LogIn.mas_left);
             make.right.equalTo(self.view_LogIn.mas_right);
             make.height.mas_equalTo(1);
         }];
         [self.entry_Password mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view_LogIn.mas_centerX);
             make.top.equalTo(self.separator_Username.mas_bottom).with.offset(mas_Padding_Page_Default.top);
             make.left.equalTo(self.view_LogIn.mas_left);
             make.right.equalTo(self.view_LogIn.mas_right);

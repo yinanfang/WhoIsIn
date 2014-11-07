@@ -11,80 +11,56 @@
 
 @implementation GCRegisterScrollView
 
-const static CGFloat kJVFieldFontSize = 16.0f;
-const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
-
 - (instancetype)initWithParentController:(GCRegisterViewController *)controller
 {
     self = [super init];
     if (self) {
         self.parentController = controller;
-        self.backgroundColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+        self.backgroundColor = [UIColor whiteColor];
         [self.parentController.view addSubview:self];
         
         // Login Field
         self.view_Register = [[UIView alloc] init];
-        self.view_Register.backgroundColor = [UIColor lightGrayColor];
+//        self.view_Register.backgroundColor = [UIColor redColor];
+        [self.view_Register setTintColor:[GCAppAPI getColorWithRGBAinHex:ThemeColor01]];    // Float label when editing
         [self addSubview:self.view_Register];
+        // Email
+        self.entry_Email = [self addLabeledTextFieldWithPlaceHolder:@"Email Address"];
+        self.entry_Email.tag = 1;
+        self.separator_Email = [self addSeparator];
+        // Password
+        self.entry_Password = [self addLabeledTextFieldWithPlaceHolder:@"Password"];
+        self.entry_Password.secureTextEntry = YES;
+        self.entry_Password.tag = 2;
+        self.separator_Password = [self addSeparator];
+        // First Name
+        self.entry_Firstname = [self addLabeledTextFieldWithPlaceHolder:@"First Name"];
+        self.entry_Firstname.tag = 3;
+        self.separator_FirstName = [self addSeparator];
+        // Last Name
+        self.entry_LastName = [self addLabeledTextFieldWithPlaceHolder:@"Last Name"];
+        self.entry_LastName.tag = 4;
+        self.separator_LastName = [self addSeparator];
+        // Phone Number
+        self.entry_PhoneNumber = [self addLabeledTextFieldWithPlaceHolder:@"Phone Number (Optional)"];
+        self.entry_PhoneNumber.tag = 5;
+        self.separator_PhoneNumber = [self addSeparator];
+        // Gender
+        self.entry_Gender = [self addLabeledTextFieldWithPlaceHolder:@"Gender"];
+        self.entry_Gender.tag = 6;
+        self.separator_Gender = [self addSeparator];
         
-        UIColor *floatingLabelColor = [UIColor lightGrayColor];
-        
-        self.entry_Email = [[JVFloatLabeledTextField alloc] init];
-        self.entry_Email.attributedPlaceholder = [[NSAttributedString alloc]
-                                                  initWithString:NSLocalizedString(@"Title", @"")
-                                                  attributes:@{
-                                                               NSForegroundColorAttributeName: [UIColor darkGrayColor],
-                                                               }];
-        self.entry_Email.font = [UIFont systemFontOfSize:kJVFieldFontSize];
-        self.entry_Email.floatingLabel.font = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
-        self.entry_Email.floatingLabelTextColor = floatingLabelColor;
-        self.entry_Email.clearButtonMode = UITextFieldViewModeWhileEditing;
-        [self.view_Register addSubview:self.entry_Email];
-
-        
-        
-//        @property JVFloatLabeledTextField *entry_Email;
-//        @property UIView *separator_Email;
-//        @property JVFloatLabeledTextField *entry_Password;
-//        @property UIView *separator_Password;
-//        @property JVFloatLabeledTextField *entry_Firstname;
-//        @property UIView *separator_FIrstName;
-//        @property JVFloatLabeledTextField *entry_LastName;
-//        @property UIView *separator_LastName;
-//        @property JVFloatLabeledTextField *entry_PhoneNumber;
-//        @property UIView *separator_PhoneNumber;
-//        @property JVFloatLabeledTextField *entry_Gender;
-//        @property UIView *separator_Gender;
-        
-        
-//        // User name
-//        self.entry_Username = [GCRegisterScrollView SignInViewTextFieldWithPlaceHolder:@"Email Login"];
-//        self.entry_Username.returnKeyType = UIReturnKeyNext;
-//        self.entry_Username.tag = 1;
-////        self.entry_Username.inputView
-//        [self.view_Register addSubview:self.entry_Username];
-        
-        
-        
-//        email
-//        Email address will be used as user name for the login.
-        
-//        password
-//        The password should be in the form of hashed MD5 value.
-        
-//        firstName
-//        The first name of the user.
-        
-//        LastName
-//        The last name of the user.
-        
-//        phoneNumber (Optional)
-//        The phone number of the user.
-        
-//        gender		
-//        The gender of the user, “M” is male,“F” is female.
-
-        
+        // Register Button
+        self.btn_Register = [[FUIButton alloc] init];
+        self.btn_Register.buttonColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+        self.btn_Register.shadowColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01_Variation01];
+        self.btn_Register.shadowHeight = 1.0f;
+        self.btn_Register.cornerRadius = 6.0f;
+        self.btn_Register.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:FontSize_P1];
+        [self.btn_Register setTitle:@"Register" forState:UIControlStateNormal];
+        [self.btn_Register setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+        [self.btn_Register setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        [self addSubview:self.btn_Register];
     }
     return self;
 }
@@ -98,42 +74,91 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 11.0f;
         // Login Field
         [self.view_Register mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
-            make.centerY.equalTo(self.mas_centerY);
-
-//            make.top.equalTo(self.mas_top).with.offset(ScreenHeight/2);
-//            make.size.mas_equalTo(CGSizeMake(ScreenWidth-2*mas_Padding_Page_Large.left, ScreenWidth/3));
+//            make.centerY.equalTo(self.mas_centerY);
+            make.top.equalTo(self.mas_top).with.offset(mas_Padding_Page_Large.top);
+            make.size.mas_equalTo(CGSizeMake(ScreenWidth-2*mas_Padding_Page_Large.left, 370));
         }];
-        // User Name
+        // Email
         [self.entry_Email mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view_Register.mas_centerX);
-            make.top.equalTo(self.view_Register.mas_top);
-            make.left.equalTo(self.view_Register.mas_left);
-            make.right.equalTo(self.view_Register.mas_right);
-            make.height.mas_equalTo(FontSize_LogInTextField+5);
+            make.top.equalTo(self.view_Register.mas_top).with.offset(mas_Padding_Page_Small.top);
+            make.left.equalTo(self.view_Register.mas_left).with.offset(mas_Padding_Page_Small.left);
+            make.right.equalTo(self.view_Register.mas_right).with.offset(mas_Padding_Page_Small.right);
+            make.height.mas_equalTo(40);
         }];
+        [self pinView:self.separator_Email toUpperview:self.entry_Email];
+        // Password
+        [self pinView:self.entry_Password toUpperview:self.separator_Email];
+        [self pinView:self.separator_Password toUpperview:self.entry_Password];
+        // First Name
+        [self pinView:self.entry_Firstname toUpperview:self.separator_Password];
+        [self pinView:self.separator_FirstName toUpperview:self.entry_Firstname];
+        // Last Name
+        [self pinView:self.entry_LastName toUpperview:self.separator_FirstName];
+        [self pinView:self.separator_LastName toUpperview:self.entry_LastName];
+        // Phone Number
+        [self pinView:self.entry_PhoneNumber toUpperview:self.separator_LastName];
+        [self pinView:self.separator_PhoneNumber toUpperview:self.entry_PhoneNumber];
+        // Gender
+        [self pinView:self.entry_Gender toUpperview:self.separator_PhoneNumber];
+        [self pinView:self.separator_Gender toUpperview:self.entry_Gender];
 
+        // Register Button
+        [self.btn_Register mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view_Register.mas_bottom).with.offset(mas_Padding_Page_Large.top);
+            make.centerX.equalTo(self.mas_centerX);
+            make.size.mas_equalTo(CGSizeMake(250, 50));
+            make.bottom.equalTo(self.mas_bottom).with.offset(mas_Padding_Page_Large.bottom);
+        }];
+        
         self.didSetupConstraints = YES;
     }    
     [super updateConstraints];
 }
 
-#pragma mark - Factory Methods
-+ (UITextField *)SignInViewTextFieldWithPlaceHolder:(NSString *)placeHolderString
+- (void)pinView:(UIView *)view toUpperview:(UIView *)upperview
 {
-    UITextField *textField = [[UITextField alloc] init];
-    textField.backgroundColor = [UIColor clearColor];
-    textField.borderStyle = UITextBorderStyleNone;
-    textField.font = [UIFont fontWithName:Font_Title size:FontSize_LogInTextField];
-    textField.textColor = [UIColor whiteColor];
-    textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolderString attributes:@{NSForegroundColorAttributeName:[GCAppAPI getColorWithRGBAinHex:WhiteFading], NSFontAttributeName:[UIFont fontWithName:Font_Title size:FontSize_LogInTextField]}];
-    textField.autocorrectionType = UITextAutocorrectionTypeYes;
-    textField.keyboardType = UIKeyboardTypeDefault;
-    textField.enablesReturnKeyAutomatically = YES;
-    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentLeft;
-    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    return textField;
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(upperview.mas_bottom).with.offset(mas_Padding_Page_Small.top);
+        make.left.equalTo(self.view_Register.mas_left).with.offset(mas_Padding_Page_Small.left);
+        make.right.equalTo(self.view_Register.mas_right).with.offset(mas_Padding_Page_Small.right);
+        if ([view isMemberOfClass:[JVFloatLabeledTextField class]]) {
+            make.height.mas_equalTo(40);
+        } else {
+            make.height.mas_equalTo(1);
+        }
+    }];
 }
+
+#pragma mark - Factory Methods
+- (JVFloatLabeledTextField *)addLabeledTextFieldWithPlaceHolder:(NSString *)string
+{
+    // Text size configuration
+    const static CGFloat kJVFieldFontSize = 20.0f;
+    const static CGFloat kJVFieldFloatingLabelFontSize = 12.0f;
+    
+    JVFloatLabeledTextField *textfield = [[JVFloatLabeledTextField alloc] init];
+    textfield.attributedPlaceholder = [[NSAttributedString alloc]
+                                              initWithString:NSLocalizedString(string, @"")
+                                              attributes:@{
+                                                           NSForegroundColorAttributeName: [UIColor lightGrayColor],
+                                                           }];
+    //        self.entry_Email.textColor = [UIColor whiteColor];
+    textfield.font = [UIFont systemFontOfSize:kJVFieldFontSize];
+    textfield.floatingLabel.font = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
+    textfield.floatingLabelTextColor = [UIColor lightGrayColor];        // Label color when not editing
+    textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [self.view_Register addSubview:textfield];
+    return textfield;
+}
+
+- (UIView *)addSeparator
+{
+    UIView *separator = [[UIView alloc] init];
+    separator.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
+    [self.view_Register addSubview:separator];
+    return separator;
+}
+
 
 + (UIButton *)ButtonWithTitle:(NSString *)title
 {

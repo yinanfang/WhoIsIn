@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GCRegisterScrollView.h"
 
-@interface GCRegisterViewController : UIViewController
+@interface GCRegisterViewController : UIViewController <UITextFieldDelegate>
 
 // View
 @property GCRegisterScrollView *registerView;
