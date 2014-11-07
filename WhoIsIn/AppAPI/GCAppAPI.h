@@ -22,6 +22,9 @@
 #import <FlatUIKit/FlatUIKit.h>
 // LBBlurredImage
 #import <FXBlurView/FXBlurView.h>
+// JVFloatLabeledTextView.h
+#import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
+#import <JVFloatLabeledTextField/JVFloatLabeledTextView.h>
 // Mantle
 #import <Mantle/Mantle.h>
 // Masonry

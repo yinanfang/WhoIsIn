@@ -20,6 +20,7 @@
         [self.contentView addSubview:self.label_timeStart];
         
         self.label_distanceText = [GCActivityTableViewCell LabelTitleWithString:@"Distance text" bold:NO];
+        self.label_distanceText.textColor = [UIColor redColor];
         [self.contentView addSubview:self.label_distanceText];
         
         self.label_title = [GCActivityTableViewCell LabelTitleWithString:@"Activity Title is a very long thing. It usually take up 2 rows" bold:NO];

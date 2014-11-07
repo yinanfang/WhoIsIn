@@ -18,9 +18,19 @@
 #pragma mark -  Content
 // Login Field
 @property UIView *view_Register;
-// Log In
-@property UITextField *entry_Username, *entry_Password;
-@property UIView *separator_Username;
+// Register
+@property JVFloatLabeledTextField *entry_Email;
+@property UIView *separator_Email;
+@property JVFloatLabeledTextField *entry_Password;
+@property UIView *separator_Password;
+@property JVFloatLabeledTextField *entry_Firstname;
+@property UIView *separator_FIrstName;
+@property JVFloatLabeledTextField *entry_LastName;
+@property UIView *separator_LastName;
+@property JVFloatLabeledTextField *entry_PhoneNumber;
+@property UIView *separator_PhoneNumber;
+@property JVFloatLabeledTextField *entry_Gender;
+@property UIView *separator_Gender;
 
 #pragma mark -  Method
 - (instancetype)initWithParentController:(GCRegisterViewController *)controller;
