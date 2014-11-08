@@ -129,6 +129,13 @@
     }];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    DDLogVerbose(@"GCRegisterScrollView touchesBegan:withEvent:");
+    [super touchesBegan:touches withEvent:event];
+    // Don't let UIScrollView eats up all the touch events. Pass it to nextResponder
+    [self.nextResponder touchesBegan: touches withEvent:event];
+}
+
 #pragma mark - Factory Methods
 - (JVFloatLabeledTextField *)addLabeledTextFieldWithPlaceHolder:(NSString *)string
 {
@@ -147,6 +154,7 @@
     textfield.floatingLabel.font = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
     textfield.floatingLabelTextColor = [UIColor lightGrayColor];        // Label color when not editing
     textfield.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textfield.returnKeyType = UIReturnKeyNext;
     [self.view_Register addSubview:textfield];
     return textfield;
 }

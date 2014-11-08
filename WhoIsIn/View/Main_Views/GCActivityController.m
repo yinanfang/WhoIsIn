@@ -27,10 +27,8 @@
     self.activityTableView.separatorInset = UIEdgeInsetsZero;
     [self.view addSubview:self.activityTableView];
     
-    
-    
     [self updateViewConstraints];
-
+    
     // Fetch Activities
     [self fetchActivityDataWithParameter:nil];
 }

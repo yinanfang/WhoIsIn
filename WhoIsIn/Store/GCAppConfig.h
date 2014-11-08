@@ -28,7 +28,9 @@
 
 // Animation
 #define AnimationDuration_Short     0.25
-#define AnimationDelay_Short        0
+#define AnimationDelay_Short        0.25
+#define AnimationDelay_None         0
+
 
 // General Layout Metrics
 // For MASConstraintMaker

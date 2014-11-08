@@ -44,10 +44,26 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = YES;
+    [super viewWillAppear:animated];
 }
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+// Hide keyboard when touching the background
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.signInView.entry_Username isFirstResponder] && [touch view] != self.signInView.entry_Username) {
+        [self.signInView.entry_Username resignFirstResponder];
+        [self moveDownContent];
+    }
+    if ([self.signInView.entry_Password isFirstResponder] && [touch view] != self.signInView.entry_Password) {
+        [self.signInView.entry_Password resignFirstResponder];
+        [self moveDownContent];
+    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 #pragma mark - UITextField Delegate
@@ -88,26 +104,11 @@
                                           }];
 }
 
-// Hide keyboard when touching the background
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    UITouch *touch = [[event allTouches] anyObject];
-    if ([self.signInView.entry_Username isFirstResponder] && [touch view] != self.signInView.entry_Username) {
-        [self.signInView.entry_Username resignFirstResponder];
-        [self moveDownContent];
-    }
-    if ([self.signInView.entry_Password isFirstResponder] && [touch view] != self.signInView.entry_Password) {
-        [self.signInView.entry_Password resignFirstResponder];
-        [self moveDownContent];
-    }
-    [super touchesBegan:touches withEvent:event];
-}
-
 #pragma mark - Animations
 - (void)moveUpContent
 {
     [self.signInView layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_Short options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         // App Logo
         [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/8);
@@ -123,7 +124,7 @@
 - (void)moveDownContent
 {
     [self.signInView layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_Short options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         // App Logo
         [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/5);
@@ -139,7 +140,7 @@
 - (void)showLoginProgress
 {
     [self.signInView layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_Short options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         // App Logo
         [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/2-80);

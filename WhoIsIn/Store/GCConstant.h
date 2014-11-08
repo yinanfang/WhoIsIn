@@ -27,12 +27,17 @@ typedef NS_ENUM(NSInteger, testEnum) {
 #pragma mark - Screen width and height
 // iPhone4S@2x: W*H = 320*480
 // iPhone5S@R4: W*H = 320*568
-#define ScreenBounds    [GCAppAPI getScreenBoundsDependOnOrientation]
-#define ScreenSize      [GCAppAPI getScreenBoundsDependOnOrientation].size
-#define ScreenWidth     [GCAppAPI getScreenBoundsDependOnOrientation].size.width
-#define ScreenHeight    [GCAppAPI getScreenBoundsDependOnOrientation].size.height
+#define ScreenBounds                [GCAppAPI getScreenBoundsDependOnOrientation]
+#define ScreenSize                  [GCAppAPI getScreenBoundsDependOnOrientation].size
+#define ScreenWidth                 [GCAppAPI getScreenBoundsDependOnOrientation].size.width
+#define ScreenHeight                [GCAppAPI getScreenBoundsDependOnOrientation].size.height
 // Keyboard
-#define kOFFSET_FOR_KEYBOARD 80.0
+#define KeyboardSizePortrait        CGRectMake(320, 216)
+#define KeyboardHeightPortrait      216.0f
+#define KeyboardSizeLandscape       CGRectMake(480, 162)       // iPhone 4
+#define KeyboardHeightLandscape     162.0f
+
+
 
 #pragma mark - Image Types
 @property NSString *PNGTypeAndSuffix;

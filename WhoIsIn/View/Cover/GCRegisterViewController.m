@@ -14,7 +14,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     // UI Navigation Bar
     [GCAppSetup configureNavigationViewController:self withNavigationTitle:@"Register"];
     
@@ -39,20 +38,99 @@
 
 }
 
-
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
+    // Configure Navigation Bar
     self.title = @"Register";
     self.navigationController.navigationBar.barTintColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
     self.navigationController.navigationBar.hidden = NO;
+
+    // Super
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-
+    // Super
+    [super viewDidAppear:animated];
 }
+
+// Hide keyboard when touching the background
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    DDLogVerbose(@"GCRegisterViewController touchesBegan:withEvent:");
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.registerView.entry_Email isFirstResponder] && [touch view] != self.registerView.entry_Email) {
+        [self.registerView.entry_Email resignFirstResponder];
+    }
+    if ([self.registerView.entry_Password isFirstResponder] && [touch view] != self.registerView.entry_Password) {
+        [self.registerView.entry_Password resignFirstResponder];
+    }
+    if ([self.registerView.entry_Firstname isFirstResponder] && [touch view] != self.registerView.entry_Firstname) {
+        [self.registerView.entry_Firstname resignFirstResponder];
+    }
+    if ([self.registerView.entry_LastName isFirstResponder] && [touch view] != self.registerView.entry_LastName) {
+        [self.registerView.entry_LastName resignFirstResponder];
+    }
+    if ([self.registerView.entry_PhoneNumber isFirstResponder] && [touch view] != self.registerView.entry_PhoneNumber) {
+        [self.registerView.entry_PhoneNumber resignFirstResponder];
+    }
+    if ([self.registerView.entry_Gender isFirstResponder] && [touch view] != self.registerView.entry_Gender) {
+        [self.registerView.entry_Gender resignFirstResponder];
+    }
+    [self restoreContentOffset];
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void)restoreContentOffset
+{
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.registerView.contentOffset = CGPointMake(0, -[GCAppAPI getSizeOfStatusbarAndNavigationBar:self].height);
+        [self.view layoutIfNeeded];
+    }completion:nil];
+    self.registerView.contentOffset = CGPointMake(0, -[GCAppAPI getSizeOfStatusbarAndNavigationBar:self].height);
+}
+
+#pragma mark - UITextField Delegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    DDLogVerbose(@"textFieldShouldBeginEditing");
+    [self centerTextfield:textField];
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    DDLogVerbose(@"textFieldShouldReturn:");
+    NSInteger nextTag = textField.tag + 1;
+    // Try to find next responder
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    if (nextResponder) {
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+        [self restoreContentOffset];
+    }
+    return NO; // We do not want UITextField to insert line-breaks.
+}
+
+- (void)centerTextfield:(UITextField *)textField
+{
+    DDLogVerbose(@"centerTextfield");
+    CGFloat statusBarAndNavBarHeight = [GCAppAPI getSizeOfStatusbarAndNavigationBar:self].height;
+    CGPoint textFieldCenterInScrollView = [self.registerView.view_Register convertPoint:textField.center toView:self.registerView];
+    CGFloat difference = (textFieldCenterInScrollView.y+(-self.registerView.contentOffset.y)) - (statusBarAndNavBarHeight+(ScreenHeight-KeyboardHeightPortrait-statusBarAndNavBarHeight)/2);
+    DDLogVerbose(@"difference: %f", difference);
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.registerView.contentOffset = CGPointMake(self.registerView.contentOffset.x, self.registerView.contentOffset.y+difference);
+        [self.view layoutIfNeeded];
+    }completion:nil];
+}
+
+
 
 
 @end

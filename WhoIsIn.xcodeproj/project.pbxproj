@@ -10,6 +10,7 @@
 		67F3EAE0513DED44226A7BEC /* libPods-WhoIsIn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D01F22DB612F9228894D4173 /* libPods-WhoIsIn.a */; };
 		D40F16801A0D92C0008AB059 /* GCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F167F1A0D92C0008AB059 /* GCUser.m */; };
 		D40F16831A0D997C008AB059 /* GCAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F16821A0D997C008AB059 /* GCAppData.m */; };
+		D40F16861A0DB044008AB059 /* GCRecycledCode.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F16851A0DB044008AB059 /* GCRecycledCode.m */; };
 		D425455C19E189EC004B5AE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D425455B19E189EC004B5AE3 /* main.m */; };
 		D425456119E189EC004B5AE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D425456019E189EC004B5AE3 /* Images.xcassets */; };
 		D425456419E189EC004B5AE3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D425456219E189EC004B5AE3 /* LaunchScreen.xib */; };
@@ -55,6 +56,8 @@
 		D40F167F1A0D92C0008AB059 /* GCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCUser.m; path = Model/GCUser.m; sourceTree = "<group>"; };
 		D40F16811A0D997C008AB059 /* GCAppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppData.h; path = Model/GCAppData.h; sourceTree = "<group>"; };
 		D40F16821A0D997C008AB059 /* GCAppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppData.m; path = Model/GCAppData.m; sourceTree = "<group>"; };
+		D40F16841A0DB044008AB059 /* GCRecycledCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRecycledCode.h; sourceTree = "<group>"; };
+		D40F16851A0DB044008AB059 /* GCRecycledCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRecycledCode.m; sourceTree = "<group>"; };
 		D425455619E189EC004B5AE3 /* WhoIsIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoIsIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D425455A19E189EC004B5AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D425455B19E189EC004B5AE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				D425455A19E189EC004B5AE3 /* Info.plist */,
 				D425455B19E189EC004B5AE3 /* main.m */,
 				D425457C19E1AAF5004B5AE3 /* PrefixHeader.pch */,
+				D40F16841A0DB044008AB059 /* GCRecycledCode.h */,
+				D40F16851A0DB044008AB059 /* GCRecycledCode.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */,
 				D4C767EE19F461F5005B2683 /* GCSignInView.m in Sources */,
 				D40F16801A0D92C0008AB059 /* GCUser.m in Sources */,
+				D40F16861A0DB044008AB059 /* GCRecycledCode.m in Sources */,
 				D476999319FD43FC00BEECA8 /* GCActivity.m in Sources */,
 				D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */,
 				D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */,

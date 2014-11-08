@@ -14,4 +14,6 @@
 // View
 @property GCRegisterScrollView *registerView;
 
+// TextField
+
 @end

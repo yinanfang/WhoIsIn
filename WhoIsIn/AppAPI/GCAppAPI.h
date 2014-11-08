@@ -68,7 +68,8 @@
 + (void)setHasShownTour:(BOOL)mode;
 + (BOOL)didRunAppBefore;
 + (UIImageView *)getFullScreenImageView:(NSString *)name;
-+ (CGPoint)getCGPointZeroWithStatusbarAndNavigationBar:(UIViewController *)controller;
++ (CGSize)getSizeOfStatusbarAndNavigationBar:(UIViewController *)controller
+;
 + (CGRect)getScreenBoundsDependOnOrientation;
 
 #pragma mark - Mantle

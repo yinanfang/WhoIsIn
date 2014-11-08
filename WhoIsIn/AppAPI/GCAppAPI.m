@@ -75,7 +75,7 @@
     return imageView;
 }
 
-+ (CGPoint)getCGPointZeroWithStatusbarAndNavigationBar:(UIViewController *)controller
++ (CGSize)getSizeOfStatusbarAndNavigationBar:(UIViewController *)controller
 {
     CGFloat statusBarHeight = 0.000000;
     CGFloat navBarHeight = 0.000000;
@@ -96,7 +96,7 @@
         default:
             break;
     }
-    return CGPointMake(0, -statusBarHeight-navBarHeight);
+    return CGSizeMake(ScreenWidth, statusBarHeight+navBarHeight);
 }
 
 + (CGRect)getScreenBoundsDependOnOrientation
