@@ -44,6 +44,8 @@
 
 // Data Model
 #import "GCActivity.h"
+#import "GCUser.h"
+#import "GCAppData.h"
 
 // View Model
 #import "GCAppViewModel.h"

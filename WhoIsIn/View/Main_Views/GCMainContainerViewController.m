@@ -27,6 +27,14 @@
     [self.mainTabController didMoveToParentViewController:self];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    DDLogInfo(@"viewWillAppear");
+    // Hide the navigation bar of the navigation controller created in App Delegate
+    self.navigationController.navigationBar.hidden = YES;
+    [super viewWillAppear:animated];
+}
+
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
 }

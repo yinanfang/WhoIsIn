@@ -15,10 +15,11 @@
 {
     [super viewDidLoad];
     // Initialize Variables
-    self.view.backgroundColor = [UIColor blueColor];
+
+//    self.view.backgroundColor = [UIColor blueColor];
     
     // Activity Scroll View
-    self.activityTableView = [UITableView new];
+    self.activityTableView = [[UITableView alloc] init];
     self.activityTableView.delegate = self;
     self.activityTableView.dataSource = self;
     [self.activityTableView registerClass:[GCActivityTableViewCell class] forCellReuseIdentifier: CellIdentifierForActivityTableViewCell];
@@ -32,6 +33,20 @@
 
     // Fetch Activities
     [self fetchActivityDataWithParameter:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    DDLogInfo(@"viewWillAppear");
+    // Navigation Control
+    self.navigationController.navigationBar.barTintColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+    self.navigationController.navigationBar.hidden = NO;
+    
+    // Reload table view
+    NSLog(@"reload..");
+//    [self.surveyScrollView.orderTableView reloadData];
+    
+    [super viewWillAppear:animated];
 }
 
 - (void)fetchActivityDataWithParameter:(NSDictionary *)parameter

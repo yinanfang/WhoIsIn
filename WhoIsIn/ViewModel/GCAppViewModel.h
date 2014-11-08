@@ -15,9 +15,14 @@
 
 // App Data
 @property NSMutableArray *sortedActivities;
+@property GCAppData *appData;
+
+#pragma mark - App data
++ (void)getAppDataFromNSUserDefaultsAndUpdateViewModel;
++ (void)saveAppDataToNSUserDefaults;
 
 #pragma mark - Log In
-+ (void)loginWithCredential:(NSDictionary *)credential;
++ (void)loginWithCredential:(NSDictionary *)credential completion:(void (^)(BOOL succeeded))completion;
 + (void)enterMainContainerViewController:(UIViewController *)controller;
 
 #pragma mark - Fetch Data

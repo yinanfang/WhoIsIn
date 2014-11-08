@@ -15,9 +15,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     // UI Navigation Bar
-    [GCAppSetup configureNavigationViewController:self withNavigationTitle:@""];
+//    [GCAppSetup configureNavigationViewController:self withNavigationTitle:@""];
     
     // Add Sign In View
     self.signInView = [[GCSignInView alloc] initWithParentController:self];
@@ -73,10 +72,20 @@
         [textField resignFirstResponder];
         [self showLoginProgress];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, AnimationDuration_Short*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [GCAppViewModel loginWithCredential:nil];
+            [self login];
         });
     }
     return NO; // We do not want UITextField to insert line-breaks.
+}
+
+- (void)login
+{
+    [GCAppViewModel loginWithCredential:@{
+                                          @"email": @"sckclark@gmail.com",
+                                          @"password": @"68e419b67218d5cd2c84dd95a57b9e90",
+                                          } completion:^(BOOL succeeded) {
+                                              
+                                          }];
 }
 
 // Hide keyboard when touching the background
@@ -94,6 +103,7 @@
     [super touchesBegan:touches withEvent:event];
 }
 
+#pragma mark - Animations
 - (void)moveUpContent
 {
     [self.signInView layoutIfNeeded];
