@@ -11,6 +11,8 @@
 		D40F16801A0D92C0008AB059 /* GCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F167F1A0D92C0008AB059 /* GCUser.m */; };
 		D40F16831A0D997C008AB059 /* GCAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F16821A0D997C008AB059 /* GCAppData.m */; };
 		D40F16861A0DB044008AB059 /* GCRecycledCode.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F16851A0DB044008AB059 /* GCRecycledCode.m */; };
+		D40F168F1A0E7F13008AB059 /* GCActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */; };
+		D40F16921A0E7F4A008AB059 /* GCActivityDetailScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D40F16911A0E7F4A008AB059 /* GCActivityDetailScrollView.m */; };
 		D425455C19E189EC004B5AE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D425455B19E189EC004B5AE3 /* main.m */; };
 		D425456119E189EC004B5AE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D425456019E189EC004B5AE3 /* Images.xcassets */; };
 		D425456419E189EC004B5AE3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D425456219E189EC004B5AE3 /* LaunchScreen.xib */; };
@@ -58,6 +60,10 @@
 		D40F16821A0D997C008AB059 /* GCAppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppData.m; path = Model/GCAppData.m; sourceTree = "<group>"; };
 		D40F16841A0DB044008AB059 /* GCRecycledCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRecycledCode.h; sourceTree = "<group>"; };
 		D40F16851A0DB044008AB059 /* GCRecycledCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRecycledCode.m; sourceTree = "<group>"; };
+		D40F168D1A0E7F13008AB059 /* GCActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityDetailViewController.h; path = View/Main_Views/GCActivityDetailViewController.h; sourceTree = "<group>"; };
+		D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityDetailViewController.m; path = View/Main_Views/GCActivityDetailViewController.m; sourceTree = "<group>"; };
+		D40F16901A0E7F4A008AB059 /* GCActivityDetailScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityDetailScrollView.h; path = View/Main_Views/GCActivityDetailScrollView.h; sourceTree = "<group>"; };
+		D40F16911A0E7F4A008AB059 /* GCActivityDetailScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityDetailScrollView.m; path = View/Main_Views/GCActivityDetailScrollView.m; sourceTree = "<group>"; };
 		D425455619E189EC004B5AE3 /* WhoIsIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoIsIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D425455A19E189EC004B5AE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D425455B19E189EC004B5AE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -305,6 +311,10 @@
 				D476998819FD2F6700BEECA8 /* GCFloatController.m */,
 				D476998A19FD32E400BEECA8 /* GCActivityController.h */,
 				D476998B19FD32E400BEECA8 /* GCActivityController.m */,
+				D40F168D1A0E7F13008AB059 /* GCActivityDetailViewController.h */,
+				D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */,
+				D40F16901A0E7F4A008AB059 /* GCActivityDetailScrollView.h */,
+				D40F16911A0E7F4A008AB059 /* GCActivityDetailScrollView.m */,
 				D4F2077D1A06DE40009351CC /* GCActivityTableViewCell.h */,
 				D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */,
 				D476998119FD28B000BEECA8 /* GCUserInfoController.h */,
@@ -452,12 +462,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */,
+				D40F16921A0E7F4A008AB059 /* GCActivityDetailScrollView.m in Sources */,
 				D4C767EE19F461F5005B2683 /* GCSignInView.m in Sources */,
 				D40F16801A0D92C0008AB059 /* GCUser.m in Sources */,
 				D40F16861A0DB044008AB059 /* GCRecycledCode.m in Sources */,
 				D476999319FD43FC00BEECA8 /* GCActivity.m in Sources */,
 				D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */,
 				D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */,
+				D40F168F1A0E7F13008AB059 /* GCActivityDetailViewController.m in Sources */,
 				D4F2077F1A06DE40009351CC /* GCActivityTableViewCell.m in Sources */,
 				D4F777E419F410630061F62C /* GCAppAPI.m in Sources */,
 				D4C767EC19F461F5005B2683 /* GCRegisterScrollView.m in Sources */,

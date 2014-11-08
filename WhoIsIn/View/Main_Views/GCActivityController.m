@@ -8,6 +8,7 @@
 
 #import "GCActivityController.h"
 #import "GCActivityTableViewCell.h"
+#import "GCActivityDetailViewController.h"
 
 @implementation GCActivityController
 
@@ -144,7 +145,12 @@
     
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GCActivityDetailViewController *detailViewController = [[GCActivityDetailViewController alloc] init];
+    detailViewController.activityNumber = indexPath.row;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
 
 
 

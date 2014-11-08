@@ -34,7 +34,8 @@
 
 // Register Button
 @property FUIButton *btn_Register;
-#pragma mark -  Method
+
+#pragma mark - View Method
 - (instancetype)initWithParentController:(GCRegisterViewController *)controller;
 
 
