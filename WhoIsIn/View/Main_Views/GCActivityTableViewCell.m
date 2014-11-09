@@ -16,25 +16,24 @@
     if (self) {
         DDLogWarn(@"initWithStyle");
         
-        self.label_timeStart = [GCActivityTableViewCell LabelTitleWithString:@"Time to start" bold:NO];
-        [self.contentView addSubview:self.label_timeStart];
+        // Title in Bold
+        self.label_title = [self LabelTitleWithString:@"Activity Title is a very long thing. It usually take up 2 rows" bold:NO fontSize:kCellFontSizeLarge];
         
-        self.label_distanceText = [GCActivityTableViewCell LabelTitleWithString:@"Distance text" bold:NO];
-        self.label_distanceText.textColor = [UIColor redColor];
-        [self.contentView addSubview:self.label_distanceText];
+        // Start Time
+        self.label_timeStart = [self LabelTitleWithString:@"Time to start" bold:NO fontSize:kCellFontSizeSmall];
+        // Location
+        self.label_location = [self LabelTitleWithString:@"Activity Location" bold:NO fontSize:kCellFontSizeSmall];
+        self.label_location.textColor = [UIColor lightGrayColor];
+        // Distance in text
+        self.label_distanceText = [self LabelTitleWithString:@"Distance text" bold:NO fontSize:kCellFontSizeSmall];
+        self.label_distanceText.textColor = [UIColor lightGrayColor];
         
-        self.label_title = [GCActivityTableViewCell LabelTitleWithString:@"Activity Title is a very long thing. It usually take up 2 rows" bold:NO];
-        [self.contentView addSubview:self.label_title];
-        
-        self.label_description = [GCActivityTableViewCell LabelTitleWithString:@"Activity description is even longer. May there or 10 rows. It will never ends until the end of the world. WTF???? I don't want this to continue any more!" bold:NO];
-        [self.contentView addSubview:self.label_description];
-        
-        self.label_location = [GCActivityTableViewCell LabelTitleWithString:@"Activity Location" bold:NO];
-        [self.contentView addSubview:self.label_location];
+        // Participants and Watchers
+        self.label_participantAndWatcher = [self LabelTitleWithString:@"Participant and Watcher" bold:NO fontSize:kCellFontSizeSmall];
         
         
-        self.contentView.layer.cornerRadius = 10.0f;
-        self.contentView.layer.masksToBounds = YES;
+//        self.contentView.layer.cornerRadius = 10.0f;
+//        self.contentView.layer.masksToBounds = YES;
 //        self.contentView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
         
     }
@@ -48,29 +47,18 @@
         // Expand the content view temporariry
         self.contentView.bounds = CGRectMake(0.0f, 0.0f, 1000.0f, 1000.0f);
         
-        [self.label_timeStart mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.contentView.mas_top).with.offset(mas_Padding_Page_Small.top);
-            make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
-        }];
-  
-        [self.label_distanceText mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.contentView.mas_top).with.offset(mas_Padding_Page_Small.top);
-            make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Small.right);
-        }];
-        
         [self.label_title mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.label_timeStart.mas_bottom).with.offset(mas_Padding_Page_Small.top);
+            make.top.equalTo(self.contentView.mas_top).with.offset(mas_Padding_Page_Small.top);
             make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
             make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Small.right);
         }];
         
-        [self.label_description mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.label_title.mas_bottom).with.offset(mas_Padding_Page_Small.top);
-            make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
-            make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Small.right);
-        }];
-        [self.label_location mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.label_description.mas_bottom).with.offset(mas_Padding_Page_Small.top);
+        [self pinView:self.label_timeStart toUpperview:self.label_title];
+        [self pinView:self.label_location toUpperview:self.label_timeStart];
+        [self pinView:self.label_distanceText toUpperview:self.label_location];
+
+        [self.label_participantAndWatcher mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.label_distanceText.mas_bottom).with.offset(mas_Padding_Page_Small.top);
             make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
             make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Small.right);
             make.bottom.equalTo(self.contentView.mas_bottom).with.offset(mas_Padding_Page_Small.bottom);
@@ -81,15 +69,36 @@
     [super updateConstraints];
 }
 
-+ (UILabel *)LabelTitleWithString:(NSString *)title bold:(BOOL)isBold
+- (void)pinView:(UIView *)view toUpperview:(UIView *)upperview
+{
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(upperview.mas_bottom).with.offset(mas_Padding_Page_Small.top);
+        make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
+        make.right.equalTo(self.contentView.mas_right).with.offset(mas_Padding_Page_Small.right);
+//        if ([view isMemberOfClass:[JVFloatLabeledTextField class]]) {
+//            make.height.mas_equalTo(40);
+//        } else {
+//            make.height.mas_equalTo(1);
+//        }
+    }];
+}
+
+static const CGFloat kCellFontSizeLarge = 18.0f;
+static const CGFloat kCellFontSizeSmall = 13.0f;
+- (UILabel *)LabelTitleWithString:(NSString *)title bold:(BOOL)isBold fontSize:(CGFloat)size
 {
     UILabel *label = [[UILabel alloc] init];
     label.textAlignment = NSTextAlignmentLeft;
     label.numberOfLines = 0;
-    [label setFont:[UIFont fontWithName:@"Helvetica" size:FontSize_H1]];
+    if (isBold) {
+        [label setFont:[UIFont fontWithName:FontTheme01_Bold size:size]];
+    } else {
+        [label setFont:[UIFont fontWithName:FontTheme01 size:size]];
+    }
     [label setBackgroundColor:[UIColor clearColor]];
     [label setTextColor:[GCAppAPI getColorWithRGBAinHex:ThemeColor01]];
     [label setText:title];
+    [self.contentView addSubview:label];
     return label;
 }
 
@@ -103,7 +112,7 @@
     
     // Solve multi-line UILabel issue. Calculate actual height depends on the label width
     self.label_title.preferredMaxLayoutWidth = CGRectGetWidth(self.label_title.frame);
-    self.label_description.preferredMaxLayoutWidth = CGRectGetWidth(self.label_description.frame);
+    self.label_participantAndWatcher.preferredMaxLayoutWidth = CGRectGetWidth(self.label_participantAndWatcher.frame);
     self.label_location.preferredMaxLayoutWidth = CGRectGetWidth(self.label_location.frame);
 }
 

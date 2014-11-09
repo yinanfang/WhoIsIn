@@ -16,7 +16,7 @@
     
     // UI Navigation Bar
     [GCAppSetup configureNavigationViewController:self withNavigationTitle:@"Activity Detail"];
-    
+        
     // Add Activity Detail Scroll View
     self.detailScrollView = [[GCActivityDetailScrollView alloc] initWithParentController:self];
     [self.detailScrollView setNeedsUpdateConstraints];

@@ -140,13 +140,14 @@
     cell.label_timeStart.text = [kDateFormatter stringFromDate:activity.timeStart];
     cell.label_distanceText.text = activity.distanceString;
     cell.label_title.text = activity.activityTitle;
-    cell.label_description.text = activity.activityDescription;
+    cell.label_participantAndWatcher.text = [NSString stringWithFormat:@"%@ going, %@ watching", activity.countParticipants, activity.countWatch];
     cell.label_location.text = activity.locationString;
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DDLogVerbose(@"didSelectRowAtIndexPath");
     GCActivityDetailViewController *detailViewController = [[GCActivityDetailViewController alloc] init];
     detailViewController.activityNumber = indexPath.row;
     [self.navigationController pushViewController:detailViewController animated:YES];

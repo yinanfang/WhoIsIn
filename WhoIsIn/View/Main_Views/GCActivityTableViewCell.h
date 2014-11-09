@@ -14,11 +14,13 @@
 @property (assign) BOOL didSetupConstraints;
 
 // Cell item
-@property UILabel *label_timeStart;
-@property UILabel *label_distanceText;
 @property UILabel *label_title;
-@property UILabel *label_description;
+
+@property UILabel *label_timeStart;
 @property UILabel *label_location;
+@property UILabel *label_distanceText;
+
+@property UILabel *label_participantAndWatcher;
 
 
 

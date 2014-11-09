@@ -19,6 +19,9 @@
 #define Font_Logo                   @"Chalkduster"
 #define Font_Title                  @"AppleGothic"
 #define Font_Paragraph              @"AppleGothic"
+#define FontTheme01                 @"Helvetica"
+#define FontTheme01_Bold            @"Helvetica-Bold"
+
 #define FontSize_LogInTextField     22.0f
 #define FontSize_H1                 18.0f
 #define FontSize_H2                 16.0f
