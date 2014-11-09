@@ -128,6 +128,15 @@
 {
     GCActivity *activity = (GCActivity *)[GCAppViewModel sharedInstance].sortedActivities[row];
     DDLogVerbose(@"%@", activity);
+    cell.label_timeStart.text = [[GCActivityController dateFormatter] stringFromDate:activity.timeStart];
+    cell.label_distanceText.text = activity.distanceString;
+    cell.label_title.text = activity.activityTitle;
+    cell.label_participantAndWatcher.text = [NSString stringWithFormat:@"%@ going, %@ watching", activity.countParticipants, activity.countWatch];
+    cell.label_location.text = activity.locationString;
+    
+}
+
++ (NSDateFormatter *)dateFormatter {
     
     static NSDateFormatter *kDateFormatter = nil;
     static dispatch_once_t onceToken;
@@ -136,21 +145,18 @@
         kDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
         kDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";  // you configure this based on the strings that your webservice uses!!
     });
-
-    cell.label_timeStart.text = [kDateFormatter stringFromDate:activity.timeStart];
-    cell.label_distanceText.text = activity.distanceString;
-    cell.label_title.text = activity.activityTitle;
-    cell.label_participantAndWatcher.text = [NSString stringWithFormat:@"%@ going, %@ watching", activity.countParticipants, activity.countWatch];
-    cell.label_location.text = activity.locationString;
-    
+    return kDateFormatter;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DDLogVerbose(@"didSelectRowAtIndexPath");
+    // Push Detail Activity View
     GCActivityDetailViewController *detailViewController = [[GCActivityDetailViewController alloc] init];
     detailViewController.activityNumber = indexPath.row;
     [self.navigationController pushViewController:detailViewController animated:YES];
+    // De-select Row
+    [self.activityTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

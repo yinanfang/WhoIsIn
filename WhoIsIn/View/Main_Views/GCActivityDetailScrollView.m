@@ -19,38 +19,64 @@
         self.backgroundColor = [UIColor whiteColor];
         [self.parentController.view addSubview:self];
         
+        // Content View
+        self.contentView = [[UIView alloc] init];
+        [self addSubview:self.contentView];
+        
         // Corresponding GCActivity
         GCActivity *activity = (GCActivity *)[GCAppViewModel sharedInstance].sortedActivities[self.parentController.activityNumber];
         
         // Title in Bold
-        self.label_title = [self LabelTitleWithString:activity.activityTitle bold:NO fontSize:kCellFontSizeLarge];
+        self.label_title = [self addLabelTitleWithString:activity.activityTitle bold:NO fontSize:kDetailViewFontSizeLarge];
         
         // Host
-        self.label_host = [self LabelTitleWithString:[NSString stringWithFormat:@"Hosted by %@ %@", activity.nameFirst, activity.nameLast] bold:NO fontSize:kCellFontSizeSmall];
+        self.label_host = [self addLabelTitleWithString:[NSString stringWithFormat:@"Hosted by %@ %@", activity.nameFirst, activity.nameLast] bold:NO fontSize:kDetailViewFontSizeSmall];
         // Start Time
-        static NSDateFormatter *kDateFormatter = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            kDateFormatter = [[NSDateFormatter alloc] init];
-            kDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-            kDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";  // you configure this based on the strings that your webservice uses!!
-        });
-        self.label_timeStart = [self LabelTitleWithString:[kDateFormatter stringFromDate:activity.timeStart] bold:NO fontSize:kCellFontSizeSmall];
+        self.label_timeStart = [self addLabelTitleWithString:[[GCActivityDetailScrollView dateFormatter] stringFromDate:activity.timeStart] bold:NO fontSize:kDetailViewFontSizeSmall];
         // Location
-        self.label_location = [self LabelTitleWithString:activity.locationString bold:NO fontSize:kCellFontSizeSmall];
+        self.label_location = [self addLabelTitleWithString:activity.locationString bold:NO fontSize:kDetailViewFontSizeSmall];
         self.label_location.textColor = [UIColor lightGrayColor];
         // Distance in text
-        self.label_distanceText = [self LabelTitleWithString:activity.distanceString bold:NO fontSize:kCellFontSizeSmall];
+        self.label_distanceText = [self addLabelTitleWithString:activity.distanceString bold:NO fontSize:kDetailViewFontSizeSmall];
         self.label_distanceText.textColor = [UIColor lightGrayColor];
+        
+        // Buttons
+        self.btn_join = [self addFUIButtonWithTitle:@"I'm In"];
+        [[self.btn_join rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            NSLog(@"Join button tapped");
+            //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
+            //        [self.navigationController pushViewController:registerViewController animated:YES];
+        }];
+        self.btn_maybe = [self addFUIButtonWithTitle:@"Maybe"];
+        
+        // Separator 01
+        self.separator01 = [self addSeparator];
+        
+        // Description
+        self.textviewDescription = [self addTextViewWithString:activity.activityDescription];
+        
+        // Map View
+        self.mapView = [self addMapView];
+        
         
         // Participants and Watchers
 //        self.label_participantAndWatcher = [self LabelTitleWithString:@"Participant and Watcher" bold:NO fontSize:kCellFontSizeSmall];
         
         //        self.label_description = [GCActivityTableViewCell LabelTitleWithString:@"Activity description is even longer. May there or 10 rows. It will never ends until the end of the world. WTF???? I don't want this to continue any more!" bold:NO];
-
-        
     }
     return self;
+}
+
++ (NSDateFormatter *)dateFormatter {
+    
+    static NSDateFormatter *kDateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        kDateFormatter = [[NSDateFormatter alloc] init];
+        kDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        kDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";  // you configure this based on the strings that your webservice uses!!
+    });
+    return kDateFormatter;
 }
 
 - (void)updateConstraints
@@ -58,18 +84,63 @@
     if(!self.didSetupConstraints) {
         // Self
         [GCAppSetup setConstraints_FillFullScreenWithView:self superview:self.parentController.view];
+        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.mas_top);
+            make.left.equalTo(self.mas_left);
+            make.bottom.equalTo(self.mas_bottom);
+            make.right.equalTo(self.mas_right);
+            make.width.mas_equalTo(ScreenWidth);
+        }];
         
         // View Items
         [self.label_title mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.mas_top).with.offset(mas_Padding_Page_Default.top);
-            make.left.equalTo(self.mas_left).with.offset(mas_Padding_Page_Default.left);
-            make.right.equalTo(self.mas_right).offset(mas_Padding_Page_Default.right);
+            make.top.equalTo(self.contentView.mas_top).with.offset(mas_Padding_Page_Default.top);
+            make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Default.left);
+            make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Default.right);
         }];
         
+        // Host, Time Start, Location, Distance Text
         [self pinView:self.label_host toUpperview:self.label_title];
         [self pinView:self.label_timeStart toUpperview:self.label_host];
         [self pinView:self.label_location toUpperview:self.label_timeStart];
         [self pinView:self.label_distanceText toUpperview:self.label_location];
+        
+        // Join Buttons
+        [self.btn_join mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.label_distanceText.mas_bottom).with.offset(mas_Padding_Page_Default.top);
+            make.left.equalTo(self.mas_left).with.offset(mas_Padding_Page_Default.left);
+//            make.size.mas_equalTo(CGSizeMake(50, 152));
+            make.height.mas_equalTo(40);
+        }];
+        [self.btn_maybe mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.btn_join.mas_top);
+            make.left.equalTo(self.btn_join.mas_right).with.offset(mas_Padding_Page_Default.left);
+            make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Default.right);
+            make.size.equalTo(self.btn_join);
+        }];
+        
+        // Separator 01
+        [self pinSeparator:self.separator01 toUpperview:self.btn_join];
+        
+        // Description Text View
+        [self.textviewDescription mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.separator01.mas_bottom).with.offset(mas_Padding_Page_Default.top);
+            make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Default.left);
+            make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Default.right);
+//            make.height.mas_equalTo(self.textviewDescription.contentSize.height);
+            make.height.mas_equalTo(100);
+        }];
+
+        // Map View
+        [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.textviewDescription.mas_bottom).with.offset(mas_Padding_Page_Default.top);
+            make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Default.left);
+            make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Default.right);
+            make.height.mas_equalTo(250);
+            make.bottom.equalTo(self.contentView.mas_bottom).offset(mas_Padding_Page_Default.right);
+        }];
+
+        
         
         self.didSetupConstraints = YES;
     }
@@ -80,8 +151,8 @@
 {
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(upperview.mas_bottom).with.offset(mas_Padding_Page_Default.top);
-        make.left.equalTo(self.mas_left).with.offset(mas_Padding_Page_Default.left);
-        make.right.equalTo(self.mas_right).with.offset(mas_Padding_Page_Default.right);
+        make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Default.left);
+        make.right.equalTo(self.contentView.mas_right).with.offset(mas_Padding_Page_Default.right);
         //        if ([view isMemberOfClass:[JVFloatLabeledTextField class]]) {
         //            make.height.mas_equalTo(40);
         //        } else {
@@ -90,9 +161,28 @@
     }];
 }
 
-static const CGFloat kCellFontSizeLarge = 18.0f;
-static const CGFloat kCellFontSizeSmall = 13.0f;
-- (UILabel *)LabelTitleWithString:(NSString *)title bold:(BOOL)isBold fontSize:(CGFloat)size
+- (void)pinSeparator:(UIView *)view toUpperview:(UIView *)upperview
+{
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(upperview.mas_bottom).with.offset(mas_Padding_Page_Default.top);
+        make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Default.left);
+        make.right.equalTo(self.contentView.mas_right).with.offset(mas_Padding_Page_Default.right);
+        make.height.mas_equalTo(1);
+    }];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    DDLogVerbose(@"GCActivityDetailScrollView touchesBegan:withEvent:");
+    [super touchesBegan:touches withEvent:event];
+    // Don't let UIScrollView eats up all the touch events. Pass it to nextResponder
+    [self.nextResponder touchesBegan: touches withEvent:event];
+}
+
+
+#pragma mark - Factory Methods
+static const CGFloat kDetailViewFontSizeLarge = 18.0f;
+static const CGFloat kDetailViewFontSizeSmall = 13.0f;
+- (UILabel *)addLabelTitleWithString:(NSString *)title bold:(BOOL)isBold fontSize:(CGFloat)size
 {
     UILabel *label = [[UILabel alloc] init];
     label.textAlignment = NSTextAlignmentLeft;
@@ -105,10 +195,72 @@ static const CGFloat kCellFontSizeSmall = 13.0f;
     [label setBackgroundColor:[UIColor clearColor]];
     [label setTextColor:[GCAppAPI getColorWithRGBAinHex:ThemeColor01]];
     [label setText:title];
-    [self addSubview:label];
+    [self.contentView addSubview:label];
     return label;
 }
 
+- (FUIButton *)addFUIButtonWithTitle:(NSString *)title
+{
+    FUIButton *button = [[FUIButton alloc] init];
+    button.buttonColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+    button.shadowColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01_Variation01];
+    button.shadowHeight = 1.0f;
+    button.cornerRadius = 6.0f;
+    button.titleLabel.font = [UIFont fontWithName:FontTheme01_Bold size:kDetailViewFontSizeLarge];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.contentView addSubview:button];
+    return button;
+}
 
+- (UIView *)addSeparator
+{
+    UIView *separator = [[UIView alloc] init];
+    separator.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.3f];
+    [self.contentView addSubview:separator];
+    return separator;
+}
+
+- (UITextView *)addTextViewWithString:(NSString *)content
+{
+    UITextView *textView = [[UITextView alloc] init];
+    textView.text = content;
+    textView.editable = NO;
+    textView.tintColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+    textView.textColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+    textView.font = [UIFont fontWithName:FontTheme01 size:kDetailViewFontSizeSmall];
+    [self.contentView addSubview:textView];
+    return textView;
+}
+
+- (MKMapView *)addMapView
+{
+    MKMapView * mapView = [[MKMapView alloc] init];
+    
+    mapView.mapType = MKMapTypeStandard;
+    
+    CLLocationCoordinate2D coord = (CLLocationCoordinate2D){.latitude = 61.2180556, .longitude = -149.9002778};
+    mapView.centerCoordinate = coord;
+    
+    
+    //        NSUInteger zoomLevel = MIN(zoomLevel, 28);
+    //
+    //        // use the zoom level to compute the region
+    //        MKCoordinateSpan span = [self coordinateSpanWithMapView:self centerCoordinate:coord andZoomLevel:zoomLevel];
+    //        MKCoordinateRegion region = MKCoordinateRegionMake(centerCoordinate, span);
+    //
+    //        // set the region like normal
+    //        [self setRegion:region animated:animated];
+    //    }
+    
+    ////        MKCoordinateSpan span = {.latitudeDelta =  0.2, .longitudeDelta =  0.2};
+    //        MKCoordinateRegion region = {coord, span};
+    //        mapView.region = region;
+    //        map.delegate = self;
+    
+    [self.contentView addSubview:mapView];
+    return mapView;
+}
 
 @end

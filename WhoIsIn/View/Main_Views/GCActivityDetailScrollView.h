@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+
 @class GCActivityDetailViewController;
 
 @interface GCActivityDetailScrollView : UIScrollView
@@ -16,6 +18,7 @@
 @property BOOL didSetupConstraints;
 
 #pragma mark -  Content
+@property UIView *contentView;
 // Event
 @property UILabel *label_title;
 @property UILabel *label_host;
@@ -29,6 +32,7 @@
 @property UIView *separator01;
 
 @property UITextView *textviewDescription;
+@property MKMapView *mapView;
 
 @property UIView *separator02;
 

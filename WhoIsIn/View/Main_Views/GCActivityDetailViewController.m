@@ -21,6 +21,16 @@
     self.detailScrollView = [[GCActivityDetailScrollView alloc] initWithParentController:self];
     [self.detailScrollView setNeedsUpdateConstraints];
     [self.detailScrollView updateConstraintsIfNeeded];
+    
+    [[self.detailScrollView.btn_join rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"Join button tapped");
+        //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
+        //        [self.navigationController pushViewController:registerViewController animated:YES];
+    }];
+    
+//    self.detailScrollView.bounds = CGRectMake(0.0f, 0.0f, ScreenWidth, ScreenHeight);
+//    [self.detailScrollView setNeedsLayout];
+//    [self.detailScrollView layoutIfNeeded];
     // Assign Delegates
 //    self.registerView.entry_Email.delegate = self;
 //    self.registerView.entry_Password.delegate = self;
@@ -37,5 +47,11 @@
 //    }];
     
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    DDLogVerbose(@"GCActivity Detail View Controller touchesBegan:withEvent:");
+    [super touchesBegan:touches withEvent:event];
+}
+
 
 @end
