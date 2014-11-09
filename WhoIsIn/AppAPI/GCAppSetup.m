@@ -79,9 +79,9 @@
 + (void)configureNavigationViewController:(UIViewController *)viewcontroller withNavigationTitle:(NSString *)title
 {
     // Set Title
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 30)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 40)];
     label.textAlignment = NSTextAlignmentCenter;
-    [label setFont:[UIFont boldSystemFontOfSize:16.0]];
+    [label setFont:[UIFont fontWithName:FontTheme01_Bold size:19.0]];
     [label setBackgroundColor:[UIColor clearColor]];
     [label setTextColor:[UIColor whiteColor]];
     [label setText:title];

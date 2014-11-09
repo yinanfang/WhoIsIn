@@ -20,22 +20,22 @@
         self.parentController = controller;
         
         // Empty Frame Initialization
-        UINavigationController *navigationController01 = [UINavigationController new];
-        self.activityController = [GCActivityController new];
-        self.activityController.navigationItem.title = @"Nearby Activities";
+        UINavigationController *navigationController01 = [[UINavigationController alloc] init];
+        self.activityController = [[GCActivityController alloc] init];
+        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Nearby Activities"];
         navigationController01.tabBarItem.title = @"Activity";
 //        navigationController01.tabBarItem.image = [UIImage imageNamed:@"leaf"];
         navigationController01.viewControllers = [NSArray arrayWithObjects:self.activityController, nil];
         
-        UINavigationController *navigationController02 = [UINavigationController new];
-        self.userInfoController = [GCUserInfoController new];
-        self.userInfoController.navigationItem.title = @"Signed up activities";
+        UINavigationController *navigationController02 = [[UINavigationController alloc] init];
+        self.userInfoController = [[GCUserInfoController alloc] init];
+        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Signed up activities"];
         navigationController02.tabBarItem.title = @"My Activity";
         navigationController02.viewControllers = [NSArray arrayWithObjects:self.userInfoController, nil];
         
-        UINavigationController *navigationController03 = [UINavigationController new];
-        self.accountController = [GCAccountController new];
-        self.accountController.navigationItem.title = @"Account Info";
+        UINavigationController *navigationController03 = [[UINavigationController alloc] init];
+        self.accountController = [[GCAccountController alloc] init];
+        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Account Info"];
         navigationController03.tabBarItem.title = @"Account";
         navigationController03.viewControllers = [NSArray arrayWithObjects:self.accountController, nil];
         

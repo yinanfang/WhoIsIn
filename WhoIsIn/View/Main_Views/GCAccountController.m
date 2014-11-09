@@ -14,8 +14,6 @@
 {
     [super viewDidLoad];
     DDLogInfo(@"====================  Entered Account container controller  ====================");
-    [GCAppSetup configureNavigationViewController:self withNavigationTitle:@"Caterpillars Count"];
-    self.navigationItem.hidesBackButton = YES;
     UIButton *rightButton = [GCAppSetup configureRightButtonOfNavigationViewController:self];
     [[rightButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         DDLogVerbose(@"hit Log out button. Clear User data and pop back");

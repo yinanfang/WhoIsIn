@@ -83,7 +83,7 @@
     }];
 }
 
-static const CGFloat kCellFontSizeLarge = 18.0f;
+static const CGFloat kCellFontSizeLarge = 17.0f;
 static const CGFloat kCellFontSizeSmall = 13.0f;
 - (UILabel *)LabelTitleWithString:(NSString *)title bold:(BOOL)isBold fontSize:(CGFloat)size
 {
