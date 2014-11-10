@@ -128,7 +128,8 @@
             make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Default.left);
             make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Default.right);
 //            make.height.mas_equalTo(self.textviewDescription.contentSize.height);
-            make.height.mas_equalTo(100);
+            CGSize sizeFit = [self.textviewDescription sizeThatFits:CGSizeMake(ScreenWidth, MAXFLOAT)];
+            make.height.mas_equalTo(sizeFit.height);
         }];
 
         // Map View
@@ -226,6 +227,8 @@ static const CGFloat kDetailViewFontSizeSmall = 13.0f;
 {
     UITextView *textView = [[UITextView alloc] init];
     textView.text = content;
+    textView.selectable = YES;
+    textView.scrollEnabled = NO;
     textView.editable = NO;
     textView.tintColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
     textView.textColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];

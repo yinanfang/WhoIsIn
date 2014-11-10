@@ -115,7 +115,7 @@
             if (error) {
                 NSLog(@"Couldn't convert app infos JSON to GCActivity models: %@", error);
             }
-            DDLogVerbose(@"GCActivity value: %@", activities);
+            DDLogVerbose(@"activities value: %@", activities);
             completion(YES);
         }
     }];

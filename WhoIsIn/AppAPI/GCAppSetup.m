@@ -86,6 +86,7 @@
     [label setTextColor:[UIColor whiteColor]];
     [label setText:title];
     viewcontroller.navigationItem.titleView = label;
+
     [label sizeToFit];
 }
 

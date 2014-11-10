@@ -29,13 +29,13 @@
         
         UINavigationController *navigationController02 = [[UINavigationController alloc] init];
         self.userInfoController = [[GCUserInfoController alloc] init];
-        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Signed up activities"];
+        [GCAppSetup configureNavigationViewController:self.userInfoController withNavigationTitle:@"Signed up activities"];
         navigationController02.tabBarItem.title = @"My Activity";
         navigationController02.viewControllers = [NSArray arrayWithObjects:self.userInfoController, nil];
         
         UINavigationController *navigationController03 = [[UINavigationController alloc] init];
         self.accountController = [[GCAccountController alloc] init];
-        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Account Info"];
+        [GCAppSetup configureNavigationViewController:self.accountController withNavigationTitle:@"Account Info"];
         navigationController03.tabBarItem.title = @"Account";
         navigationController03.viewControllers = [NSArray arrayWithObjects:self.accountController, nil];
         
