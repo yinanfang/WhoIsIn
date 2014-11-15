@@ -30,6 +30,7 @@
     if (self) {
         // Initialize values
         self.appData = [[GCAppData alloc] init];
+        self.sortedActivities = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -107,15 +108,24 @@
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
     [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data){
         if (succeeded) {
-            DDLogVerbose(@"Generating GCAvtivity object...");
-            NSArray *jsonArray = (NSArray *)data;
             NSError *error;
-            NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:jsonArray error:&error];
-            [GCAppViewModel sharedInstance].sortedActivities = [activities mutableCopy];
-            if (error) {
-                NSLog(@"Couldn't convert app infos JSON to GCActivity models: %@", error);
+            NSDictionary *jsonDictionary = (NSDictionary *)data;
+            NSMutableArray *sortedActivities = [GCAppViewModel sharedInstance].sortedActivities;
+            NSInteger count = [jsonDictionary count];
+            NSString *countString;
+            DDLogVerbose(@"Generating %i new GCAvtivity object...", count);
+            for (NSInteger i = 0; i < count; i++) {
+                countString = [NSString stringWithFormat:@"%i", i];
+                GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:jsonDictionary[countString] error:&error];
+                if (error) {
+                    DDLogVerbose(@"Error generating GCActivity: %@", error);
+                } else {
+                    DDLogVerbose(@"activity item: %@", activity);
+                    [sortedActivities addObject:activity];
+                }
             }
-            DDLogVerbose(@"activities value: %@", activities);
+            DDLogVerbose(@"sortedActivities value: %@", sortedActivities);
+            DDLogVerbose(@"sortedActivities count: %lu", (unsigned long)[sortedActivities count]);
             completion(YES);
         }
     }];

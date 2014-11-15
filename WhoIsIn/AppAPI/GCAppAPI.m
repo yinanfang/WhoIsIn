@@ -75,23 +75,47 @@
     return imageView;
 }
 
-+ (CGSize)getSizeOfStatusbarAndNavigationBar:(UIViewController *)controller
++ (CGSize)getSizeOfStatusbar:(UIViewController *)controller
 {
     CGFloat statusBarHeight = 0.000000;
-    CGFloat navBarHeight = 0.000000;
     UIInterfaceOrientation orientation_StatusBar = [[UIApplication sharedApplication] statusBarOrientation];
     switch (orientation_StatusBar) {
         case UIInterfaceOrientationPortrait:
         case UIInterfaceOrientationPortraitUpsideDown:
             NSLog(@"It's UIInterfaceOrientationPortrait");
             statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-            navBarHeight = controller.navigationController.navigationBar.frame.size.height;
             break;
         case UIInterfaceOrientationLandscapeLeft:
         case UIInterfaceOrientationLandscapeRight:
             NSLog(@"It's UIInterfaceOrientationLandscape");
             statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.width;
-            navBarHeight = controller.navigationController.navigationBar.frame.size.height;
+            break;
+        default:
+            break;
+    }
+    return CGSizeMake(ScreenWidth, statusBarHeight);
+}
+
++ (CGSize)getSizeOfNavigationBar:(UIViewController *)controller
+{
+    return controller.navigationController.navigationBar.frame.size;
+}
+
++ (CGSize)getSizeOfStatusbarAndNavigationBar:(UIViewController *)controller
+{
+    CGFloat statusBarHeight = 0.000000;
+    CGFloat navBarHeight = controller.navigationController.navigationBar.frame.size.height;
+    UIInterfaceOrientation orientation_StatusBar = [[UIApplication sharedApplication] statusBarOrientation];
+    switch (orientation_StatusBar) {
+        case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortraitUpsideDown:
+            NSLog(@"It's UIInterfaceOrientationPortrait");
+            statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight:
+            NSLog(@"It's UIInterfaceOrientationLandscape");
+            statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.width;
             break;
         default:
             break;

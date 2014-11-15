@@ -32,6 +32,29 @@
     
     // Fetch Activities
     [self fetchActivityDataWithParameter:nil];
+    
+//    self.sortControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"One", @"Two", nil]];
+//    self.sortControl.selectedSegmentIndex = 0;
+//    [self.sortControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
+//    self.sortControl.frame = CGRectMake(0, 64, ScreenWidth, 100);
+//    self.sortControl.backgroundColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+//    [self.view addSubview:self.sortControl];
+//    UIToolbar *toolbar = [[UIToolbar alloc] init];
+//    toolbar.delegate = self;
+//    [toolbar addSubview:self.sortControl];
+//    [self.view addSubview:toolbar];
+//    toolbar.frame = CGRectMake(0, 64, ScreenWidth, 100);
+//    toolbar.backgroundColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+//    toolbar.translucent = NO;
+//    toolbar.tintColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+
+    
+}
+
+-(void)segmentAction:(id)sender {
+    NSLog(@"Segment control changed to: %@",[self.sortControl titleForSegmentAtIndex:[self.sortControl selectedSegmentIndex]]);
+    
+    // do something based on segment control selection...
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -42,7 +65,7 @@
     self.navigationController.navigationBar.hidden = NO;
     
     // Reload table view
-    NSLog(@"reload..");
+//    NSLog(@"reload..");
 //    [self.surveyScrollView.orderTableView reloadData];
     
     [super viewWillAppear:animated];
@@ -127,7 +150,7 @@
 - (void)configureCellContent:(GCActivityTableViewCell *)cell atRow:(NSInteger)row
 {
     GCActivity *activity = (GCActivity *)[GCAppViewModel sharedInstance].sortedActivities[row];
-    DDLogVerbose(@"%@", activity);
+//    DDLogVerbose(@"%@", activity);
     cell.label_timeStart.text = [[GCActivityController dateFormatter] stringFromDate:activity.timeStart];
     cell.label_distanceText.text = activity.distanceString;
     cell.label_title.text = activity.activityTitle;

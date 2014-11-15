@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GCActivityController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface GCActivityController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIToolbarDelegate>
 
 @property UITableView *activityTableView;
 
+// Segment Control
+@property UISegmentedControl *sortControl;
 
 
 @end

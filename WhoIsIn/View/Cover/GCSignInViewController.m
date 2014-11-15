@@ -84,14 +84,30 @@
         // Found next responder, so set it.
         [nextResponder becomeFirstResponder];
     } else {
-        // Not found, so remove keyboard.
-        [textField resignFirstResponder];
-        [self showLoginProgress];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, AnimationDuration_Short*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [self login];
-        });
+//        BOOL isValidInput = YES;
+        BOOL isValidInput = [self isValidInput];
+        if (isValidInput) {
+            DDLogVerbose(@"Input format correct! Start Login process...");
+            // Not found, so remove keyboard.
+            [textField resignFirstResponder];
+            [self showLoginProgress];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, AnimationDuration_Short*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                [self login];
+            });
+        }
     }
     return NO; // We do not want UITextField to insert line-breaks.
+}
+
+- (BOOL)isValidInput
+{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    if (![emailTest evaluateWithObject:self.signInView.entry_Username.text]) {
+        DDLogVerbose(@"Email format wrong!");
+        return NO;
+    }
+    return YES;
 }
 
 - (void)login

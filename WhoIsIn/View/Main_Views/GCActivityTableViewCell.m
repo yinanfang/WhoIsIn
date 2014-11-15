@@ -14,7 +14,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        DDLogWarn(@"initWithStyle");
+        DDLogInfo(@"initWithStyle");
         
         // Title in Bold
         self.label_title = [self LabelTitleWithString:@"Activity Title is a very long thing. It usually take up 2 rows" bold:NO fontSize:kCellFontSizeLarge];

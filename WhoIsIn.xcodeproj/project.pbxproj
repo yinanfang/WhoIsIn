@@ -24,7 +24,6 @@
 		D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = D441BCCC19FC932D00311151 /* GCMainTabController.m */; };
 		D476998319FD28B000BEECA8 /* GCUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998219FD28B000BEECA8 /* GCUserInfoController.m */; };
 		D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998519FD28C200BEECA8 /* GCAccountController.m */; };
-		D476998919FD2F6700BEECA8 /* GCFloatController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998819FD2F6700BEECA8 /* GCFloatController.m */; };
 		D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998B19FD32E400BEECA8 /* GCActivityController.m */; };
 		D476998F19FD37E100BEECA8 /* leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = D476998E19FD37E100BEECA8 /* leaf.png */; };
 		D476999319FD43FC00BEECA8 /* GCActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = D476999219FD43FC00BEECA8 /* GCActivity.m */; };
@@ -87,8 +86,6 @@
 		D476998219FD28B000BEECA8 /* GCUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCUserInfoController.m; path = View/Main_Views/GCUserInfoController.m; sourceTree = "<group>"; };
 		D476998419FD28C200BEECA8 /* GCAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAccountController.h; path = View/Main_Views/GCAccountController.h; sourceTree = "<group>"; };
 		D476998519FD28C200BEECA8 /* GCAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAccountController.m; path = View/Main_Views/GCAccountController.m; sourceTree = "<group>"; };
-		D476998719FD2F6700BEECA8 /* GCFloatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCFloatController.h; path = View/Main_Views/GCFloatController.h; sourceTree = "<group>"; };
-		D476998819FD2F6700BEECA8 /* GCFloatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCFloatController.m; path = View/Main_Views/GCFloatController.m; sourceTree = "<group>"; };
 		D476998A19FD32E400BEECA8 /* GCActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityController.h; path = View/Main_Views/GCActivityController.h; sourceTree = "<group>"; };
 		D476998B19FD32E400BEECA8 /* GCActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityController.m; path = View/Main_Views/GCActivityController.m; sourceTree = "<group>"; };
 		D476998E19FD37E100BEECA8 /* leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf.png; sourceTree = "<group>"; };
@@ -269,6 +266,46 @@
 			name = Cover;
 			sourceTree = "<group>";
 		};
+		D431B78E1A17CAE500CF55BF /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		D431B78F1A17CB1100CF55BF /* All Activity */ = {
+			isa = PBXGroup;
+			children = (
+				D476998A19FD32E400BEECA8 /* GCActivityController.h */,
+				D476998B19FD32E400BEECA8 /* GCActivityController.m */,
+				D4F2077D1A06DE40009351CC /* GCActivityTableViewCell.h */,
+				D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */,
+				D40F168D1A0E7F13008AB059 /* GCActivityDetailViewController.h */,
+				D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */,
+				D40F16901A0E7F4A008AB059 /* GCActivityDetailScrollView.h */,
+				D40F16911A0E7F4A008AB059 /* GCActivityDetailScrollView.m */,
+			);
+			name = "All Activity";
+			sourceTree = "<group>";
+		};
+		D431B7901A17CB2B00CF55BF /* My Activity */ = {
+			isa = PBXGroup;
+			children = (
+				D476998119FD28B000BEECA8 /* GCUserInfoController.h */,
+				D476998219FD28B000BEECA8 /* GCUserInfoController.m */,
+			);
+			name = "My Activity";
+			sourceTree = "<group>";
+		};
+		D431B7911A17CB3400CF55BF /* Account Info */ = {
+			isa = PBXGroup;
+			children = (
+				D476998419FD28C200BEECA8 /* GCAccountController.h */,
+				D476998519FD28C200BEECA8 /* GCAccountController.m */,
+			);
+			name = "Account Info";
+			sourceTree = "<group>";
+		};
 		D476998D19FD37CD00BEECA8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,20 +344,10 @@
 				D4C767E219F461C3005B2683 /* GCMainContainerViewController.m */,
 				D441BCCB19FC932D00311151 /* GCMainTabController.h */,
 				D441BCCC19FC932D00311151 /* GCMainTabController.m */,
-				D476998719FD2F6700BEECA8 /* GCFloatController.h */,
-				D476998819FD2F6700BEECA8 /* GCFloatController.m */,
-				D476998A19FD32E400BEECA8 /* GCActivityController.h */,
-				D476998B19FD32E400BEECA8 /* GCActivityController.m */,
-				D4F2077D1A06DE40009351CC /* GCActivityTableViewCell.h */,
-				D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */,
-				D40F168D1A0E7F13008AB059 /* GCActivityDetailViewController.h */,
-				D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */,
-				D40F16901A0E7F4A008AB059 /* GCActivityDetailScrollView.h */,
-				D40F16911A0E7F4A008AB059 /* GCActivityDetailScrollView.m */,
-				D476998119FD28B000BEECA8 /* GCUserInfoController.h */,
-				D476998219FD28B000BEECA8 /* GCUserInfoController.m */,
-				D476998419FD28C200BEECA8 /* GCAccountController.h */,
-				D476998519FD28C200BEECA8 /* GCAccountController.m */,
+				D431B78E1A17CAE500CF55BF /* Controls */,
+				D431B78F1A17CB1100CF55BF /* All Activity */,
+				D431B7901A17CB2B00CF55BF /* My Activity */,
+				D431B7911A17CB3400CF55BF /* Account Info */,
 			);
 			name = Main_Views;
 			sourceTree = "<group>";
@@ -474,7 +501,6 @@
 				D4F777E419F410630061F62C /* GCAppAPI.m in Sources */,
 				D4C767EC19F461F5005B2683 /* GCRegisterScrollView.m in Sources */,
 				D4F777E519F410630061F62C /* GCAppSetup.m in Sources */,
-				D476998919FD2F6700BEECA8 /* GCFloatController.m in Sources */,
 				D425458819E1ABF2004B5AE3 /* GCAppConfig.m in Sources */,
 				D4C767E319F461C3005B2683 /* GCMainContainerViewController.m in Sources */,
 				D4C767EF19F461F5005B2683 /* GCSignInViewController.m in Sources */,

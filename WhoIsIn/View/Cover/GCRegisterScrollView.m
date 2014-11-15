@@ -75,7 +75,7 @@
         [self.view_Register mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
 //            make.centerY.equalTo(self.mas_centerY);
-            make.top.equalTo(self.mas_top).with.offset(mas_Padding_Page_Large.top);
+            make.top.equalTo(self.mas_top).with.offset(mas_Padding_Page_Small.top);
             make.size.mas_equalTo(CGSizeMake(ScreenWidth-2*mas_Padding_Page_Large.left, 370));
         }];
         // Email
