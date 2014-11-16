@@ -48,6 +48,11 @@
         // Gender
         self.entry_Gender = [self addLabeledTextFieldWithPlaceHolder:@"Gender"];
         self.entry_Gender.tag = 6;
+        // Change input view
+        self.picker_Gender = [[UIPickerView alloc] initWithFrame:CGRectZero];
+        self.picker_Gender.backgroundColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01_Variation01];
+        self.picker_Gender.showsSelectionIndicator = YES;
+        self.entry_Gender.inputView = self.picker_Gender;
         self.separator_Gender = [self addSeparator];
         
         // Register Button

@@ -21,13 +21,16 @@
     self.registerView = [[GCRegisterScrollView alloc] initWithParentController:self];
     [self.registerView setNeedsUpdateConstraints];
     [self.registerView updateConstraintsIfNeeded];
-    // Assign Delegates
+    // Assign UITextField Delegates
     self.registerView.entry_Email.delegate = self;
     self.registerView.entry_Password.delegate = self;
     self.registerView.entry_Firstname.delegate = self;
     self.registerView.entry_LastName.delegate = self;
     self.registerView.entry_PhoneNumber.delegate = self;
     self.registerView.entry_Gender.delegate = self;
+    // Assign UIPickerView Delegates
+    self.registerView.picker_Gender.delegate = self;
+    self.registerView.picker_Gender.dataSource = self;
     
     // Register Button
     [[self.registerView.btn_Register rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -130,7 +133,31 @@
     }completion:nil];
 }
 
+#pragma mark - UIPickerView Delegate
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (row == 0) {
+        return @"M";
+    } else {
+        return @"F";
+    }
+}
 
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.registerView.entry_Gender.text = (row == 0) ? @"M" : @"F";
+}
 
+#pragma mark - UIPickerView DataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return 2;
+}
 
 @end

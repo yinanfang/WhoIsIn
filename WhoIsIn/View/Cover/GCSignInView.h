@@ -24,6 +24,7 @@
 // Log In
 @property UITextField *entry_Username, *entry_Password;
 @property UIView *separator_Username;
+@property UILabel *label_ErrorMessage;
 
 // Controls
 @property UIView *view_Others;

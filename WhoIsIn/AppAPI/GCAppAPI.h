@@ -71,8 +71,9 @@
 + (CGSize)getSizeOfStatusbar:(UIViewController *)controller;
 + (CGSize)getSizeOfNavigationBar:(UIViewController *)controller;
 + (CGSize)getSizeOfStatusbarAndNavigationBar:(UIViewController *)controller;
-
 + (CGRect)getScreenBoundsDependOnOrientation;
++ (NSString *)getMD5StringWithString:(NSString *)string;
+
 
 #pragma mark - Mantle
 + (id)getMantleModelWithDictionary:(NSDictionary *)dictionary modelClass:(Class)modelClass;

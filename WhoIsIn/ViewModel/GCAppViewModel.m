@@ -80,6 +80,7 @@
             NSDictionary *userDic = (NSDictionary *)data;
             if ([userDic[@"iduser"] isEqualToString:@"0"]) {
                 DDLogVerbose(@"Rejected");
+                completion(NO);
             } else {
                 DDLogVerbose(@"Logged in successfully");
                 // Init GCUser
@@ -90,6 +91,7 @@
                     DDLogWarn(@"Cannot generate GCUser model!!!");
                 }
                 [GCAppViewModel sharedInstance].appData.currentUser = user;
+                completion(YES);
             }
         }
     }];

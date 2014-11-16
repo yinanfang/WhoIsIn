@@ -55,6 +55,8 @@
         self.entry_Password.secureTextEntry = YES;
         self.entry_Password.tag = 2;
         [self.view_LogIn addSubview:self.entry_Password];
+        // Error Message
+        self.label_ErrorMessage = [self addLabelTitleWithString:@""];
         
         // Other Field
         self.view_Others = [[UIView alloc] init];
@@ -108,7 +110,12 @@
             make.right.equalTo(self.view_LogIn.mas_right);
             make.height.mas_equalTo(FontSize_LogInTextField+5);
         }];
-
+        [self.label_ErrorMessage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.entry_Password.mas_bottom).with.offset(mas_Padding_Page_Default.top);
+            make.left.equalTo(self.view_LogIn.mas_left);
+            make.right.equalTo(self.view_LogIn.mas_right);
+        }];
+        
         // Other Field
         [self.view_Others mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.mas_centerX);
@@ -143,6 +150,7 @@
     textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolderString attributes:@{NSForegroundColorAttributeName:[GCAppAPI getColorWithRGBAinHex:WhiteFading], NSFontAttributeName:[UIFont fontWithName:Font_Title size:FontSize_LogInTextField]}];
     textField.autocorrectionType = UITextAutocorrectionTypeYes;
     textField.keyboardType = UIKeyboardTypeDefault;
+    textField.autocapitalizationType = NO;
     textField.enablesReturnKeyAutomatically = YES;
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -158,6 +166,19 @@
     button.titleLabel.font = [UIFont fontWithName:Font_Title size:FontSize_H1];
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     return button;
+}
+
+- (UILabel *)addLabelTitleWithString:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    [label setFont:[UIFont fontWithName:FontTheme01 size:FontSize_P1]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextColor:[UIColor lightGrayColor]];
+    [label setText:title];
+    [self.view_LogIn addSubview:label];
+    return label;
 }
 @end
 

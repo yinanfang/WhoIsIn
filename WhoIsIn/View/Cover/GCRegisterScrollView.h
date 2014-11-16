@@ -30,6 +30,7 @@
 @property JVFloatLabeledTextField *entry_PhoneNumber;
 @property UIView *separator_PhoneNumber;
 @property JVFloatLabeledTextField *entry_Gender;
+@property UIPickerView *picker_Gender;
 @property UIView *separator_Gender;
 
 // Register Button

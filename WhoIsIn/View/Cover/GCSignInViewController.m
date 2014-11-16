@@ -84,14 +84,14 @@
         // Found next responder, so set it.
         [nextResponder becomeFirstResponder];
     } else {
-//        BOOL isValidInput = YES;
-        BOOL isValidInput = [self isValidInput];
+        BOOL isValidInput = YES;
+//        BOOL isValidInput = [self isValidInput];
         if (isValidInput) {
             DDLogVerbose(@"Input format correct! Start Login process...");
             // Not found, so remove keyboard.
             [textField resignFirstResponder];
             [self showLoginProgress];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, AnimationDuration_Short*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 [self login];
             });
         }
@@ -112,11 +112,20 @@
 
 - (void)login
 {
+    NSString *md5Value = [GCAppAPI getMD5StringWithString:self.signInView.entry_Password.text];
+    DDLogVerbose(@"Here's md5 value: %@", md5Value);
     [GCAppViewModel loginWithCredential:@{
-                                          @"email": @"sckclark@gmail.com",
-                                          @"password": @"68e419b67218d5cd2c84dd95a57b9e90",
+                                          @"email": self.signInView.entry_Username.text,
+                                          @"password": md5Value,
                                           } completion:^(BOOL succeeded) {
-                                              
+                                              if (succeeded) {
+                                                  [GCAppViewModel enterMainContainerViewController:self];
+                                              } else {
+                                                  DDLogVerbose(@"Log In fail. Need to enter again");
+                                                  self.signInView.label_ErrorMessage.text = @"Incorrect email or password";
+                                                  [self restoreLoginPageLayout];
+                                                  
+                                              }
                                           }];
 }
 
@@ -175,7 +184,30 @@
     anim.duration = AnimationDuration_Short;
     [self.signInView.view_LogIn pop_addAnimation:anim forKey:@"fade"];
     [self.signInView.view_Others pop_addAnimation:anim forKey:@"fade"];
+}
 
+- (void)restoreLoginPageLayout
+{
+    [self.signInView layoutIfNeeded];
+    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        // App Logo
+        [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/5);
+        }];
+        self.signInView.appName.shimmering = NO;
+        // Login Field
+        [self.signInView.view_LogIn mas_updateConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/2);
+        }];
+        [self.signInView layoutIfNeeded];
+    }completion:nil];
+    // Fade
+    POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    anim.toValue = @(1.0);
+    anim.duration = AnimationDuration_Short;
+    [self.signInView.view_LogIn pop_addAnimation:anim forKey:@"show"];
+    [self.signInView.view_Others pop_addAnimation:anim forKey:@"show"];
 }
 
 @end
