@@ -155,6 +155,19 @@
     return output;
 }
 
++ (UIView *)getFirstResponderFromView:(UIView *)view
+{
+    if (view.isFirstResponder) {
+        return view;
+    }
+    for (UIView *subView in view.subviews) {
+        id responder = [GCAppAPI getFirstResponderFromView:subView];
+        if (responder) return responder;
+    }
+    return nil;
+}
+
+
 #pragma mark - Mantle
 + (id)getMantleModelWithDictionary:(NSDictionary *)dictionary modelClass:(Class)modelClass
 {

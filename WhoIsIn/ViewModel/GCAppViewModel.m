@@ -115,9 +115,9 @@
             NSMutableArray *sortedActivities = [GCAppViewModel sharedInstance].sortedActivities;
             NSInteger count = [jsonDictionary count];
             NSString *countString;
-            DDLogVerbose(@"Generating %i new GCAvtivity object...", count);
+            DDLogVerbose(@"Generating %li new GCAvtivity object...", (long)count);
             for (NSInteger i = 0; i < count; i++) {
-                countString = [NSString stringWithFormat:@"%i", i];
+                countString = [NSString stringWithFormat:@"%li", (long)i];
                 GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:jsonDictionary[countString] error:&error];
                 if (error) {
                     DDLogVerbose(@"Error generating GCActivity: %@", error);

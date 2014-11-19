@@ -61,25 +61,10 @@
 // Hide keyboard when touching the background
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     DDLogVerbose(@"GCRegisterViewController touchesBegan:withEvent:");
-    
     UITouch *touch = [[event allTouches] anyObject];
-    if ([self.registerView.entry_Email isFirstResponder] && [touch view] != self.registerView.entry_Email) {
-        [self.registerView.entry_Email resignFirstResponder];
-    }
-    if ([self.registerView.entry_Password isFirstResponder] && [touch view] != self.registerView.entry_Password) {
-        [self.registerView.entry_Password resignFirstResponder];
-    }
-    if ([self.registerView.entry_Firstname isFirstResponder] && [touch view] != self.registerView.entry_Firstname) {
-        [self.registerView.entry_Firstname resignFirstResponder];
-    }
-    if ([self.registerView.entry_LastName isFirstResponder] && [touch view] != self.registerView.entry_LastName) {
-        [self.registerView.entry_LastName resignFirstResponder];
-    }
-    if ([self.registerView.entry_PhoneNumber isFirstResponder] && [touch view] != self.registerView.entry_PhoneNumber) {
-        [self.registerView.entry_PhoneNumber resignFirstResponder];
-    }
-    if ([self.registerView.entry_Gender isFirstResponder] && [touch view] != self.registerView.entry_Gender) {
-        [self.registerView.entry_Gender resignFirstResponder];
+    UIView *responder = [GCAppAPI getFirstResponderFromView:self.registerView.view_Register];
+    if (responder && [touch view] != responder) {
+        [responder resignFirstResponder];
     }
     [self restoreContentOffset];
     [super touchesBegan:touches withEvent:event];

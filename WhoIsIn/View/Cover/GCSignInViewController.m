@@ -84,8 +84,8 @@
         // Found next responder, so set it.
         [nextResponder becomeFirstResponder];
     } else {
-        BOOL isValidInput = YES;
-//        BOOL isValidInput = [self isValidInput];
+//        BOOL isValidInput = YES;
+        BOOL isValidInput = [self isValidInput];
         if (isValidInput) {
             DDLogVerbose(@"Input format correct! Start Login process...");
             // Not found, so remove keyboard.
@@ -105,6 +105,7 @@
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     if (![emailTest evaluateWithObject:self.signInView.entry_Username.text]) {
         DDLogVerbose(@"Email format wrong!");
+        self.signInView.label_ErrorMessage.text = @"Email format wrong";
         return NO;
     }
     return YES;
@@ -114,19 +115,20 @@
 {
     NSString *md5Value = [GCAppAPI getMD5StringWithString:self.signInView.entry_Password.text];
     DDLogVerbose(@"Here's md5 value: %@", md5Value);
-    [GCAppViewModel loginWithCredential:@{
-                                          @"email": self.signInView.entry_Username.text,
-                                          @"password": md5Value,
-                                          } completion:^(BOOL succeeded) {
-                                              if (succeeded) {
-                                                  [GCAppViewModel enterMainContainerViewController:self];
-                                              } else {
-                                                  DDLogVerbose(@"Log In fail. Need to enter again");
-                                                  self.signInView.label_ErrorMessage.text = @"Incorrect email or password";
-                                                  [self restoreLoginPageLayout];
-                                                  
-                                              }
-                                          }];
+    NSDictionary *credential = @{
+                                 @"email": self.signInView.entry_Username.text,
+                                 @"password": md5Value,
+                                 };
+    [GCAppViewModel loginWithCredential:credential completion:^(BOOL succeeded) {
+        if (succeeded) {
+            [GCAppViewModel enterMainContainerViewController:self];
+            self.signInView.label_ErrorMessage.text = @"";
+        } else {
+            DDLogVerbose(@"Log In fail. Need to enter again");
+            self.signInView.label_ErrorMessage.text = @"Incorrect email or password";
+            [self restoreLoginPageLayout];
+        }
+    }];
 }
 
 #pragma mark - Animations
