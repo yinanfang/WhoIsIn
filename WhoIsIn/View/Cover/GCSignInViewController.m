@@ -106,6 +106,7 @@
     if (![emailTest evaluateWithObject:self.signInView.entry_Username.text]) {
         DDLogVerbose(@"Email format wrong!");
         self.signInView.label_ErrorMessage.text = @"Email format wrong";
+        [GCAppAPI shakeViewArray:@[self.signInView.entry_Username]];
         return NO;
     }
     return YES;
@@ -135,7 +136,7 @@
 - (void)moveUpContent
 {
     [self.signInView layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kAnimationDuration_Short delay:kAnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         // App Logo
         [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/8);
@@ -151,7 +152,7 @@
 - (void)moveDownContent
 {
     [self.signInView layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kAnimationDuration_Short delay:kAnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         // App Logo
         [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/5);
@@ -167,7 +168,7 @@
 - (void)showLoginProgress
 {
     [self.signInView layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kAnimationDuration_Short delay:kAnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         // App Logo
         [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/2-80);
@@ -183,7 +184,7 @@
     POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
     anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     anim.toValue = @(0.0);
-    anim.duration = AnimationDuration_Short;
+    anim.duration = kAnimationDuration_Short;
     [self.signInView.view_LogIn pop_addAnimation:anim forKey:@"fade"];
     [self.signInView.view_Others pop_addAnimation:anim forKey:@"fade"];
 }
@@ -191,7 +192,7 @@
 - (void)restoreLoginPageLayout
 {
     [self.signInView layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kAnimationDuration_Short delay:kAnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         // App Logo
         [self.signInView.appName mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.signInView.mas_top).with.offset(ScreenHeight/5);
@@ -207,7 +208,7 @@
     POPBasicAnimation *anim = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
     anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     anim.toValue = @(1.0);
-    anim.duration = AnimationDuration_Short;
+    anim.duration = kAnimationDuration_Short;
     [self.signInView.view_LogIn pop_addAnimation:anim forKey:@"show"];
     [self.signInView.view_Others pop_addAnimation:anim forKey:@"show"];
 }

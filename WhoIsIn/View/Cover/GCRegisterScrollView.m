@@ -54,18 +54,11 @@
         self.picker_Gender.showsSelectionIndicator = YES;
         self.entry_Gender.inputView = self.picker_Gender;
         self.separator_Gender = [self addSeparator];
+        // Error Message
+        self.label_ErrorMessage = [self addLabelTitleWithString:@""];
         
         // Register Button
-        self.btn_Register = [[FUIButton alloc] init];
-        self.btn_Register.buttonColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
-        self.btn_Register.shadowColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01_Variation01];
-        self.btn_Register.shadowHeight = 1.0f;
-        self.btn_Register.cornerRadius = 6.0f;
-        self.btn_Register.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:FontSize_P1];
-        [self.btn_Register setTitle:@"Register" forState:UIControlStateNormal];
-        [self.btn_Register setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-        [self.btn_Register setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        [self addSubview:self.btn_Register];
+        self.btn_Register = [self addFUIButtonWithTitle:@"Register"];
     }
     return self;
 }
@@ -106,7 +99,13 @@
         // Gender
         [self pinView:self.entry_Gender toUpperview:self.separator_PhoneNumber];
         [self pinView:self.separator_Gender toUpperview:self.entry_Gender];
-
+        // Error Message
+        [self.label_ErrorMessage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.separator_Gender.mas_bottom).with.offset(mas_Padding_Page_Default.top);
+            make.left.equalTo(self.view_Register.mas_left);
+            make.right.equalTo(self.view_Register.mas_right);
+        }];
+        
         // Register Button
         [self.btn_Register mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view_Register.mas_bottom).with.offset(mas_Padding_Page_Large.top);
@@ -173,14 +172,31 @@
 }
 
 
-+ (UIButton *)ButtonWithTitle:(NSString *)title
+- (FUIButton *)addFUIButtonWithTitle:(NSString *)title
 {
-    UIButton *button = [[UIButton alloc] init];
-    [button setTitleColor:[GCAppAPI getColorWithRGBAinHex:WhiteFading] forState:UIControlStateNormal];
+    FUIButton *button = [[FUIButton alloc] init];
+    button.buttonColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+    button.shadowColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01_Variation01];
+    button.shadowHeight = 1.0f;
+    button.cornerRadius = 6.0f;
+    button.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:FontSize_P1];
     [button setTitle:title forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont fontWithName:Font_Title size:FontSize_H1];
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self addSubview:button];
     return button;
 }
 
+- (UILabel *)addLabelTitleWithString:(NSString *)title
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    [label setFont:[UIFont fontWithName:FontTheme01 size:FontSize_P1]];
+    [label setBackgroundColor:[UIColor clearColor]];
+    [label setTextColor:[UIColor redColor]];
+    [label setText:title];
+    [self.view_Register addSubview:label];
+    return label;
+}
 @end

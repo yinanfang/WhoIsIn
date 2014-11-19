@@ -34,12 +34,56 @@
     
     // Register Button
     [[self.registerView.btn_Register rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        NSLog(@"Register button tapped");
+        DDLogVerbose(@"Register button tapped");
+        [self restoreContentOffset];
+        [[GCAppAPI getFirstResponderFromView:self.registerView.view_Register] resignFirstResponder];
+        BOOL isValidInput = YES;
+//        BOOL isValidInput = [self isValidInput];
+        if (isValidInput) {
+            DDLogVerbose(@"Input format correct! Start Register process...");
+            // Not found, so remove keyboard.
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//                [self registerUser];
+            });
+        }
 //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
 //        [self.navigationController pushViewController:registerViewController animated:YES];
     }];
 
 }
+
+//- (BOOL)isValidInput
+//{
+//    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+//    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+//    if (![emailTest evaluateWithObject:self.signInView.entry_Username.text]) {
+//        DDLogVerbose(@"Email format wrong!");
+//        self.signInView.label_ErrorMessage.text = @"Email format wrong";
+//        [GCAppAPI shakeViewArray:@[self.signInView.entry_Username]];
+//        return NO;
+//    }
+//    return YES;
+//}
+
+//- (void)registerUser
+//{
+//    NSString *md5Value = [GCAppAPI getMD5StringWithString:self.signInView.entry_Password.text];
+//    DDLogVerbose(@"Here's md5 value: %@", md5Value);
+//    NSDictionary *credential = @{
+//                                 @"email": self.signInView.entry_Username.text,
+//                                 @"password": md5Value,
+//                                 };
+//    [GCAppViewModel loginWithCredential:credential completion:^(BOOL succeeded) {
+//        if (succeeded) {
+//            [GCAppViewModel enterMainContainerViewController:self];
+//            self.signInView.label_ErrorMessage.text = @"";
+//        } else {
+//            DDLogVerbose(@"Log In fail. Need to enter again");
+//            self.signInView.label_ErrorMessage.text = @"Incorrect email or password";
+//            [self restoreLoginPageLayout];
+//        }
+//    }];
+//}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -73,7 +117,7 @@
 - (void)restoreContentOffset
 {
     [self.view layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kAnimationDuration_Short delay:kAnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.registerView.contentOffset = CGPointMake(0, -[GCAppAPI getSizeOfStatusbarAndNavigationBar:self].height);
         [self.view layoutIfNeeded];
     }completion:nil];
@@ -112,7 +156,7 @@
     CGFloat difference = (textFieldCenterInScrollView.y+(-self.registerView.contentOffset.y)) - (statusBarAndNavBarHeight+(ScreenHeight-KeyboardHeightPortrait-statusBarAndNavBarHeight)/2);
     DDLogVerbose(@"difference: %f", difference);
     [self.view layoutIfNeeded];
-    [UIView animateWithDuration:AnimationDuration_Short delay:AnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:kAnimationDuration_Short delay:kAnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.registerView.contentOffset = CGPointMake(self.registerView.contentOffset.x, self.registerView.contentOffset.y+difference);
         [self.view layoutIfNeeded];
     }completion:nil];

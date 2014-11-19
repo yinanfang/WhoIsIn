@@ -83,12 +83,10 @@
     switch (orientation_StatusBar) {
         case UIInterfaceOrientationPortrait:
         case UIInterfaceOrientationPortraitUpsideDown:
-            NSLog(@"It's UIInterfaceOrientationPortrait");
             statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
             break;
         case UIInterfaceOrientationLandscapeLeft:
         case UIInterfaceOrientationLandscapeRight:
-            NSLog(@"It's UIInterfaceOrientationLandscape");
             statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.width;
             break;
         default:
@@ -110,12 +108,10 @@
     switch (orientation_StatusBar) {
         case UIInterfaceOrientationPortrait:
         case UIInterfaceOrientationPortraitUpsideDown:
-            NSLog(@"It's UIInterfaceOrientationPortrait");
             statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
             break;
         case UIInterfaceOrientationLandscapeLeft:
         case UIInterfaceOrientationLandscapeRight:
-            NSLog(@"It's UIInterfaceOrientationLandscape");
             statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.width;
             break;
         default:
@@ -167,6 +163,30 @@
     return nil;
 }
 
+static NSTimeInterval const kAFViewShakerDefaultDuration = 0.5;
+static NSString *const kAFViewShakerAnimationKey = @"kAFViewShakerAnimationKey";
++ (void)shakeViewArray:(NSArray *)viewArray
+{
+    [GCAppAPI shakeViewArray: viewArray withDuration:kAFViewShakerDefaultDuration completion:nil];
+}
++ (void)shakeViewArray:(NSArray *)viewArray withDuration:(NSTimeInterval)duration completion:(void (^)())completion
+{
+    for (UIView *view in viewArray) {
+        CAKeyframeAnimation * animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
+        CGFloat currentTx = view.transform.tx;
+        animation.delegate = self;
+        animation.duration = duration;
+        animation.values = @[ @(currentTx), @(currentTx + 10), @(currentTx-8), @(currentTx + 8), @(currentTx -5), @(currentTx + 5), @(currentTx) ];
+        animation.keyTimes = @[ @(0), @(0.225), @(0.425), @(0.6), @(0.75), @(0.875), @(1) ];
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        [view.layer addAnimation:animation forKey:kAFViewShakerAnimationKey];
+    }
+    if (completion != nil) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            completion();
+        });
+    }
+}
 
 #pragma mark - Mantle
 + (id)getMantleModelWithDictionary:(NSDictionary *)dictionary modelClass:(Class)modelClass

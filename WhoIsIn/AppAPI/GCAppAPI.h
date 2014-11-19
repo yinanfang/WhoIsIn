@@ -74,6 +74,8 @@
 + (CGRect)getScreenBoundsDependOnOrientation;
 + (NSString *)getMD5StringWithString:(NSString *)string;
 + (UIView *)getFirstResponderFromView:(UIView *)view;
++ (void)shakeViewArray:(NSArray *)viewArray;
++ (void)shakeViewArray:(NSArray *)viewArray withDuration:(NSTimeInterval)duration completion:(void (^)())completion;
 
 #pragma mark - Mantle
 + (id)getMantleModelWithDictionary:(NSDictionary *)dictionary modelClass:(Class)modelClass;

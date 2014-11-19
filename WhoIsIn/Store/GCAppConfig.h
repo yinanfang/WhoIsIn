@@ -34,9 +34,9 @@
 #define CornerRadius_General        10.0f
 
 // Animation
-#define AnimationDuration_Short     0.25
-#define AnimationDelay_Short        0.25
-#define AnimationDelay_None         0
+#define kAnimationDuration_Short     0.25
+#define kAnimationDelay_Short        0.25
+#define kAnimationDelay_None         0
 
 
 // General Layout Metrics

@@ -32,6 +32,7 @@
 @property JVFloatLabeledTextField *entry_Gender;
 @property UIPickerView *picker_Gender;
 @property UIView *separator_Gender;
+@property UILabel *label_ErrorMessage;
 
 // Register Button
 @property FUIButton *btn_Register;
