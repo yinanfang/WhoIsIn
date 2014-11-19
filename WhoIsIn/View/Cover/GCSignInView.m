@@ -41,20 +41,18 @@
 //        self.view_LogIn.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:self.view_LogIn];
         // User name
-        self.entry_Username = [GCSignInView SignInViewTextFieldWithPlaceHolder:@"Email Login"];
+        self.entry_Username = [self addTextFieldWithPlaceHolder:@"Email Login"];
         self.entry_Username.returnKeyType = UIReturnKeyNext;
         self.entry_Username.tag = 1;
-        [self.view_LogIn addSubview:self.entry_Username];
         // Separator
         self.separator_Username = [[UIView alloc] init];
         self.separator_Username.backgroundColor = [GCAppAPI getColorWithRGBAinHex:WhiteFading];
         [self.view_LogIn addSubview:self.separator_Username];
         // Password
-        self.entry_Password = [GCSignInView SignInViewTextFieldWithPlaceHolder:@"Password"];
+        self.entry_Password = [self addTextFieldWithPlaceHolder:@"Password"];
         self.entry_Password.returnKeyType = UIReturnKeyGo;
         self.entry_Password.secureTextEntry = YES;
         self.entry_Password.tag = 2;
-        [self.view_LogIn addSubview:self.entry_Password];
         // Error Message
         self.label_ErrorMessage = [self addLabelTitleWithString:@""];
         
@@ -63,11 +61,9 @@
 //        self.view_Others.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:self.view_Others];
         // Register
-        self.btn_Register = [GCSignInView ButtonWithTitle:@"Register"];
-        [self.view_Others addSubview:self.btn_Register];
+        self.btn_Register = [self ButtonWithTitle:@"Register"];
         // Help Me
-        self.btn_HelpMe = [GCSignInView ButtonWithTitle:@"Help Me"];
-        [self.view_Others addSubview:self.btn_HelpMe];
+        self.btn_HelpMe = [self ButtonWithTitle:@"Help Me"];
     }
     return self;
 }
@@ -140,7 +136,7 @@
 }
 
 #pragma mark - Factory Methods
-+ (UITextField *)SignInViewTextFieldWithPlaceHolder:(NSString *)placeHolderString
+- (UITextField *)addTextFieldWithPlaceHolder:(NSString *)placeHolderString
 {
     UITextField *textField = [[UITextField alloc] init];
     textField.backgroundColor = [UIColor clearColor];
@@ -155,16 +151,18 @@
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.contentVerticalAlignment = UIControlContentHorizontalAlignmentLeft;
     textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [self.view_LogIn addSubview:textField];
     return textField;
 }
 
-+ (UIButton *)ButtonWithTitle:(NSString *)title
+- (UIButton *)ButtonWithTitle:(NSString *)title
 {
     UIButton *button = [[UIButton alloc] init];
     [button setTitleColor:[GCAppAPI getColorWithRGBAinHex:WhiteFading] forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont fontWithName:Font_Title size:FontSize_H1];
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [self.view_Others addSubview:button];
     return button;
 }
 

@@ -47,6 +47,13 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    // restore in case the animation continues after push to next page
+    [self restoreLoginPageLayout];
+    [super viewDidDisappear:animated];
+}
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }

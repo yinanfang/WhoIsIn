@@ -21,8 +21,9 @@
 + (void)getAppDataFromNSUserDefaultsAndUpdateViewModel;
 + (void)saveAppDataToNSUserDefaults;
 
-#pragma mark - Log In
+#pragma mark - Log In & Register
 + (void)loginWithCredential:(NSDictionary *)credential completion:(void (^)(BOOL succeeded))completion;
++ (void)registerWithCredential:(NSDictionary *)credential completion:(void (^)(BOOL succeeded))completion;
 + (void)enterMainContainerViewController:(UIViewController *)controller;
 
 #pragma mark - Fetch Data

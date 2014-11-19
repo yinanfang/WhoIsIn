@@ -65,16 +65,13 @@
     [defaults synchronize];
 }
 
-#pragma mark - Log In
+#pragma mark - Log In & Register
 + (void)loginWithCredential:(NSDictionary *)credential completion:(void (^)(BOOL succeeded))completion
 {
     DDLogVerbose(@"start to login...");
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
-    NSDictionary *parameter = @{
-                                @"method": @"login",
-                                @"email": credential[@"email"],
-                                @"password": credential[@"password"],
-                                };
+    NSMutableDictionary *parameter = [credential mutableCopy];
+    parameter[@"method"] = @"login";
     [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data) {
         if (succeeded) {
             NSDictionary *userDic = (NSDictionary *)data;
@@ -93,6 +90,38 @@
                 [GCAppViewModel sharedInstance].appData.currentUser = user;
                 completion(YES);
             }
+        }
+    }];
+}
+
++ (void)registerWithCredential:(NSDictionary *)credential completion:(void (^)(BOOL succeeded))completion
+{
+    DDLogVerbose(@"start to register...");
+    NSURL *url = [NSURL URLWithString:URLToServicePHP];
+    NSMutableDictionary *parameter = [credential mutableCopy];
+    parameter[@"method"] = @"signup";
+    [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data) {
+        if (succeeded) {
+            NSDictionary *dataDic = (NSDictionary *)data;
+            if ([dataDic[@"response"] isEqualToString:@"0"]) {
+                DDLogVerbose(@"Register failed!");
+                completion(NO);
+            } else if ([dataDic[@"response"] isEqualToString:@"1"]) {
+                DDLogVerbose(@"Register succeeded!");
+                // Get user object
+                
+//                // Init GCUser
+//                NSError *error = nil;
+//                GCUser *user = [MTLJSONAdapter modelOfClass:[GCUser class] fromJSONDictionary:userDic error:&error];
+//                DDLogVerbose(@"user object: %@", [user description]);
+//                if (error) {
+//                    DDLogWarn(@"Cannot generate GCUser model!!!");
+//                }
+//                [GCAppViewModel sharedInstance].appData.currentUser = user;
+//                completion(YES);
+                
+            }
+            
         }
     }];
 }

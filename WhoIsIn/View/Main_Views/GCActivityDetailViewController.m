@@ -28,24 +28,6 @@
         //        [self.navigationController pushViewController:registerViewController animated:YES];
     }];
     
-//    self.detailScrollView.bounds = CGRectMake(0.0f, 0.0f, ScreenWidth, ScreenHeight);
-//    [self.detailScrollView setNeedsLayout];
-//    [self.detailScrollView layoutIfNeeded];
-    // Assign Delegates
-//    self.registerView.entry_Email.delegate = self;
-//    self.registerView.entry_Password.delegate = self;
-//    self.registerView.entry_Firstname.delegate = self;
-//    self.registerView.entry_LastName.delegate = self;
-//    self.registerView.entry_PhoneNumber.delegate = self;
-//    self.registerView.entry_Gender.delegate = self;
-    
-    // Register Button
-//    [[self.registerView.btn_Register rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//        NSLog(@"Register button tapped");
-//        //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
-//        //        [self.navigationController pushViewController:registerViewController animated:YES];
-//    }];
-    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

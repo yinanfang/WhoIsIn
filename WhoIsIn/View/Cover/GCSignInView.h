@@ -36,9 +36,6 @@
 #pragma mark -  Method
 - (instancetype)initWithParentController:(GCSignInViewController *)controller;
 
-// Factory Method
-+ (UITextField *)SignInViewTextFieldWithPlaceHolder:(NSString *)placeHolder;
-+ (UIButton *)ButtonWithTitle:(NSString *)title;
 
 
 @end

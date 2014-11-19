@@ -41,10 +41,13 @@
 //        BOOL isValidInput = [self isValidInput];
         if (isValidInput) {
             DDLogVerbose(@"Input format correct! Start Register process...");
+            
+            
+            
             // Not found, so remove keyboard.
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC), dispatch_get_main_queue(), ^{
 //                [self registerUser];
-            });
+//            });
         }
 //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
 //        [self.navigationController pushViewController:registerViewController animated:YES];
