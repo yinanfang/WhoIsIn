@@ -82,7 +82,7 @@
                       @"origin": @"35.749087,-78.885771",
                       @"showExpired": @"1",
                       };
-        [GCAppViewModel getCurrentActivitiesWithParameter:parameter completion:^(BOOL succeeded) {
+        [GCAppViewModel getEventsWithParameter:parameter completion:^(BOOL succeeded) {
             if (succeeded) {
                 [self.activityTableView reloadData];
             }
@@ -108,7 +108,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[GCAppViewModel sharedInstance].sortedActivities count];
+    return [[GCAppViewModel sharedInstance].sortedEvent count];
 }
 
 
@@ -149,13 +149,13 @@
 
 - (void)configureCellContent:(GCActivityTableViewCell *)cell atRow:(NSInteger)row
 {
-    GCActivity *activity = (GCActivity *)[GCAppViewModel sharedInstance].sortedActivities[row];
+    GCEvent *event = (GCEvent *)[GCAppViewModel sharedInstance].sortedEvent[row];
 //    DDLogVerbose(@"%@", activity);
-    cell.label_timeStart.text = [[GCActivityController dateFormatter] stringFromDate:activity.timeStart];
-    cell.label_distanceText.text = activity.distanceString;
-    cell.label_title.text = activity.activityTitle;
-    cell.label_participantAndWatcher.text = [NSString stringWithFormat:@"%@ going, %@ watching", activity.countParticipants, activity.countWatch];
-    cell.label_location.text = activity.locationString;
+    cell.label_timeStart.text = [[GCActivityController dateFormatter] stringFromDate:event.timeToStart];
+    cell.label_distanceText.text = event.distanceString;
+    cell.label_title.text = event.eventTitle;
+    cell.label_participantAndWatcher.text = [NSString stringWithFormat:@"%@ going, %@ watching", event.countParticipants, event.countWatch];
+    cell.label_location.text = event.locationString;
     
 }
 

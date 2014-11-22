@@ -43,7 +43,7 @@
 #import <Tweaks/FBTweak.h>
 
 // Data Model
-#import "GCActivity.h"
+#import "GCEvent.h"
 #import "GCUser.h"
 #import "GCAppData.h"
 

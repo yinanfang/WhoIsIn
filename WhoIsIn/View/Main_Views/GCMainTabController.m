@@ -22,15 +22,15 @@
         // Empty Frame Initialization
         UINavigationController *navigationController01 = [[UINavigationController alloc] init];
         self.activityController = [[GCActivityController alloc] init];
-        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Nearby Activities"];
-        navigationController01.tabBarItem.title = @"Activity";
+        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Nearby Event"];
+        navigationController01.tabBarItem.title = @"All Events";
 //        navigationController01.tabBarItem.image = [UIImage imageNamed:@"leaf"];
         navigationController01.viewControllers = [NSArray arrayWithObjects:self.activityController, nil];
         
         UINavigationController *navigationController02 = [[UINavigationController alloc] init];
         self.userInfoController = [[GCUserInfoController alloc] init];
-        [GCAppSetup configureNavigationViewController:self.userInfoController withNavigationTitle:@"Signed up activities"];
-        navigationController02.tabBarItem.title = @"My Activity";
+        [GCAppSetup configureNavigationViewController:self.userInfoController withNavigationTitle:@"My Events"];
+        navigationController02.tabBarItem.title = @"My Events";
         navigationController02.viewControllers = [NSArray arrayWithObjects:self.userInfoController, nil];
         
         UINavigationController *navigationController03 = [[UINavigationController alloc] init];

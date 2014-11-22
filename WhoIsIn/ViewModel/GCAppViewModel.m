@@ -30,7 +30,7 @@
     if (self) {
         // Initialize values
         self.appData = [[GCAppData alloc] init];
-        self.sortedActivities = [[NSMutableArray alloc] init];
+        self.sortedEvent = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -133,22 +133,22 @@
 }
 
 #pragma mark - Fetch Data
-+ (void)getCurrentActivitiesWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion
++ (void)getEventsWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion
 {
     DDLogVerbose(@"getCurrentActivities");
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
     [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data){
         if (succeeded) {
-            DDLogVerbose(@"Generating GCAvtivity object...");
+            DDLogVerbose(@"Generating GCEvent object...");
             NSError *error;
             NSArray *jsonArray = (NSArray *)data;
-            NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:jsonArray error:&error];
-            [GCAppViewModel sharedInstance].sortedActivities = [activities mutableCopy];
+            NSArray *eventArray = [MTLJSONAdapter modelsOfClass:[GCEvent class] fromJSONArray:jsonArray error:&error];
+            [GCAppViewModel sharedInstance].sortedEvent = [eventArray mutableCopy];
             if (error) {
-                DDLogVerbose(@"Couldn't convert JSON to GCActivity models: %@", error);
+                DDLogVerbose(@"Couldn't convert JSON to GCEvent models: %@", error);
             }
-            DDLogVerbose(@"activities new value: %@", activities);
-            DDLogVerbose(@"activities new count: %lu", (unsigned long)[activities count]);
+            DDLogVerbose(@"activities new value: %@", eventArray);
+            DDLogVerbose(@"activities new count: %lu", (unsigned long)[eventArray count]);
             completion(YES);
 
             // Generate using Dictionary

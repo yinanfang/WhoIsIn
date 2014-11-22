@@ -24,20 +24,20 @@
         [self addSubview:self.contentView];
         
         // Corresponding GCActivity
-        GCActivity *activity = (GCActivity *)[GCAppViewModel sharedInstance].sortedActivities[self.parentController.activityNumber];
+        GCEvent *event = (GCEvent *)[GCAppViewModel sharedInstance].sortedEvent[self.parentController.activityNumber];
         
         // Title in Bold
-        self.label_title = [self addLabelTitleWithString:activity.activityTitle bold:NO fontSize:kDetailViewFontSizeLarge];
+        self.label_title = [self addLabelTitleWithString:event.eventTitle bold:NO fontSize:kDetailViewFontSizeLarge];
         
         // Host
-        self.label_host = [self addLabelTitleWithString:[NSString stringWithFormat:@"Hosted by %@ %@", activity.nameFirst, activity.nameLast] bold:NO fontSize:kDetailViewFontSizeSmall];
+        self.label_host = [self addLabelTitleWithString:[NSString stringWithFormat:@"Hosted by %@ %@", event.nameFirst, event.nameLast] bold:NO fontSize:kDetailViewFontSizeSmall];
         // Start Time
-        self.label_timeStart = [self addLabelTitleWithString:[[GCActivityDetailScrollView dateFormatter] stringFromDate:activity.timeStart] bold:NO fontSize:kDetailViewFontSizeSmall];
+        self.label_timeStart = [self addLabelTitleWithString:[[GCActivityDetailScrollView dateFormatter] stringFromDate:event.timeToStart] bold:NO fontSize:kDetailViewFontSizeSmall];
         // Location
-        self.label_location = [self addLabelTitleWithString:activity.locationString bold:NO fontSize:kDetailViewFontSizeSmall];
+        self.label_location = [self addLabelTitleWithString:event.locationString bold:NO fontSize:kDetailViewFontSizeSmall];
         self.label_location.textColor = [UIColor lightGrayColor];
         // Distance in text
-        self.label_distanceText = [self addLabelTitleWithString:activity.distanceString bold:NO fontSize:kDetailViewFontSizeSmall];
+        self.label_distanceText = [self addLabelTitleWithString:event.distanceString bold:NO fontSize:kDetailViewFontSizeSmall];
         self.label_distanceText.textColor = [UIColor lightGrayColor];
         
         // Buttons
@@ -53,7 +53,7 @@
         self.separator01 = [self addSeparator];
         
         // Description
-        self.textviewDescription = [self addTextViewWithString:activity.activityDescription];
+        self.textviewDescription = [self addTextViewWithString:event.eventDescription];
         
         // Map View
         self.mapView = [self addMapView];

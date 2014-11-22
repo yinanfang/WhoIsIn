@@ -14,7 +14,7 @@
 + (GCAppViewModel *)sharedInstance;
 
 // App Data
-@property NSMutableArray *sortedActivities;
+@property NSMutableArray *sortedEvent;
 @property GCAppData *appData;
 
 #pragma mark - App data
@@ -27,7 +27,7 @@
 + (void)enterMainContainerViewController:(UIViewController *)controller;
 
 #pragma mark - Fetch Data
-+ (void)getCurrentActivitiesWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
++ (void)getEventsWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
 
 
 @end

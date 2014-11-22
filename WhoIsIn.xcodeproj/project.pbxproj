@@ -26,7 +26,6 @@
 		D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998519FD28C200BEECA8 /* GCAccountController.m */; };
 		D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998B19FD32E400BEECA8 /* GCActivityController.m */; };
 		D476998F19FD37E100BEECA8 /* leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = D476998E19FD37E100BEECA8 /* leaf.png */; };
-		D476999319FD43FC00BEECA8 /* GCActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = D476999219FD43FC00BEECA8 /* GCActivity.m */; };
 		D4C767DF19F457C9005B2683 /* GCAppViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767DE19F457C9005B2683 /* GCAppViewModel.m */; };
 		D4C767E319F461C3005B2683 /* GCMainContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767E219F461C3005B2683 /* GCMainContainerViewController.m */; };
 		D4C767EC19F461F5005B2683 /* GCRegisterScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767E519F461F5005B2683 /* GCRegisterScrollView.m */; };
@@ -35,6 +34,7 @@
 		D4C767EF19F461F5005B2683 /* GCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C767EB19F461F5005B2683 /* GCSignInViewController.m */; };
 		D4F070F31A201325008843C4 /* GCSortControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F070F21A201325008843C4 /* GCSortControlViewController.m */; };
 		D4F070F71A2015A9008843C4 /* GCActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F070F61A2015A9008843C4 /* GCActivityTableViewController.m */; };
+		D4F070FD1A201F11008843C4 /* GCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F070FC1A201F11008843C4 /* GCEvent.m */; };
 		D4F2077F1A06DE40009351CC /* GCActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */; };
 		D4F777E419F410630061F62C /* GCAppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777DF19F410630061F62C /* GCAppAPI.m */; };
 		D4F777E519F410630061F62C /* GCAppSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F777E119F410630061F62C /* GCAppSetup.m */; };
@@ -91,8 +91,6 @@
 		D476998A19FD32E400BEECA8 /* GCActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityController.h; path = View/Main_Views/GCActivityController.h; sourceTree = "<group>"; };
 		D476998B19FD32E400BEECA8 /* GCActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityController.m; path = View/Main_Views/GCActivityController.m; sourceTree = "<group>"; };
 		D476998E19FD37E100BEECA8 /* leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf.png; sourceTree = "<group>"; };
-		D476999119FD43FC00BEECA8 /* GCActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivity.h; path = Model/GCActivity.h; sourceTree = "<group>"; };
-		D476999219FD43FC00BEECA8 /* GCActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivity.m; path = Model/GCActivity.m; sourceTree = "<group>"; };
 		D4C767DD19F457C9005B2683 /* GCAppViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAppViewModel.h; path = ViewModel/GCAppViewModel.h; sourceTree = "<group>"; };
 		D4C767DE19F457C9005B2683 /* GCAppViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCAppViewModel.m; path = ViewModel/GCAppViewModel.m; sourceTree = "<group>"; };
 		D4C767E119F461C3005B2683 /* GCMainContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCMainContainerViewController.h; path = View/Main_Views/GCMainContainerViewController.h; sourceTree = "<group>"; };
@@ -109,6 +107,8 @@
 		D4F070F21A201325008843C4 /* GCSortControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSortControlViewController.m; path = View/Main_Views/GCSortControlViewController.m; sourceTree = "<group>"; };
 		D4F070F51A2015A9008843C4 /* GCActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityTableViewController.h; path = View/Main_Views/GCActivityTableViewController.h; sourceTree = "<group>"; };
 		D4F070F61A2015A9008843C4 /* GCActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityTableViewController.m; path = View/Main_Views/GCActivityTableViewController.m; sourceTree = "<group>"; };
+		D4F070FB1A201F11008843C4 /* GCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCEvent.h; path = Model/GCEvent.h; sourceTree = "<group>"; };
+		D4F070FC1A201F11008843C4 /* GCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCEvent.m; path = Model/GCEvent.m; sourceTree = "<group>"; };
 		D4F2077D1A06DE40009351CC /* GCActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityTableViewCell.h; path = View/Main_Views/GCActivityTableViewCell.h; sourceTree = "<group>"; };
 		D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityTableViewCell.m; path = View/Main_Views/GCActivityTableViewCell.m; sourceTree = "<group>"; };
 		D4F777DE19F410630061F62C /* GCAppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAppAPI.h; sourceTree = "<group>"; };
@@ -279,6 +279,8 @@
 				D4F070F21A201325008843C4 /* GCSortControlViewController.m */,
 				D4F070F51A2015A9008843C4 /* GCActivityTableViewController.h */,
 				D4F070F61A2015A9008843C4 /* GCActivityTableViewController.m */,
+				D4F2077D1A06DE40009351CC /* GCActivityTableViewCell.h */,
+				D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */,
 			);
 			name = "Base & Control";
 			sourceTree = "<group>";
@@ -288,8 +290,6 @@
 			children = (
 				D476998A19FD32E400BEECA8 /* GCActivityController.h */,
 				D476998B19FD32E400BEECA8 /* GCActivityController.m */,
-				D4F2077D1A06DE40009351CC /* GCActivityTableViewCell.h */,
-				D4F2077E1A06DE40009351CC /* GCActivityTableViewCell.m */,
 				D40F168D1A0E7F13008AB059 /* GCActivityDetailViewController.h */,
 				D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */,
 				D40F16901A0E7F4A008AB059 /* GCActivityDetailScrollView.h */,
@@ -330,8 +330,8 @@
 			children = (
 				D40F16811A0D997C008AB059 /* GCAppData.h */,
 				D40F16821A0D997C008AB059 /* GCAppData.m */,
-				D476999119FD43FC00BEECA8 /* GCActivity.h */,
-				D476999219FD43FC00BEECA8 /* GCActivity.m */,
+				D4F070FB1A201F11008843C4 /* GCEvent.h */,
+				D4F070FC1A201F11008843C4 /* GCEvent.m */,
 				D40F167E1A0D92C0008AB059 /* GCUser.h */,
 				D40F167F1A0D92C0008AB059 /* GCUser.m */,
 			);
@@ -512,8 +512,8 @@
 				D4C767EE19F461F5005B2683 /* GCSignInView.m in Sources */,
 				D40F16801A0D92C0008AB059 /* GCUser.m in Sources */,
 				D40F16861A0DB044008AB059 /* GCRecycledCode.m in Sources */,
-				D476999319FD43FC00BEECA8 /* GCActivity.m in Sources */,
 				D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */,
+				D4F070FD1A201F11008843C4 /* GCEvent.m in Sources */,
 				D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */,
 				D40F168F1A0E7F13008AB059 /* GCActivityDetailViewController.m in Sources */,
 				D4F2077F1A06DE40009351CC /* GCActivityTableViewCell.m in Sources */,
