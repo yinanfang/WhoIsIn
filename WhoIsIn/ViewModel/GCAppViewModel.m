@@ -139,25 +139,36 @@
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
     [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data){
         if (succeeded) {
+            DDLogVerbose(@"Generating GCAvtivity object...");
             NSError *error;
-            NSDictionary *jsonDictionary = (NSDictionary *)data;
-            NSMutableArray *sortedActivities = [GCAppViewModel sharedInstance].sortedActivities;
-            NSInteger count = [jsonDictionary count];
-            NSString *countString;
-            DDLogVerbose(@"Generating %li new GCAvtivity object...", (long)count);
-            for (NSInteger i = 0; i < count; i++) {
-                countString = [NSString stringWithFormat:@"%li", (long)i];
-                GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:jsonDictionary[countString] error:&error];
-                if (error) {
-                    DDLogVerbose(@"Error generating GCActivity: %@", error);
-                } else {
-                    DDLogVerbose(@"activity item: %@", activity);
-                    [sortedActivities addObject:activity];
-                }
+            NSArray *jsonArray = (NSArray *)data;
+            NSArray *activities = [MTLJSONAdapter modelsOfClass:[GCActivity class] fromJSONArray:jsonArray error:&error];
+            [GCAppViewModel sharedInstance].sortedActivities = [activities mutableCopy];
+            if (error) {
+                DDLogVerbose(@"Couldn't convert JSON to GCActivity models: %@", error);
             }
-            DDLogVerbose(@"sortedActivities value: %@", sortedActivities);
-            DDLogVerbose(@"sortedActivities count: %lu", (unsigned long)[sortedActivities count]);
+            DDLogVerbose(@"activities new value: %@", activities);
+            DDLogVerbose(@"activities new count: %lu", (unsigned long)[activities count]);
             completion(YES);
+
+            // Generate using Dictionary
+//            NSDictionary *jsonDictionary = (NSDictionary *)data;
+//            NSMutableArray *sortedActivities = [GCAppViewModel sharedInstance].sortedActivities;
+//            NSInteger count = [jsonDictionary count];
+//            NSString *countString;
+//            DDLogVerbose(@"Generating %li new GCAvtivity object...", (long)count);
+//            for (NSInteger i = 0; i < count; i++) {
+//                countString = [NSString stringWithFormat:@"%li", (long)i];
+//                GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:jsonDictionary[countString] error:&error];
+//                if (error) {
+//                    DDLogVerbose(@"Error generating GCActivity: %@", error);
+//                } else {
+//                    DDLogVerbose(@"activity item: %@", activity);
+//                    [sortedActivities addObject:activity];
+//                }
+//            }
+//            DDLogVerbose(@"sortedActivities value: %@", sortedActivities);
+//            DDLogVerbose(@"sortedActivities count: %lu", (unsigned long)[sortedActivities count]);
         }
     }];
 }
