@@ -100,5 +100,11 @@ typedef NS_ENUM(NSInteger, PagePaddingOption) {
 };
 //@property StoryDisplayStyleMode storyDisplayStyleMode;
 
+#pragma mark - Events Sorted by
+typedef NS_ENUM(NSInteger, EventSortMethod) {
+    EventSortedByDistance,
+    EventSortedByAllTime,
+    EventSortedByUpComing,
+};
 
 @end

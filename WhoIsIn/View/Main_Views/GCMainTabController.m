@@ -20,12 +20,20 @@
         self.parentController = controller;
         
         // Empty Frame Initialization
+//        UINavigationController *navigationController01 = [[UINavigationController alloc] init];
+//        self.activityController = [[GCActivityController alloc] init];
+//        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Nearby Events"];
+//        navigationController01.tabBarItem.title = @"All Events";
+////        navigationController01.tabBarItem.image = [UIImage imageNamed:@"leaf"];
+//        navigationController01.viewControllers = [NSArray arrayWithObjects:self.activityController, nil];
+        
         UINavigationController *navigationController01 = [[UINavigationController alloc] init];
-        self.activityController = [[GCActivityController alloc] init];
-        [GCAppSetup configureNavigationViewController:self.activityController withNavigationTitle:@"Nearby Event"];
+        self.allEventController = [[GCAllEventViewController alloc] init];
+        [GCAppSetup configureNavigationViewController:self.allEventController withNavigationTitle:@"Nearby Events"];
         navigationController01.tabBarItem.title = @"All Events";
-//        navigationController01.tabBarItem.image = [UIImage imageNamed:@"leaf"];
-        navigationController01.viewControllers = [NSArray arrayWithObjects:self.activityController, nil];
+        //        navigationController01.tabBarItem.image = [UIImage imageNamed:@"leaf"];
+        navigationController01.viewControllers = [NSArray arrayWithObjects:self.allEventController, nil];
+
         
         UINavigationController *navigationController02 = [[UINavigationController alloc] init];
         self.userInfoController = [[GCUserInfoController alloc] init];

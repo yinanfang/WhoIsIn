@@ -1,5 +1,5 @@
 //
-//  GCSortControlViewController.h
+//  GCEventTableViewController.h
 //  WhoIsIn
 //
 //  Created by Golden Compass on 11/21/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GCSortControlViewController : UIViewController
+@interface GCEventTableViewController : UITableViewController
 
 #pragma mark - Self
 @property UIViewController *parentController;

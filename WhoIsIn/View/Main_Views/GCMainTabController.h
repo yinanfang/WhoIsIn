@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @class GCMainContainerViewController;
+#import "GCAllEventViewController.h"
+
+
 #import "GCActivityController.h"
 #import "GCUserInfoController.h"
 #import "GCAccountController.h"
@@ -16,6 +19,9 @@
 
 // Self
 @property GCMainContainerViewController *parentController;
+@property GCAllEventViewController *allEventController;
+
+
 @property GCActivityController *activityController;
 @property GCUserInfoController *userInfoController;
 @property GCAccountController *accountController;

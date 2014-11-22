@@ -70,7 +70,7 @@
 // Overwrite setting in the Summary/Info.plist
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
-    DDLogVerbose(@"supportedInterfaceOrientationsForWindow");
+//    DDLogVerbose(@"supportedInterfaceOrientationsForWindow");
     return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft;
 }
 

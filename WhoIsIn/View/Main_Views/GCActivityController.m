@@ -17,7 +17,9 @@
     [super viewDidLoad];
     // Initialize Variables
 
-//    self.view.backgroundColor = [UIColor blueColor];
+
+    
+    
     
     // Activity Scroll View
     self.activityTableView = [[UITableView alloc] init];
