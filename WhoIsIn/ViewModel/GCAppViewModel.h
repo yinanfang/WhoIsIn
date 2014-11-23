@@ -14,8 +14,9 @@
 + (GCAppViewModel *)sharedInstance;
 
 // App Data
-@property NSMutableArray *sortedEvent;
 @property GCAppData *appData;
+@property NSMutableArray *sortedEventsBasics;
+//@property 
 
 #pragma mark - App data
 + (void)getAppDataFromNSUserDefaultsAndUpdateViewModel;

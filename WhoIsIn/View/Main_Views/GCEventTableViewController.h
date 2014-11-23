@@ -13,9 +13,12 @@
 #pragma mark - Self
 @property UIViewController *parentController;
 
+@property GCEventSortMethod eventSortMethod;
+@property NSMutableArray *sortedEvents;
 
 #pragma mark - Method
 - (instancetype)initWithParentController:(UIViewController *)controller;
+- (void)reloadData;
 
 
 @end

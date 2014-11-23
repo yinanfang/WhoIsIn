@@ -53,7 +53,7 @@
     
 }
 
--(void)segmentAction:(id)sender {
+- (void)segmentAction:(id)sender {
     NSLog(@"Segment control changed to: %@",[self.sortControl titleForSegmentAtIndex:[self.sortControl selectedSegmentIndex]]);
     
     // do something based on segment control selection...
@@ -61,7 +61,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    DDLogInfo(@"viewWillAppear");
     // Navigation Control
     self.navigationController.navigationBar.barTintColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
     self.navigationController.navigationBar.hidden = NO;
@@ -110,7 +109,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[GCAppViewModel sharedInstance].sortedEvent count];
+    return [[GCAppViewModel sharedInstance].sortedEventsBasics count];
 }
 
 
@@ -151,7 +150,7 @@
 
 - (void)configureCellContent:(GCActivityTableViewCell *)cell atRow:(NSInteger)row
 {
-    GCEvent *event = (GCEvent *)[GCAppViewModel sharedInstance].sortedEvent[row];
+    GCEvent *event = (GCEvent *)[GCAppViewModel sharedInstance].sortedEventsBasics[row];
 //    DDLogVerbose(@"%@", activity);
     cell.label_timeStart.text = [[GCActivityController dateFormatter] stringFromDate:event.timeToStart];
     cell.label_distanceText.text = event.distanceString;

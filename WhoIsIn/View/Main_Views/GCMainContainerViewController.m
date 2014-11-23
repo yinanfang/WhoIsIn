@@ -29,7 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    DDLogInfo(@"viewWillAppear");
+//    DDLogInfo(@"viewWillAppear");
     // Hide the navigation bar of the navigation controller created in App Delegate
     self.navigationController.navigationBar.hidden = YES;
     [super viewWillAppear:animated];

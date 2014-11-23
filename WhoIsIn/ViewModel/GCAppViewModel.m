@@ -30,7 +30,7 @@
     if (self) {
         // Initialize values
         self.appData = [[GCAppData alloc] init];
-        self.sortedEvent = [[NSMutableArray alloc] init];
+        self.sortedEventsBasics = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -143,11 +143,11 @@
             NSError *error;
             NSArray *jsonArray = (NSArray *)data;
             NSArray *eventArray = [MTLJSONAdapter modelsOfClass:[GCEvent class] fromJSONArray:jsonArray error:&error];
-            [GCAppViewModel sharedInstance].sortedEvent = [eventArray mutableCopy];
+            [GCAppViewModel sharedInstance].sortedEventsBasics = [eventArray mutableCopy];
             if (error) {
                 DDLogVerbose(@"Couldn't convert JSON to GCEvent models: %@", error);
             }
-            DDLogVerbose(@"activities new value: %@", eventArray);
+//            DDLogVerbose(@"activities new value: %@", eventArray);
             DDLogVerbose(@"activities new count: %lu", (unsigned long)[eventArray count]);
             completion(YES);
 

@@ -24,7 +24,7 @@
         [self addSubview:self.contentView];
         
         // Corresponding GCActivity
-        GCEvent *event = (GCEvent *)[GCAppViewModel sharedInstance].sortedEvent[self.parentController.activityNumber];
+        GCEvent *event = (GCEvent *)[GCAppViewModel sharedInstance].sortedEventsBasics[self.parentController.activityNumber];
         
         // Title in Bold
         self.label_title = [self addLabelTitleWithString:event.eventTitle bold:NO fontSize:kDetailViewFontSizeLarge];

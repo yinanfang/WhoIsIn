@@ -13,6 +13,11 @@
 #pragma mark - Self
 @property UIViewController *parentController;
 
+// Segment Control
+@property UISegmentedControl *sortControl;
+
+
+
 
 #pragma mark - Method
 - (instancetype)initWithParentController:(UIViewController *)controller;
