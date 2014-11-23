@@ -15,7 +15,9 @@
 
 // App Data
 @property GCAppData *appData;
-@property NSMutableArray *sortedEventsBasics;
+@property NSMutableArray *sortedEventsBasicsAll;
+@property NSMutableArray *sortedEventsBasicsMy;
+
 //@property 
 
 #pragma mark - App data
@@ -28,7 +30,8 @@
 + (void)enterMainContainerViewController:(UIViewController *)controller;
 
 #pragma mark - Fetch Data
-+ (void)getEventsWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
++ (void)getEventsAllWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
++ (void)getEventsMyWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
 
 
 @end

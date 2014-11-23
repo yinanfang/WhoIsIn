@@ -13,6 +13,28 @@
 @end
 
 
+
+// Generate using Dictionary
+//            NSDictionary *jsonDictionary = (NSDictionary *)data;
+//            NSMutableArray *sortedActivities = [GCAppViewModel sharedInstance].sortedActivities;
+//            NSInteger count = [jsonDictionary count];
+//            NSString *countString;
+//            DDLogVerbose(@"Generating %li new GCAvtivity object...", (long)count);
+//            for (NSInteger i = 0; i < count; i++) {
+//                countString = [NSString stringWithFormat:@"%li", (long)i];
+//                GCActivity *activity = [MTLJSONAdapter modelOfClass:[GCActivity class] fromJSONDictionary:jsonDictionary[countString] error:&error];
+//                if (error) {
+//                    DDLogVerbose(@"Error generating GCActivity: %@", error);
+//                } else {
+//                    DDLogVerbose(@"activity item: %@", activity);
+//                    [sortedActivities addObject:activity];
+//                }
+//            }
+//            DDLogVerbose(@"sortedActivities value: %@", sortedActivities);
+//            DDLogVerbose(@"sortedActivities count: %lu", (unsigned long)[sortedActivities count]);
+
+
+
 /*
  >>>>>>>>>>>>>>>>>>>>>
     hide text field

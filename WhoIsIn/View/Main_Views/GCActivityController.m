@@ -83,7 +83,7 @@
                       @"origin": @"35.749087,-78.885771",
                       @"showExpired": @"1",
                       };
-        [GCAppViewModel getEventsWithParameter:parameter completion:^(BOOL succeeded) {
+        [GCAppViewModel getEventsAllWithParameter:parameter completion:^(BOOL succeeded) {
             if (succeeded) {
                 [self.activityTableView reloadData];
             }
@@ -109,7 +109,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[GCAppViewModel sharedInstance].sortedEventsBasics count];
+    return [[GCAppViewModel sharedInstance].sortedEventsBasicsAll count];
 }
 
 
@@ -150,7 +150,7 @@
 
 - (void)configureCellContent:(GCActivityTableViewCell *)cell atRow:(NSInteger)row
 {
-    GCEventBasics *event = (GCEventBasics *)[GCAppViewModel sharedInstance].sortedEventsBasics[row];
+    GCEventBasics *event = (GCEventBasics *)[GCAppViewModel sharedInstance].sortedEventsBasicsAll[row];
 //    DDLogVerbose(@"%@", activity);
     cell.label_timeStart.text = [[GCActivityController dateFormatter] stringFromDate:event.timeToStart];
     cell.label_distanceText.text = event.distanceString;

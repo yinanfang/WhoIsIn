@@ -23,9 +23,12 @@
         // General Configuration
         self.eventSortMethod = EventSortedByDistance;
         self.hasSortBar = YES;
+//        self.sortedEventsBasics = [[NSMutableArray alloc] init];
         
         // Configure table
         [self.tableView registerClass:[GCEventTableViewCell class] forCellReuseIdentifier: CellIdentifierForActivityTableViewCell];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
         self.tableView.backgroundColor =[UIColor whiteColor];
         self.tableView.separatorInset = UIEdgeInsetsZero;
 //        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -49,12 +52,13 @@
     [self.view mas_makeConstraints:^(MASConstraintMaker *make) {
         if (self.hasSortBar) {
             make.top.equalTo(self.parentController.view.mas_top).with.offset(topOffset+sortBarHeight);
+            make.bottom.equalTo(self.parentController.view.mas_bottom).with.offset(-bottomOffset);
         } else {
             make.top.equalTo(self.parentController.view.mas_top);
+            make.bottom.equalTo(self.parentController.view.mas_bottom);
         }
         make.left.equalTo(self.parentController.view.mas_left);
         make.right.equalTo(self.parentController.view.mas_right);
-        make.bottom.equalTo(self.parentController.view.mas_bottom).with.offset(-bottomOffset);
     }];
     [super updateViewConstraints];
 }
@@ -62,7 +66,7 @@
 - (void)reloadData
 {
     // Reload table data
-    DDLogVerbose(@"GCEventTableViewController reloadData with #%lu sorted Events", (unsigned long)[[GCAppViewModel sharedInstance].sortedEventsBasics count]);
+    DDLogVerbose(@"GCEventTableViewController reloadData with #%lu sorted Events", (unsigned long)[self.sortedEventsBasics count]);
     [self.tableView reloadData];
     
     // End the refreshing
@@ -86,7 +90,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[GCAppViewModel sharedInstance].sortedEventsBasics count];
+    return [self.sortedEventsBasics count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,7 +130,7 @@
 
 - (void)configureCellContent:(GCEventTableViewCell *)cell atRow:(NSInteger)row
 {
-    GCEventBasics *event = (GCEventBasics *)[GCAppViewModel sharedInstance].sortedEventsBasics[row];
+    GCEventBasics *event = (GCEventBasics *)self.sortedEventsBasics[row];
 //    DDLogVerbose(@"%@", event);
     cell.label_timeStart.text = [[GCAppAPI dateFormatter01] stringFromDate:event.timeToStart];
     cell.label_distanceText.text = event.distanceString;

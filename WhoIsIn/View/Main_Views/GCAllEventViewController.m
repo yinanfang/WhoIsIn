@@ -78,9 +78,9 @@
     }
     
     
-    [GCAppViewModel getEventsWithParameter:parameter completion:^(BOOL succeeded) {
+    [GCAppViewModel getEventsAllWithParameter:parameter completion:^(BOOL succeeded) {
         if (succeeded) {
-//            self.eventTableViewController.sortedEventsBasics = [GCAppViewModel sharedInstance].sortedEventsBasics;
+            self.eventTableViewController.sortedEventsBasics = [GCAppViewModel sharedInstance].sortedEventsBasicsAll;
             [self.eventTableViewController reloadData];
         }
     }];

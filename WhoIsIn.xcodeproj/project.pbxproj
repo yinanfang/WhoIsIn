@@ -303,6 +303,10 @@
 				D4B6044D1A2198CE008F3C8F /* GCEventDetailViewController.m */,
 				D4B6044F1A2198E8008F3C8F /* GCEventDetailScrollView.h */,
 				D4B604501A2198E8008F3C8F /* GCEventDetailScrollView.m */,
+				D40F168D1A0E7F13008AB059 /* GCActivityDetailViewController.h */,
+				D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */,
+				D40F16901A0E7F4A008AB059 /* GCActivityDetailScrollView.h */,
+				D40F16911A0E7F4A008AB059 /* GCActivityDetailScrollView.m */,
 			);
 			name = "Base & Control";
 			sourceTree = "<group>";
@@ -365,10 +369,6 @@
 				D476998B19FD32E400BEECA8 /* GCActivityController.m */,
 				D49055B51A2185090081FB68 /* GCActivityTableViewCell.h */,
 				D49055B61A2185090081FB68 /* GCActivityTableViewCell.m */,
-				D40F168D1A0E7F13008AB059 /* GCActivityDetailViewController.h */,
-				D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */,
-				D40F16901A0E7F4A008AB059 /* GCActivityDetailScrollView.h */,
-				D40F16911A0E7F4A008AB059 /* GCActivityDetailScrollView.m */,
 				D476998119FD28B000BEECA8 /* GCUserInfoController.h */,
 				D476998219FD28B000BEECA8 /* GCUserInfoController.m */,
 			);

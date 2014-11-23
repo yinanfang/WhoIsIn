@@ -19,6 +19,7 @@
     self.eventTableViewController = [[GCEventTableViewController alloc] initWithParentController:self];
     self.eventTableViewController.eventSortMethod = EventSortedByAllTime;
     self.eventTableViewController.hasSortBar = NO;
+    self.eventTableViewController.sortedEventsBasics = [GCAppViewModel sharedInstance].sortedEventsBasicsMy;
     [self addChildViewController:self.eventTableViewController];
     [self.view addSubview:self.eventTableViewController.view];
     [self.eventTableViewController didMoveToParentViewController:self];
@@ -58,9 +59,9 @@
     }
     
     
-    [GCAppViewModel getEventsWithParameter:parameter completion:^(BOOL succeeded) {
+    [GCAppViewModel getEventsMyWithParameter:parameter completion:^(BOOL succeeded) {
         if (succeeded) {
-            //            self.eventTableViewController.sortedEventsBasics = [GCAppViewModel sharedInstance].sortedEventsBasics;
+            self.eventTableViewController.sortedEventsBasics = [GCAppViewModel sharedInstance].sortedEventsBasicsMy;
             [self.eventTableViewController reloadData];
         }
     }];
