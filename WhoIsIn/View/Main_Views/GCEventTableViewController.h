@@ -15,7 +15,6 @@
 
 @property GCEventSortMethod eventSortMethod;
 @property BOOL hasSortBar;
-//@property NSMutableArray *sortedEventsBasics;
 
 #pragma mark - Method
 - (instancetype)initWithParentController:(UIViewController *)controller;

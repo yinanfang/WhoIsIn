@@ -8,6 +8,7 @@
 
 #import "GCEventTableViewController.h"
 #import "GCEventTableViewCell.h"
+#import "GCEventDetailViewController.h"
 
 @implementation GCEventTableViewController
 
@@ -49,7 +50,7 @@
         if (self.hasSortBar) {
             make.top.equalTo(self.parentController.view.mas_top).with.offset(topOffset+sortBarHeight);
         } else {
-            make.top.equalTo(self.parentController.view.mas_top).with.offset(topOffset);
+            make.top.equalTo(self.parentController.view.mas_top);
         }
         make.left.equalTo(self.parentController.view.mas_left);
         make.right.equalTo(self.parentController.view.mas_right);
@@ -90,7 +91,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DDLogVerbose(@"cellForRowAtIndexPath...");
+//    DDLogVerbose(@"cellForRowAtIndexPath...");
     GCEventTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifierForActivityTableViewCell];
     [self configureCellContent:cell atRow:indexPath.row];
     [cell setNeedsUpdateConstraints];
@@ -100,7 +101,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DDLogVerbose(@"heightForRowAtIndexPath");
+//    DDLogVerbose(@"heightForRowAtIndexPath");
     // Init a static instance of cell
     static GCEventTableViewCell *cell;
     static dispatch_once_t onceToken;
@@ -119,14 +120,14 @@
     [cell layoutIfNeeded];
     
     CGSize s = [cell.contentView systemLayoutSizeFittingSize: UILayoutFittingCompressedSize];
-    DDLogVerbose(@"cell height: %f", s.height + 1);
+//    DDLogVerbose(@"cell height: %f", s.height + 1);
     return s.height + 1;
 }
 
 - (void)configureCellContent:(GCEventTableViewCell *)cell atRow:(NSInteger)row
 {
     GCEventBasics *event = (GCEventBasics *)[GCAppViewModel sharedInstance].sortedEventsBasics[row];
-        DDLogVerbose(@"%@", event);
+//    DDLogVerbose(@"%@", event);
     cell.label_timeStart.text = [[GCAppAPI dateFormatter01] stringFromDate:event.timeToStart];
     cell.label_distanceText.text = event.distanceString;
     cell.label_title.text = event.eventTitle;
@@ -139,6 +140,16 @@
 {
     DDLogVerbose(@"didSelectRowAtIndexPath");
     // Push Detail Activity View
+    static GCEventDetailViewController *detailViewController;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        detailViewController = [[GCEventDetailViewController alloc] init];
+    });
+    detailViewController.activityNumber = indexPath.row;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    // De-select Row
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 //    GCActivityDetailViewController *detailViewController = [[GCActivityDetailViewController alloc] init];
 //    detailViewController.activityNumber = indexPath.row;
 //    [self.navigationController pushViewController:detailViewController animated:YES];

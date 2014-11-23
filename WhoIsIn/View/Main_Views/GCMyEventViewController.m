@@ -13,20 +13,63 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    DDLogInfo(@"====================  Entered User Info container controller  ====================");
-    
     // Initialize Variables
     
     // Event table view controller
     self.eventTableViewController = [[GCEventTableViewController alloc] initWithParentController:self];
+    self.eventTableViewController.eventSortMethod = EventSortedByAllTime;
+    self.eventTableViewController.hasSortBar = NO;
     [self addChildViewController:self.eventTableViewController];
     [self.view addSubview:self.eventTableViewController.view];
     [self.eventTableViewController didMoveToParentViewController:self];
-    self.eventTableViewController.eventSortMethod = EventSortedByDistance;
-    self.eventTableViewController.hasSortBar = NO;
     [self.eventTableViewController updateViewConstraints];
     // Refresh control
-    //    [self.eventTableViewController.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];}
+    [self.eventTableViewController.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];
+    
+}
+
+- (void)fetchEvents
+{
+    DDLogVerbose(@"fetchEvents");
+    // decide show expired
+    
+    // Init parameter
+    NSMutableDictionary *parameter = [@{
+                                        @"method": @"getActivities",
+                                        @"showExpired": @"1",
+                                        } mutableCopy];
+    // Add parameter
+    switch (self.eventTableViewController.eventSortMethod) {
+        case EventSortedByDistance:
+            DDLogVerbose(@"Sort method: EventSortedByDistance");
+            parameter[@"sortBy"] = @"distance";
+            parameter[@"origin"] = @"35.749087,-78.885771";
+            break;
+        case EventSortedByAllTime:
+            DDLogVerbose(@"Sort method: EventSortedByAllTime");
+            parameter[@"sortBy"] = @"timestamp";
+            break;
+        case EventSortedByUpComing:
+            DDLogVerbose(@"Sort method: EventSortedByUpComing");
+            parameter[@"sortBy"] = @"now";
+            break;
+        default:
+            break;
+    }
+    
+    
+    [GCAppViewModel getEventsWithParameter:parameter completion:^(BOOL succeeded) {
+        if (succeeded) {
+            //            self.eventTableViewController.sortedEventsBasics = [GCAppViewModel sharedInstance].sortedEventsBasics;
+            [self.eventTableViewController reloadData];
+        }
+    }];
+    
+    
+    //    if (!parameter) {
+    //        // Fetch default activity list
+    //
+    //    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

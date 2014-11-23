@@ -42,7 +42,7 @@
 
 - (void)updateConstraints
 {
-    NSLog(@"updateConstraints table cell.");
+//    NSLog(@"updateConstraints table cell.");
     if (!self.didSetupConstraints) {
         // Expand the content view temporariry
         self.contentView.bounds = CGRectMake(0.0f, 0.0f, 1000.0f, 1000.0f);
@@ -75,11 +75,6 @@
         make.top.equalTo(upperview.mas_bottom).with.offset(mas_Padding_Page_Small.top);
         make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
         make.right.equalTo(self.contentView.mas_right).with.offset(mas_Padding_Page_Small.right);
-        //        if ([view isMemberOfClass:[JVFloatLabeledTextField class]]) {
-        //            make.height.mas_equalTo(40);
-        //        } else {
-        //            make.height.mas_equalTo(1);
-        //        }
     }];
 }
 
@@ -104,7 +99,7 @@ static const CGFloat kCellFontSizeSmall = 13.0f;
 
 - (void)layoutSubviews
 {
-    NSLog(@"layoutSubviews table cell.");
+//    DDLogVerbose(@"layoutSubviews table cell.");
     [super layoutSubviews];
     // Make sure the contentView does a layout pass, which set the frames in order to calculate the preferredMaxLayoutWidth
     [self.contentView setNeedsLayout];
