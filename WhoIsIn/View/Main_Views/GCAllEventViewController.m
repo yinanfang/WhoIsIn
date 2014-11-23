@@ -21,6 +21,7 @@
     [self.view addSubview:self.sortController.view];
     [self.sortController didMoveToParentViewController:self];
     [self.sortController updateViewConstraints];
+    [self.sortController.sortControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
     
     // Event table view controller
     self.eventTableViewController = [[GCEventTableViewController alloc] initWithParentController:self];
@@ -31,6 +32,11 @@
     // Refresh control
     [self.eventTableViewController.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];
 
+}
+
+- (void)segmentAction:(id)sender {
+    DDLogVerbose(@"Segment control changed to: %@",[self.sortController.sortControl titleForSegmentAtIndex:[self.sortController.sortControl selectedSegmentIndex]]);
+    [self fetchEvents];
 }
 
 - (void)fetchEvents

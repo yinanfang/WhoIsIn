@@ -144,21 +144,19 @@
 {
     DDLogVerbose(@"didSelectRowAtIndexPath");
     // Push Detail Activity View
-    static GCEventDetailViewController *detailViewController;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        detailViewController = [[GCEventDetailViewController alloc] init];
+        self.eventDetailViewController = [[GCEventDetailViewController alloc] init];
     });
-    detailViewController.activityNumber = indexPath.row;
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    // De-select Row
+    // Push blank controller and de-select row
+    [self.navigationController pushViewController:self.eventDetailViewController animated:YES];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // Request event detail
+//    self.eventDetailViewController.eventNumber = indexPath.row;
 
-//    GCActivityDetailViewController *detailViewController = [[GCActivityDetailViewController alloc] init];
-//    detailViewController.activityNumber = indexPath.row;
-//    [self.navigationController pushViewController:detailViewController animated:YES];
-//    // De-select Row
-//    [self.activityTableView deselectRowAtIndexPath:indexPath animated:YES];
+    // Set event detail and update constraints
+    
+
 }
 
 @end

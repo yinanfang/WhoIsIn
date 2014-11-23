@@ -123,10 +123,10 @@
 {
     NSString *md5Value = [GCAppAPI getMD5StringWithString:self.signInView.entry_Password.text];
     DDLogVerbose(@"Here's md5 value: %@", md5Value);
-    NSDictionary *credential = @{
-                                 @"email": self.signInView.entry_Username.text,
-                                 @"password": md5Value,
-                                 };
+    NSMutableDictionary *credential = [@{
+                                         @"email": self.signInView.entry_Username.text,
+                                         @"password": md5Value,
+                                         } mutableCopy];
     [GCAppViewModel loginWithCredential:credential completion:^(BOOL succeeded) {
         if (succeeded) {
             [GCAppViewModel enterMainContainerViewController:self];

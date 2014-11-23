@@ -12,7 +12,7 @@
 @interface GCEventDetailViewController : UIViewController
 
 // View
-@property NSInteger activityNumber;
+@property NSInteger eventNumber;
 @property GCEventDetailScrollView *detailScrollView;
 
 

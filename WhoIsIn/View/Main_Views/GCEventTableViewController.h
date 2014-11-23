@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GCEventDetailViewController.h"
 
 @interface GCEventTableViewController : UITableViewController
 
@@ -16,6 +17,8 @@
 @property GCEventSortMethod eventSortMethod;
 @property NSMutableArray *sortedEventsBasics;
 @property BOOL hasSortBar;
+
+@property GCEventDetailViewController *eventDetailViewController;
 
 #pragma mark - Method
 - (instancetype)initWithParentController:(UIViewController *)controller;

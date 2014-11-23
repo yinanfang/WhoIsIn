@@ -25,13 +25,13 @@
 + (void)saveAppDataToNSUserDefaults;
 
 #pragma mark - Log In & Register
-+ (void)loginWithCredential:(NSDictionary *)credential completion:(void (^)(BOOL succeeded))completion;
-+ (void)registerWithCredential:(NSDictionary *)credential completion:(void (^)(BOOL succeeded))completion;
++ (void)loginWithCredential:(NSMutableDictionary *)credential completion:(void (^)(BOOL succeeded))completion;
++ (void)registerWithCredential:(NSMutableDictionary *)credential completion:(void (^)(BOOL succeeded))completion;
 + (void)enterMainContainerViewController:(UIViewController *)controller;
 
 #pragma mark - Fetch Data
-+ (void)getEventsAllWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
-+ (void)getEventsMyWithParameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
-
++ (void)getEventsAllWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
++ (void)getEventsMyWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
++ (void)getEventDetailWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
 
 @end

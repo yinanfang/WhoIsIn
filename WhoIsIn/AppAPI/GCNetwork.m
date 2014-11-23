@@ -10,9 +10,11 @@
 
 @implementation GCNetwork
 
-+ (void)requestGETWithURL:(NSURL *)url parameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *data))completionBlock
+
+
++ (void)requestGETWithURL:(NSURL *)url parameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *data))completionBlock
 {
-    DDLogVerbose(@"url is: %@", url.absoluteString);
+    DDLogVerbose(@"GET url is: %@", url.absoluteString);
     DDLogVerbose(@"parameter: %@", parameter);
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -34,9 +36,9 @@
     }];
 }
 
-+ (void)requestPOSTWithURL:(NSURL *)url parameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *data))completionBlock
++ (void)requestPOSTWithURL:(NSURL *)url parameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *data))completionBlock
 {
-    DDLogVerbose(@"url is: %@", url.absoluteString);
+    DDLogVerbose(@"POST url is: %@", url.absoluteString);
     DDLogVerbose(@"parameter: %@", parameter);
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

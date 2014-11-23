@@ -77,12 +77,12 @@
     DDLogVerbose(@"fetchActivityDataWithParameter");
     if (!parameter) {
         // Fetch default activity list
-        parameter = @{
-                      @"method": @"getActivities",
-                      @"sortBy": @"distance",
-                      @"origin": @"35.749087,-78.885771",
-                      @"showExpired": @"1",
-                      };
+        parameter = [@{
+                       @"method": @"getActivities",
+                       @"sortBy": @"distance",
+                       @"origin": @"35.749087,-78.885771",
+                       @"showExpired": @"1",
+                       } mutableCopy];
         [GCAppViewModel getEventsAllWithParameter:parameter completion:^(BOOL succeeded) {
             if (succeeded) {
                 [self.activityTableView reloadData];

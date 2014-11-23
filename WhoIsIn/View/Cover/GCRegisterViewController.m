@@ -41,52 +41,56 @@
 //        BOOL isValidInput = [self isValidInput];
         if (isValidInput) {
             DDLogVerbose(@"Input format correct! Start Register process...");
-            
-            
-            
-            // Not found, so remove keyboard.
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-//                [self registerUser];
-//            });
+            // Clear error message label
+            self.registerView.label_ErrorMessage.text = @"";
+            [self registerUser];
         }
-//        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
-//        [self.navigationController pushViewController:registerViewController animated:YES];
+
     }];
 
 }
 
-//- (BOOL)isValidInput
-//{
-//    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-//    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-//    if (![emailTest evaluateWithObject:self.signInView.entry_Username.text]) {
-//        DDLogVerbose(@"Email format wrong!");
-//        self.signInView.label_ErrorMessage.text = @"Email format wrong";
-//        [GCAppAPI shakeViewArray:@[self.signInView.entry_Username]];
-//        return NO;
-//    }
-//    return YES;
-//}
+- (BOOL)isValidInput
+{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    if (![emailTest evaluateWithObject:self.registerView.entry_Email.text]) {
+        self.registerView.label_ErrorMessage.text = @"Email format wrong";
+        [GCAppAPI shakeViewArray:@[self.registerView.entry_Email]];
+        return NO;
+    }
+    return YES;
+}
 
-//- (void)registerUser
-//{
-//    NSString *md5Value = [GCAppAPI getMD5StringWithString:self.signInView.entry_Password.text];
-//    DDLogVerbose(@"Here's md5 value: %@", md5Value);
-//    NSDictionary *credential = @{
-//                                 @"email": self.signInView.entry_Username.text,
-//                                 @"password": md5Value,
-//                                 };
-//    [GCAppViewModel loginWithCredential:credential completion:^(BOOL succeeded) {
-//        if (succeeded) {
-//            [GCAppViewModel enterMainContainerViewController:self];
-//            self.signInView.label_ErrorMessage.text = @"";
-//        } else {
-//            DDLogVerbose(@"Log In fail. Need to enter again");
-//            self.signInView.label_ErrorMessage.text = @"Incorrect email or password";
+- (void)registerUser
+{
+    NSString *md5Value = [GCAppAPI getMD5StringWithString:self.registerView.entry_Password.text];
+    DDLogVerbose(@"Here's md5 value: %@", md5Value);
+    NSMutableDictionary *credential = [@{
+//                                         @"email": self.registerView.entry_Email.text,
+//                                         @"password": md5Value,
+//                                         @"firstName": self.registerView.entry_Firstname.text,
+//                                         @"lastName": self.registerView.entry_LastName.text,
+//                                         @"phoneNumber": self.registerView.entry_PhoneNumber.text,
+//                                         @"gender": self.registerView.entry_Gender.text,
+                                         
+                                         @"email": @"yinan_fang@hotmail.com1",
+                                         @"password": md5Value,
+                                         @"firstName": @"asdflkj",
+                                         @"lastName": @"asdfdf",
+                                         @"phoneNumber": @"1234561234",
+                                         @"gender": @"M",
+                                         } mutableCopy];
+    [GCAppViewModel registerWithCredential:credential completion:^(BOOL succeeded) {
+        if (succeeded) {
+            [GCAppViewModel enterMainContainerViewController:self];
+        } else {
+            DDLogVerbose(@"Register fail. Need to enter again");
+            self.registerView.label_ErrorMessage.text = @"Register Failed...";
 //            [self restoreLoginPageLayout];
-//        }
-//    }];
-//}
+        }
+    }];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -162,7 +166,7 @@
     [UIView animateWithDuration:kAnimationDuration_Short delay:kAnimationDelay_None options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.registerView.contentOffset = CGPointMake(self.registerView.contentOffset.x, self.registerView.contentOffset.y+difference);
         [self.view layoutIfNeeded];
-    }completion:nil];
+    } completion:nil];
 }
 
 #pragma mark - UIPickerView Delegate
