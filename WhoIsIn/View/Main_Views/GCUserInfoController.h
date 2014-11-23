@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GCEventTableViewController.h"
 
 @interface GCUserInfoController : UIViewController
+
+@property GCEventTableViewController *eventTableViewController;
+
 
 @end

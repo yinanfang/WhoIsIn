@@ -27,19 +27,25 @@
 ////        navigationController01.tabBarItem.image = [UIImage imageNamed:@"leaf"];
 //        navigationController01.viewControllers = [NSArray arrayWithObjects:self.activityController, nil];
         
+//        UINavigationController *navigationController02 = [[UINavigationController alloc] init];
+//        self.userInfoController = [[GCUserInfoController alloc] init];
+//        [GCAppSetup configureNavigationViewController:self.userInfoController withNavigationTitle:@"My Events"];
+//        navigationController02.tabBarItem.title = @"My Events";
+//        navigationController02.viewControllers = [NSArray arrayWithObjects:self.userInfoController, nil];
+        
+        
         UINavigationController *navigationController01 = [[UINavigationController alloc] init];
-        self.allEventController = [[GCAllEventViewController alloc] init];
-        [GCAppSetup configureNavigationViewController:self.allEventController withNavigationTitle:@"Nearby Events"];
+        self.allEventViewController = [[GCAllEventViewController alloc] init];
+        [GCAppSetup configureNavigationViewController:self.allEventViewController withNavigationTitle:@"Nearby Events"];
         navigationController01.tabBarItem.title = @"All Events";
         //        navigationController01.tabBarItem.image = [UIImage imageNamed:@"leaf"];
-        navigationController01.viewControllers = [NSArray arrayWithObjects:self.allEventController, nil];
+        navigationController01.viewControllers = [NSArray arrayWithObjects:self.allEventViewController, nil];
 
-        
         UINavigationController *navigationController02 = [[UINavigationController alloc] init];
-        self.userInfoController = [[GCUserInfoController alloc] init];
-        [GCAppSetup configureNavigationViewController:self.userInfoController withNavigationTitle:@"My Events"];
+        self.myEventViewController = [[GCMyEventViewController alloc] init];
+        [GCAppSetup configureNavigationViewController:self.myEventViewController withNavigationTitle:@"My Events"];
         navigationController02.tabBarItem.title = @"My Events";
-        navigationController02.viewControllers = [NSArray arrayWithObjects:self.userInfoController, nil];
+        navigationController02.viewControllers = [NSArray arrayWithObjects:self.myEventViewController, nil];
         
         UINavigationController *navigationController03 = [[UINavigationController alloc] init];
         self.accountController = [[GCAccountController alloc] init];

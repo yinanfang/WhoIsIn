@@ -309,8 +309,6 @@
 		D431B7901A17CB2B00CF55BF /* My Events */ = {
 			isa = PBXGroup;
 			children = (
-				D476998119FD28B000BEECA8 /* GCUserInfoController.h */,
-				D476998219FD28B000BEECA8 /* GCUserInfoController.m */,
 				D4F071041A202780008843C4 /* GCMyEventViewController.h */,
 				D4F071051A202780008843C4 /* GCMyEventViewController.m */,
 			);
@@ -361,6 +359,8 @@
 				D40F168E1A0E7F13008AB059 /* GCActivityDetailViewController.m */,
 				D40F16901A0E7F4A008AB059 /* GCActivityDetailScrollView.h */,
 				D40F16911A0E7F4A008AB059 /* GCActivityDetailScrollView.m */,
+				D476998119FD28B000BEECA8 /* GCUserInfoController.h */,
+				D476998219FD28B000BEECA8 /* GCUserInfoController.m */,
 			);
 			name = Recycled;
 			sourceTree = "<group>";
