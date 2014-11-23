@@ -43,7 +43,8 @@
 #import <Tweaks/FBTweak.h>
 
 // Data Model
-#import "GCEvent.h"
+#import "GCEventBasics.h"
+#import "GCEventDetail.h"
 #import "GCUser.h"
 #import "GCAppData.h"
 
@@ -68,19 +69,26 @@
 + (void)setHasShownTour:(BOOL)mode;
 + (BOOL)didRunAppBefore;
 + (UIImageView *)getFullScreenImageView:(NSString *)name;
-+ (CGSize)getSizeOfStatusbar:(UIViewController *)controller;
-+ (CGSize)getSizeOfNavigationBar:(UIViewController *)controller;
-+ (CGSize)getSizeOfStatusbarAndNavigationBar:(UIViewController *)controller;
-+ (CGRect)getScreenBoundsDependOnOrientation;
 + (NSString *)getMD5StringWithString:(NSString *)string;
 + (UIView *)getFirstResponderFromView:(UIView *)view;
 + (void)shakeViewArray:(NSArray *)viewArray;
 + (void)shakeViewArray:(NSArray *)viewArray withDuration:(NSTimeInterval)duration completion:(void (^)())completion;
 
+#pragma mark - Size & Rect
++ (CGSize)getSizeOfStatusbar:(UIViewController *)controller;
++ (CGSize)getSizeOfNavigationBar:(UIViewController *)controller;
++ (CGSize)getSizeOfStatusbarAndNavigationBar:(UIViewController *)controller;
++ (CGRect)getScreenBoundsDependOnOrientation;
++ (CGFloat)getHeightOfTabBar;
+//+ (CGSize)getSizeOfTabBar:(UIViewController *)tabBarController;
+//+ (CGRect)getBoundsOfTabBar:(UIViewController *)tabBarController;
+
 #pragma mark - Mantle
 + (id)getMantleModelWithDictionary:(NSDictionary *)dictionary modelClass:(Class)modelClass;
 
-
+#pragma mark - Date Formatter
++ (NSDateFormatter *)dateFormatter01;
++ (NSDateFormatter *)dateFormatter02;
 
 
 

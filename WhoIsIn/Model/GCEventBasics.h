@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GCActivity : MTLModel <MTLJSONSerializing>
+@interface GCEventBasics : MTLModel <MTLJSONSerializing>
 
 // User
 @property NSNumber *userID;
@@ -17,21 +17,21 @@
 @property NSString *phoneString;
 @property NSString *emailString;
 // Activity
-@property NSNumber *activityID;
-@property NSDate *timeCreation;
-@property NSDate *timeUpdate;
-@property NSDate *timeStart;
+@property NSNumber *eventID;
+@property NSDate *timeCreated;
+@property NSDate *timeUpdated;
+@property NSDate *timeToStart;
 @property NSString *locationString;
-@property NSString *activityTitle;
-@property NSString *activityDescription;
-@property NSNumber *activityDuration;
+@property NSString *eventTitle;
+@property NSString *eventDescription;
+@property NSNumber *eventDuration;
 @property NSNumber *countWatch;
 @property NSNumber *countParticipants;
 @property NSNumber *distanceMeter;
 @property NSString *distanceString;
 // State
 @property BOOL shouldstickToTop;
-@property BOOL isActiveActivity;
+@property BOOL isActiveEvent;
 
 
 /*
@@ -55,7 +55,7 @@
  "partitipant_count":"2",
  "distance":12951,
  "distanceText":"8.0 mi"
-
+ 
  */
 @end
 

@@ -142,7 +142,7 @@
             DDLogVerbose(@"Generating GCEvent object...");
             NSError *error;
             NSArray *jsonArray = (NSArray *)data;
-            NSArray *eventArray = [MTLJSONAdapter modelsOfClass:[GCEvent class] fromJSONArray:jsonArray error:&error];
+            NSArray *eventArray = [MTLJSONAdapter modelsOfClass:[GCEventBasics class] fromJSONArray:jsonArray error:&error];
             [GCAppViewModel sharedInstance].sortedEventsBasics = [eventArray mutableCopy];
             if (error) {
                 DDLogVerbose(@"Couldn't convert JSON to GCEvent models: %@", error);

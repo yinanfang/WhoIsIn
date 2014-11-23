@@ -76,6 +76,57 @@
     return imageView;
 }
 
++ (NSString *)getMD5StringWithString:(NSString *)string
+{
+    const char *cStr = [string UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    return output;
+}
+
++ (UIView *)getFirstResponderFromView:(UIView *)view
+{
+    if (view.isFirstResponder) {
+        return view;
+    }
+    for (UIView *subView in view.subviews) {
+        id responder = [GCAppAPI getFirstResponderFromView:subView];
+        if (responder) return responder;
+    }
+    return nil;
+}
+
+static NSTimeInterval const kAFViewShakerDefaultDuration = 0.5;
+static NSString *const kAFViewShakerAnimationKey = @"kAFViewShakerAnimationKey";
++ (void)shakeViewArray:(NSArray *)viewArray
+{
+    [GCAppAPI shakeViewArray: viewArray withDuration:kAFViewShakerDefaultDuration completion:nil];
+}
++ (void)shakeViewArray:(NSArray *)viewArray withDuration:(NSTimeInterval)duration completion:(void (^)())completion
+{
+    for (UIView *view in viewArray) {
+        CAKeyframeAnimation * animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
+        CGFloat currentTx = view.transform.tx;
+        animation.delegate = self;
+        animation.duration = duration;
+        animation.values = @[ @(currentTx), @(currentTx + 10), @(currentTx-8), @(currentTx + 8), @(currentTx -5), @(currentTx + 5), @(currentTx) ];
+        animation.keyTimes = @[ @(0), @(0.225), @(0.425), @(0.6), @(0.75), @(0.875), @(1) ];
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        [view.layer addAnimation:animation forKey:kAFViewShakerAnimationKey];
+    }
+    if (completion != nil) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            completion();
+        });
+    }
+}
+
+#pragma mark - Size & Rect
 + (CGSize)getSizeOfStatusbar:(UIViewController *)controller
 {
     CGFloat statusBarHeight = 0.000000;
@@ -138,55 +189,23 @@
     return screenBounds ;
 }
 
-+ (NSString *)getMD5StringWithString:(NSString *)string
++ (CGFloat)getHeightOfTabBar;
 {
-    const char *cStr = [string UTF8String];
-    unsigned char digest[CC_MD5_DIGEST_LENGTH];
-    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
-    
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [output appendFormat:@"%02x", digest[i]];
-    return output;
+    return 49.0;
 }
+//+ (CGSize)getSizeOfTabBar:(UIViewController *)controller
+//{
+//    // Can't get tab bar
+////    CGSize tabBarSize = [[[controller tabBarController] tabBar] bounds].size;
+////    return tabBarSize;
+//}
 
-+ (UIView *)getFirstResponderFromView:(UIView *)view
-{
-    if (view.isFirstResponder) {
-        return view;
-    }
-    for (UIView *subView in view.subviews) {
-        id responder = [GCAppAPI getFirstResponderFromView:subView];
-        if (responder) return responder;
-    }
-    return nil;
-}
-
-static NSTimeInterval const kAFViewShakerDefaultDuration = 0.5;
-static NSString *const kAFViewShakerAnimationKey = @"kAFViewShakerAnimationKey";
-+ (void)shakeViewArray:(NSArray *)viewArray
-{
-    [GCAppAPI shakeViewArray: viewArray withDuration:kAFViewShakerDefaultDuration completion:nil];
-}
-+ (void)shakeViewArray:(NSArray *)viewArray withDuration:(NSTimeInterval)duration completion:(void (^)())completion
-{
-    for (UIView *view in viewArray) {
-        CAKeyframeAnimation * animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
-        CGFloat currentTx = view.transform.tx;
-        animation.delegate = self;
-        animation.duration = duration;
-        animation.values = @[ @(currentTx), @(currentTx + 10), @(currentTx-8), @(currentTx + 8), @(currentTx -5), @(currentTx + 5), @(currentTx) ];
-        animation.keyTimes = @[ @(0), @(0.225), @(0.425), @(0.6), @(0.75), @(0.875), @(1) ];
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        [view.layer addAnimation:animation forKey:kAFViewShakerAnimationKey];
-    }
-    if (completion != nil) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            completion();
-        });
-    }
-}
+//+ (CGRect)getBoundsOfTabBar:(UIViewController *)controller
+//{
+//    // Can't get tab bar
+//    CGRect tabBarRect = [[[controller tabBarController] tabBar] bounds];
+//    return tabBarRect;
+//}
 
 #pragma mark - Mantle
 + (id)getMantleModelWithDictionary:(NSDictionary *)dictionary modelClass:(Class)modelClass
@@ -200,7 +219,29 @@ static NSString *const kAFViewShakerAnimationKey = @"kAFViewShakerAnimationKey";
     return model;
 }
 
+#pragma mark - Date Formatter
++ (NSDateFormatter *)dateFormatter01 {
+    
+    static NSDateFormatter *kDateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        kDateFormatter = [[NSDateFormatter alloc] init];
+        kDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        kDateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";  // you configure this based on the strings that your webservice uses!!
+    });
+    return kDateFormatter;
+}
 
++ (NSDateFormatter *)dateFormatter02
+{
+    static NSDateFormatter *kDateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        kDateFormatter = [[NSDateFormatter alloc] init];
+        kDateFormatter.DateFormat = @"MMM d, h:mm a";
+    });
+    return kDateFormatter;
+}
 
 
 

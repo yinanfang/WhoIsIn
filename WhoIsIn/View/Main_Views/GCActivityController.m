@@ -150,7 +150,7 @@
 
 - (void)configureCellContent:(GCActivityTableViewCell *)cell atRow:(NSInteger)row
 {
-    GCEvent *event = (GCEvent *)[GCAppViewModel sharedInstance].sortedEventsBasics[row];
+    GCEventBasics *event = (GCEventBasics *)[GCAppViewModel sharedInstance].sortedEventsBasics[row];
 //    DDLogVerbose(@"%@", activity);
     cell.label_timeStart.text = [[GCActivityController dateFormatter] stringFromDate:event.timeToStart];
     cell.label_distanceText.text = event.distanceString;

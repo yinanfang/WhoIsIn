@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Golden Compass. All rights reserved.
 //
 
-#import "GCActivity.h"
+#import "GCEventBasics.h"
 
-@implementation GCActivity
+@implementation GCEventBasics
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -19,21 +19,21 @@
              @"phoneString": @"contact_phone",
              @"emailString": @"contact_email",
              
-             @"activityID": @"idactivity",
-             @"timeCreation": @"creation_time",
-             @"timeUpdate": @"update_time",
-             @"timeStart": @"start_time",
+             @"eventID": @"idactivity",
+             @"timeCreated": @"creation_time",
+             @"timeUpdated": @"update_time",
+             @"timeToStart": @"start_time",
              @"locationString": @"location",
-             @"activityTitle": @"title",
-             @"activityDescription": @"description",
-             @"activityDuration": @"duration",
+             @"eventTitle": @"title",
+             @"eventDescription": @"description",
+             @"eventDuration": @"duration",
              @"countWatch": @"watcher_count",
              @"countParticipants": @"partitipant_count",
              @"distanceMeter": @"distance",
              @"distanceString": @"distanceText",
              
              @"shouldstickToTop": @"stick_to_top",
-             @"isActiveActivity": @"active",
+             @"isActiveEvent": @"active",
              };
 }
 
@@ -84,7 +84,7 @@
 }
 
 // Activity
-+ (NSValueTransformer *)activityIDJSONTransformer
++ (NSValueTransformer *)eventIDJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
         return number;
@@ -93,7 +93,7 @@
     }];
 }
 
-+ (NSValueTransformer *)timeCreationJSONTransformer
++ (NSValueTransformer *)timeCreatedJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *timeString){
         return [self.dateFormatter dateFromString:timeString];
@@ -102,7 +102,7 @@
     }];
 }
 
-+ (NSValueTransformer *)timeUpdateJSONTransformer
++ (NSValueTransformer *)timeUpdatedJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *timeString){
         return [self.dateFormatter dateFromString:timeString];
@@ -111,7 +111,7 @@
     }];
 }
 
-+ (NSValueTransformer *)timeStartJSONTransformer
++ (NSValueTransformer *)timeToStartJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *timeString){
         return [self.dateFormatter dateFromString:timeString];
@@ -129,7 +129,7 @@
     }];
 }
 
-+ (NSValueTransformer *)activityTitleJSONTransformer
++ (NSValueTransformer *)eventTitleJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *string){
         return string;
@@ -138,7 +138,7 @@
     }];
 }
 
-+ (NSValueTransformer *)activityDescriptionJSONTransformer
++ (NSValueTransformer *)eventDescriptionJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *string){
         return string;
@@ -147,7 +147,7 @@
     }];
 }
 
-+ (NSValueTransformer *)activityDurationJSONTransformer
++ (NSValueTransformer *)eventDurationJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSNumber *number){
         return number;
@@ -202,7 +202,7 @@
     }];
 }
 
-+ (NSValueTransformer *)isActiveActivityJSONTransformer
++ (NSValueTransformer *)isActiveEventJSONTransformer
 {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *numberString){
         return [[[NSNumberFormatter alloc] init] numberFromString:numberString];
