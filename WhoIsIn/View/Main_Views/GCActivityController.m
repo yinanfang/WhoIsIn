@@ -72,7 +72,7 @@
     [super viewWillAppear:animated];
 }
 
-- (void)fetchActivityDataWithParameter:(NSDictionary *)parameter
+- (void)fetchActivityDataWithParameter:(NSMutableDictionary *)parameter
 {
     DDLogVerbose(@"fetchActivityDataWithParameter");
     if (!parameter) {

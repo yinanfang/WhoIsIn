@@ -18,6 +18,10 @@
 @property NSMutableArray *sortedEventsBasics;
 @property BOOL hasSortBar;
 
+// Activity Indicator for first time loading
+@property BOOL hasLoadDataBefore;
+@property MBProgressHUD *hud;
+
 @property GCEventDetailViewController *eventDetailViewController;
 
 #pragma mark - Method

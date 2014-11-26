@@ -14,6 +14,8 @@
 @property (assign) BOOL didSetupConstraints;
 
 // Cell item
+@property UIView *cellContent;
+
 @property UILabel *label_title;
 
 @property UILabel *label_timeStart;

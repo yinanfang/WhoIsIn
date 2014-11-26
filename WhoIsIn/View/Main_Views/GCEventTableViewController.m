@@ -23,21 +23,23 @@
         // General Configuration
         self.eventSortMethod = EventSortedByDistance;
         self.hasSortBar = YES;
-//        self.sortedEventsBasics = [[NSMutableArray alloc] init];
         
         // Configure table
         [self.tableView registerClass:[GCEventTableViewCell class] forCellReuseIdentifier: CellIdentifierForActivityTableViewCell];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
-        self.tableView.backgroundColor =[UIColor whiteColor];
+        self.tableView.backgroundColor = [GCAppAPI getColorWithRGBAinHex:BackgroundWhiteShade];
         self.tableView.separatorInset = UIEdgeInsetsZero;
-//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         // Configure refresh control
         self.refreshControl = [[UIRefreshControl alloc] init];
-        self.refreshControl.backgroundColor = [UIColor purpleColor];
+        self.refreshControl.backgroundColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
         self.refreshControl.tintColor = [UIColor whiteColor];
         
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.color = [UIColor clearColor];
+        self.hud.activityIndicatorColor = [UIColor lightGrayColor];
     }
     return self;
 }
@@ -65,6 +67,12 @@
 
 - (void)reloadData
 {
+    // Stop and hide activity indicator in first load
+    if (!self.hasLoadDataBefore) {
+        [self.hud hide:YES];
+        self.hasLoadDataBefore = YES;
+    }
+    
     // Reload table data
     DDLogVerbose(@"GCEventTableViewController reloadData with #%lu sorted Events", (unsigned long)[self.sortedEventsBasics count]);
     [self.tableView reloadData];

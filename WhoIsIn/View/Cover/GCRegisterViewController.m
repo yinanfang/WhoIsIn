@@ -73,23 +73,47 @@
 //                                         @"lastName": self.registerView.entry_LastName.text,
 //                                         @"phoneNumber": self.registerView.entry_PhoneNumber.text,
 //                                         @"gender": self.registerView.entry_Gender.text,
-                                         
-                                         @"email": @"yinan_fang@hotmail.com1",
+                                         @"method": @"signup",
+                                         @"email": @"yinan_fansg@hotmail.com",
                                          @"password": md5Value,
                                          @"firstName": @"asdflkj",
                                          @"lastName": @"asdfdf",
                                          @"phoneNumber": @"1234561234",
                                          @"gender": @"M",
                                          } mutableCopy];
-    [GCAppViewModel registerWithCredential:credential completion:^(BOOL succeeded) {
-        if (succeeded) {
-            [GCAppViewModel enterMainContainerViewController:self];
+//    NSMutableDictionary *credential = [@{
+//                                         @"method": @"login",
+//                                         @"email": @"yinan_fang@hotmail.com1",
+//                                         @"password": @"sdffd",
+//                                         } mutableCopy];
+    NSURL *url = [NSURL URLWithString:URLToServicePHP];
+    DDLogVerbose(@"parameter: %@", credential);
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.securityPolicy.allowInvalidCertificates = YES;
+    [manager POST:url.absoluteString parameters:credential success:^(AFHTTPRequestOperation *operation, NSData *data) {
+        DDLogInfo(@"Get data successfully. Printing response data: %@", data);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        DDLogWarn(@"Error: %@", error);
+        // Customize error response
+        if ([operation.response statusCode] == 409) {
+            DDLogError(@"Email has already been registered");
         } else {
-            DDLogVerbose(@"Register fail. Need to enter again");
-            self.registerView.label_ErrorMessage.text = @"Register Failed...";
-//            [self restoreLoginPageLayout];
+            DDLogError(@"Here's the error");
         }
     }];
+    
+//    [GCAppViewModel registerWithCredential:credential completion:^(BOOL succeeded) {
+//        if (succeeded) {
+//            [GCAppViewModel enterMainContainerViewController:self];
+//        } else {
+//            DDLogVerbose(@"Register fail. Need to enter again");
+//            self.registerView.label_ErrorMessage.text = @"Register Failed...";
+////            [self restoreLoginPageLayout];
+//        }
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated

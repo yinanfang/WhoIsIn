@@ -32,6 +32,7 @@
     // Refresh control
     [self.eventTableViewController.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];
 
+
 }
 
 - (void)segmentAction:(id)sender {
@@ -83,19 +84,12 @@
             break;
     }
     
-    
     [GCAppViewModel getEventsAllWithParameter:parameter completion:^(BOOL succeeded) {
         if (succeeded) {
             self.eventTableViewController.sortedEventsBasics = [GCAppViewModel sharedInstance].sortedEventsBasicsAll;
             [self.eventTableViewController reloadData];
         }
     }];
-    
-    
-//    if (!parameter) {
-//        // Fetch default activity list
-//        
-//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -112,6 +106,11 @@
     [super viewWillAppear:animated];
 }
 
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Auto renew event list once the view appears
+    [self fetchEvents];
+    [super viewDidAppear:animated];
+}
 
 @end

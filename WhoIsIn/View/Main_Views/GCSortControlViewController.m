@@ -16,13 +16,14 @@
     if (self) {
         // Initialization Variables
         // Background color is default to clear color and frame to fill the screen
-        self.view.backgroundColor = [UIColor redColor];
+        self.view.backgroundColor = [GCAppAPI getColorWithRGBAinHex:BackgroundWhiteShade];
         self.parentController = controller;
 
         self.sortControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Nearby", @"Upcoming", @"All", nil]];
         self.sortControl.selectedSegmentIndex = 0;
 //        [self.sortControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
-        self.sortControl.backgroundColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+//        self.sortControl.backgroundColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
+        self.sortControl.tintColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
         [self.view addSubview:self.sortControl];
         
     }

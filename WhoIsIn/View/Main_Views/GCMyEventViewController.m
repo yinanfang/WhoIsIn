@@ -87,4 +87,11 @@
     [super viewWillAppear:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Auto renew event list once the view appears
+    [self fetchEvents];
+    [super viewDidAppear:animated];
+}
+
 @end

@@ -16,6 +16,15 @@
     if (self) {
         DDLogInfo(@"initWithStyle");
         
+        // Background Color
+        self.backgroundColor = [UIColor clearColor];
+        self.contentView.backgroundColor = [UIColor clearColor];
+        
+        // Cell content
+        self.cellContent = [[UIView alloc] init];
+        self.cellContent.backgroundColor = [UIColor whiteColor];
+        [self.contentView addSubview:self.cellContent];
+        
         // Title in Bold
         self.label_title = [self LabelTitleWithString:@"Activity Title is a very long thing. It usually take up 2 rows" bold:NO fontSize:kCellFontSizeLarge];
         
@@ -47,10 +56,19 @@
         // Expand the content view temporariry
         self.contentView.bounds = CGRectMake(0.0f, 0.0f, 1000.0f, 1000.0f);
         
-        [self.label_title mas_makeConstraints:^(MASConstraintMaker *make) {
+        // Cell background view
+        [self.cellContent mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.contentView.mas_top).with.offset(mas_Padding_Page_Small.top);
-            make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
-            make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Small.right);
+            make.left.equalTo(self.contentView.mas_left);
+            make.right.equalTo(self.contentView.mas_right);
+            make.bottom.equalTo(self.contentView.mas_bottom).with.offset(mas_Padding_Page_Small.bottom);
+        }];
+        
+        // All labels
+        [self.label_title mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.cellContent.mas_top).with.offset(mas_Padding_Page_Small.top);
+            make.left.equalTo(self.cellContent.mas_left).with.offset(mas_Padding_Page_Small.left);
+            make.right.equalTo(self.cellContent.mas_right).offset(mas_Padding_Page_Small.right);
         }];
         
         [self pinView:self.label_timeStart toUpperview:self.label_title];
@@ -59,9 +77,9 @@
         
         [self.label_participantAndWatcher mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.label_distanceText.mas_bottom).with.offset(mas_Padding_Page_Small.top);
-            make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
-            make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Small.right);
-            make.bottom.equalTo(self.contentView.mas_bottom).with.offset(mas_Padding_Page_Small.bottom);
+            make.left.equalTo(self.cellContent.mas_left).with.offset(mas_Padding_Page_Small.left);
+            make.right.equalTo(self.cellContent.mas_right).offset(mas_Padding_Page_Small.right);
+            make.bottom.equalTo(self.cellContent.mas_bottom).with.offset(mas_Padding_Page_Small.bottom);
         }];
         
         self.didSetupConstraints = YES;
@@ -73,8 +91,8 @@
 {
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(upperview.mas_bottom).with.offset(mas_Padding_Page_Small.top);
-        make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Small.left);
-        make.right.equalTo(self.contentView.mas_right).with.offset(mas_Padding_Page_Small.right);
+        make.left.equalTo(self.cellContent.mas_left).with.offset(mas_Padding_Page_Small.left);
+        make.right.equalTo(self.cellContent.mas_right).with.offset(mas_Padding_Page_Small.right);
     }];
 }
 
@@ -93,7 +111,7 @@ static const CGFloat kCellFontSizeSmall = 13.0f;
     [label setBackgroundColor:[UIColor clearColor]];
     [label setTextColor:[GCAppAPI getColorWithRGBAinHex:ThemeColor01]];
     [label setText:title];
-    [self.contentView addSubview:label];
+    [self.cellContent addSubview:label];
     return label;
 }
 

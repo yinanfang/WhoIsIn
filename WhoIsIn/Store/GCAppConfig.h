@@ -18,6 +18,7 @@
 #define ThemeColor01_Variation04    0x062954FF  // More black. Go down
 
 #define WhiteFading                 0xFFFFFF45  //
+#define BackgroundWhiteShade        0xF1F1F1FF  
 
 // Font and Size
 #define Font_Logo                   @"Chalkduster"

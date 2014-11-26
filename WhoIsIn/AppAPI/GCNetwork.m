@@ -12,7 +12,7 @@
 
 
 
-+ (void)requestGETWithURL:(NSURL *)url parameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *data))completionBlock
++ (void)requestGETWithURL:(NSURL *)url parameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *data))completionBlock
 {
     DDLogVerbose(@"GET url is: %@", url.absoluteString);
     DDLogVerbose(@"parameter: %@", parameter);
@@ -36,7 +36,7 @@
     }];
 }
 
-+ (void)requestPOSTWithURL:(NSURL *)url parameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *data))completionBlock
++ (void)requestPOSTWithURL:(NSURL *)url parameter:(NSDictionary *)parameter completion:(void (^)(BOOL succeeded, NSData *data))completionBlock
 {
     DDLogVerbose(@"POST url is: %@", url.absoluteString);
     DDLogVerbose(@"parameter: %@", parameter);

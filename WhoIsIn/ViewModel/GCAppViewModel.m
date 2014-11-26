@@ -99,24 +99,26 @@
     DDLogVerbose(@"start to login...");
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
     credential[@"method"] = @"signup";
-    [GCNetwork requestGETWithURL:url parameter:credential completion:^(BOOL succeeded, NSData *data) {
+    [GCNetwork requestPOSTWithURL:url parameter:credential completion:^(BOOL succeeded, NSData *data) {
         if (succeeded) {
             NSDictionary *userDic = (NSDictionary *)data;
-            if ([userDic[@"iduser"] isEqualToString:@"0"]) {
-                DDLogVerbose(@"Rejected");
-                completion(NO);
-            } else {
-                DDLogVerbose(@"Logged in successfully");
-                // Init GCUser
-                NSError *error = nil;
-                GCUser *user = [MTLJSONAdapter modelOfClass:[GCUser class] fromJSONDictionary:userDic error:&error];
-                DDLogVerbose(@"user object: %@", [user description]);
-                if (error) {
-                    DDLogWarn(@"Cannot generate GCUser model!!!");
-                }
-                [GCAppViewModel sharedInstance].appData.currentUser = user;
-                completion(YES);
-            }
+            DDLogVerbose(@"%@", userDic);
+            
+//            if ([userDic[@"iduser"] isEqualToString:@"0"]) {
+//                DDLogVerbose(@"Rejected");
+//                completion(NO);
+//            } else {
+//                DDLogVerbose(@"Logged in successfully");
+//                // Init GCUser
+//                NSError *error = nil;
+//                GCUser *user = [MTLJSONAdapter modelOfClass:[GCUser class] fromJSONDictionary:userDic error:&error];
+//                DDLogVerbose(@"user object: %@", [user description]);
+//                if (error) {
+//                    DDLogWarn(@"Cannot generate GCUser model!!!");
+//                }
+//                [GCAppViewModel sharedInstance].appData.currentUser = user;
+//                completion(YES);
+//            }
         }
     }];
 }
