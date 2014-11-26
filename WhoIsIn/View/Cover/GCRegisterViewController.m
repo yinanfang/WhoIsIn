@@ -37,8 +37,8 @@
         DDLogVerbose(@"Register button tapped");
         [self restoreContentOffset];
         [[GCAppAPI getFirstResponderFromView:self.registerView.view_Register] resignFirstResponder];
-        BOOL isValidInput = YES;
-//        BOOL isValidInput = [self isValidInput];
+//        BOOL isValidInput = YES;
+        BOOL isValidInput = [self isValidInput];
         if (isValidInput) {
             DDLogVerbose(@"Input format correct! Start Register process...");
             // Clear error message label
@@ -59,6 +59,26 @@
         [GCAppAPI shakeViewArray:@[self.registerView.entry_Email]];
         return NO;
     }
+    if ([self.registerView.entry_Password.text isEqual:@""]) {
+        self.registerView.label_ErrorMessage.text = @"Password can't be empty";
+        [GCAppAPI shakeViewArray:@[self.registerView.entry_Password]];
+        return NO;
+    }
+    if ([self.registerView.entry_Firstname.text isEqual:@""]) {
+        self.registerView.label_ErrorMessage.text = @"First name can't be empty";
+        [GCAppAPI shakeViewArray:@[self.registerView.entry_Firstname]];
+        return NO;
+    }
+    if ([self.registerView.entry_LastName.text isEqual:@""]) {
+        self.registerView.label_ErrorMessage.text = @"Last name can't be empty";
+        [GCAppAPI shakeViewArray:@[self.registerView.entry_LastName]];
+        return NO;
+    }
+    if ([self.registerView.entry_Gender.text isEqual:@""]) {
+        self.registerView.label_ErrorMessage.text = @"Gender can't be empty";
+        [GCAppAPI shakeViewArray:@[self.registerView.entry_Gender]];
+        return NO;
+    }
     return YES;
 }
 
@@ -67,53 +87,28 @@
     NSString *md5Value = [GCAppAPI getMD5StringWithString:self.registerView.entry_Password.text];
     DDLogVerbose(@"Here's md5 value: %@", md5Value);
     NSMutableDictionary *credential = [@{
-//                                         @"email": self.registerView.entry_Email.text,
-//                                         @"password": md5Value,
-//                                         @"firstName": self.registerView.entry_Firstname.text,
-//                                         @"lastName": self.registerView.entry_LastName.text,
-//                                         @"phoneNumber": self.registerView.entry_PhoneNumber.text,
-//                                         @"gender": self.registerView.entry_Gender.text,
-                                         @"method": @"signup",
-                                         @"email": @"yinan_fansg@hotmail.com",
+                                         @"email": self.registerView.entry_Email.text,
                                          @"password": md5Value,
-                                         @"firstName": @"asdflkj",
-                                         @"lastName": @"asdfdf",
-                                         @"phoneNumber": @"1234561234",
-                                         @"gender": @"M",
+                                         @"firstName": self.registerView.entry_Firstname.text,
+                                         @"lastName": self.registerView.entry_LastName.text,
+                                         @"phoneNumber": self.registerView.entry_PhoneNumber.text,
+                                         @"gender": self.registerView.entry_Gender.text,
+//                                         @"email": @"yinan_fansdg@hotmail.com",
+//                                         @"password": md5Value,
+//                                         @"firstName": @"asdflkj",
+//                                         @"lastName": @"asdfdf",
+//                                         @"phoneNumber": @"1234561234",
+//                                         @"gender": @"M",
                                          } mutableCopy];
-//    NSMutableDictionary *credential = [@{
-//                                         @"method": @"login",
-//                                         @"email": @"yinan_fang@hotmail.com1",
-//                                         @"password": @"sdffd",
-//                                         } mutableCopy];
-    NSURL *url = [NSURL URLWithString:URLToServicePHP];
-    DDLogVerbose(@"parameter: %@", credential);
-
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.securityPolicy.allowInvalidCertificates = YES;
-    [manager POST:url.absoluteString parameters:credential success:^(AFHTTPRequestOperation *operation, NSData *data) {
-        DDLogInfo(@"Get data successfully. Printing response data: %@", data);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        DDLogWarn(@"Error: %@", error);
-        // Customize error response
-        if ([operation.response statusCode] == 409) {
-            DDLogError(@"Email has already been registered");
+    [GCAppViewModel registerWithCredential:credential completion:^(BOOL succeeded) {
+        if (succeeded) {
+            [GCAppViewModel enterMainContainerViewController:self];
         } else {
-            DDLogError(@"Here's the error");
+            DDLogVerbose(@"Register fail. Need to enter again");
+            self.registerView.label_ErrorMessage.text = @"Eamil exists. Register Failed.";
+//            [self restoreLoginPageLayout];
         }
     }];
-    
-//    [GCAppViewModel registerWithCredential:credential completion:^(BOOL succeeded) {
-//        if (succeeded) {
-//            [GCAppViewModel enterMainContainerViewController:self];
-//        } else {
-//            DDLogVerbose(@"Register fail. Need to enter again");
-//            self.registerView.label_ErrorMessage.text = @"Register Failed...";
-////            [self restoreLoginPageLayout];
-//        }
-//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -102,23 +102,21 @@
     [GCNetwork requestPOSTWithURL:url parameter:credential completion:^(BOOL succeeded, NSData *data) {
         if (succeeded) {
             NSDictionary *userDic = (NSDictionary *)data;
-            DDLogVerbose(@"%@", userDic);
-            
-//            if ([userDic[@"iduser"] isEqualToString:@"0"]) {
-//                DDLogVerbose(@"Rejected");
-//                completion(NO);
-//            } else {
-//                DDLogVerbose(@"Logged in successfully");
-//                // Init GCUser
-//                NSError *error = nil;
-//                GCUser *user = [MTLJSONAdapter modelOfClass:[GCUser class] fromJSONDictionary:userDic error:&error];
-//                DDLogVerbose(@"user object: %@", [user description]);
-//                if (error) {
-//                    DDLogWarn(@"Cannot generate GCUser model!!!");
-//                }
-//                [GCAppViewModel sharedInstance].appData.currentUser = user;
-//                completion(YES);
-//            }
+            if ([userDic[@"response"] isEqualToString:@"0"]) {
+                DDLogVerbose(@"Register failed...");
+                completion(NO);
+            } else {
+                DDLogVerbose(@"Registered successfully!");
+                // Init GCUser
+                NSError *error = nil;
+                GCUser *user = [MTLJSONAdapter modelOfClass:[GCUser class] fromJSONDictionary:userDic error:&error];
+                DDLogVerbose(@"user object: %@", [user description]);
+                if (error) {
+                    DDLogWarn(@"Cannot generate GCUser model!!!");
+                }
+                [GCAppViewModel sharedInstance].appData.currentUser = user;
+                completion(YES);
+            }
         }
     }];
 }
