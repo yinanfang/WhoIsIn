@@ -89,8 +89,11 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    // Auto renew event list once the view appears
-    [self fetchEvents];
+    // Auto renew event list once the view appears on first appearance
+    if (!self.hasLoadDataBefore) {
+        [self fetchEvents];
+        self.hasLoadDataBefore = YES;
+    }
     [super viewDidAppear:animated];
 }
 

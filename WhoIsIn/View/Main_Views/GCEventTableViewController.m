@@ -152,14 +152,34 @@
 {
     DDLogVerbose(@"didSelectRowAtIndexPath");
     // Push Detail Activity View
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        self.eventDetailViewController = [[GCEventDetailViewController alloc] init];
-    });
+    if (!_eventDetailViewController) {
+        _eventDetailViewController = [[GCEventDetailViewController alloc] init];
+    }
     // Push blank controller and de-select row
     [self.navigationController pushViewController:self.eventDetailViewController animated:YES];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // Get GPS
+    
     // Request event detail
+    NSMutableDictionary *parameter = [@{
+                                         @"method": @"getActivityDetail",
+                                         @"idUser": [NSString stringWithFormat:@"%@", [GCAppViewModel sharedInstance].appData.currentUser.userID],
+                                         @"idActivity": ((GCEventBasics *)self.sortedEventsBasics[indexPath.row]).eventID,
+                                         @"origin": @"35.749087,-78.885771",
+//                                        @"method": @"getActivityDetail",
+//                                        @"idUser": @"1",
+//                                        @"idActivity": @"2",
+//                                        @"origin": @"35.749087,-78.885771",
+                                         } mutableCopy];
+    [GCAppViewModel getEventDetailWithParameter:parameter completion:^(BOOL succeeded) {
+        if (succeeded) {
+            // Re-configure eventDetailViewController
+            
+        } else {
+            DDLogVerbose(@"Register fail. Need to enter again");
+        }
+    }];
+    
 //    self.eventDetailViewController.eventNumber = indexPath.row;
 
     // Set event detail and update constraints

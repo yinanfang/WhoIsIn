@@ -134,13 +134,13 @@
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
     [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data){
         if (succeeded) {
-            DDLogVerbose(@"Generating GCEvent object...");
+            DDLogVerbose(@"Generating GCEventBasics object...");
             NSError *error;
             NSArray *jsonArray = (NSArray *)data;
             NSArray *eventArray = [MTLJSONAdapter modelsOfClass:[GCEventBasics class] fromJSONArray:jsonArray error:&error];
             [GCAppViewModel sharedInstance].sortedEventsBasicsAll = [eventArray mutableCopy];
             if (error) {
-                DDLogVerbose(@"Couldn't convert JSON to GCEvent models: %@", error);
+                DDLogVerbose(@"Couldn't convert JSON to GCEventBasics models: %@", error);
             }
 //            DDLogVerbose(@"activities new value: %@", eventArray);
             DDLogVerbose(@"activities new count: %lu", (unsigned long)[eventArray count]);
@@ -155,13 +155,13 @@
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
     [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data){
         if (succeeded) {
-            DDLogVerbose(@"Generating GCEvent object...");
+            DDLogVerbose(@"Generating GCEventBasics object...");
             NSError *error;
             NSArray *jsonArray = (NSArray *)data;
             NSArray *eventArray = [MTLJSONAdapter modelsOfClass:[GCEventBasics class] fromJSONArray:jsonArray error:&error];
             [GCAppViewModel sharedInstance].sortedEventsBasicsMy = [eventArray mutableCopy];
             if (error) {
-                DDLogVerbose(@"Couldn't convert JSON to GCEvent models: %@", error);
+                DDLogVerbose(@"Couldn't convert JSON to GCEventBasics models: %@", error);
             }
             //            DDLogVerbose(@"activities new value: %@", eventArray);
             DDLogVerbose(@"activities new count: %lu", (unsigned long)[eventArray count]);
@@ -176,16 +176,15 @@
     NSURL *url = [NSURL URLWithString:URLToServicePHP];
     [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data){
         if (succeeded) {
-            DDLogVerbose(@"Generating GCEvent object...");
+            DDLogVerbose(@"Generating GCEventDetail object...");
             NSError *error;
-            NSArray *jsonArray = (NSArray *)data;
-            NSArray *eventArray = [MTLJSONAdapter modelsOfClass:[GCEventBasics class] fromJSONArray:jsonArray error:&error];
-            [GCAppViewModel sharedInstance].sortedEventsBasicsMy = [eventArray mutableCopy];
+            GCEventDetail *eventDetail = [MTLJSONAdapter modelOfClass:[GCEventDetail class] fromJSONDictionary:(NSDictionary *)data error:&error];
+            [GCAppViewModel sharedInstance].eventDetail = eventDetail;
             if (error) {
-                DDLogVerbose(@"Couldn't convert JSON to GCEvent models: %@", error);
+                DDLogVerbose(@"Couldn't convert JSON to GCEventDetail models: %@", error);
             }
             //            DDLogVerbose(@"activities new value: %@", eventArray);
-            DDLogVerbose(@"activities new count: %lu", (unsigned long)[eventArray count]);
+            DDLogVerbose(@"new eventDetail: %@", eventDetail);
             completion(YES);
         }
     }];

@@ -15,7 +15,7 @@
 @property GCSortControlViewController *sortController;
 @property GCEventTableViewController *eventTableViewController;
 
-
+@property BOOL hasLoadDataBefore;
 
 
 @end

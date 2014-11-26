@@ -31,7 +31,7 @@
              @"eventDescription": @"activity.0.description",
              @"eventDuration": @"activity.0.duration",
              @"countWatch": @"activity.0.watcher_count",
-             @"countParticipants": @"activity.0.partitipant_count",
+             @"countParticipants": @"activity.0.participant_count",
              @"distanceMeter": @"activity.0.distance",
              @"distanceString": @"activity.0.distanceText",
              

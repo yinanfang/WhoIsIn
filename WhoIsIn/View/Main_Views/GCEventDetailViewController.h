@@ -12,8 +12,10 @@
 @interface GCEventDetailViewController : UIViewController
 
 // View
-@property NSInteger eventNumber;
+@property GCEventDetail *eventDetail;
 @property GCEventDetailScrollView *detailScrollView;
+
+@property MBProgressHUD *hud;
 
 
 @end

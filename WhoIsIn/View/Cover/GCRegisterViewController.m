@@ -93,12 +93,6 @@
                                          @"lastName": self.registerView.entry_LastName.text,
                                          @"phoneNumber": self.registerView.entry_PhoneNumber.text,
                                          @"gender": self.registerView.entry_Gender.text,
-//                                         @"email": @"yinan_fansdg@hotmail.com",
-//                                         @"password": md5Value,
-//                                         @"firstName": @"asdflkj",
-//                                         @"lastName": @"asdfdf",
-//                                         @"phoneNumber": @"1234561234",
-//                                         @"gender": @"M",
                                          } mutableCopy];
     [GCAppViewModel registerWithCredential:credential completion:^(BOOL succeeded) {
         if (succeeded) {

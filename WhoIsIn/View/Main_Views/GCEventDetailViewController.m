@@ -10,4 +10,37 @@
 
 @implementation GCEventDetailViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    // UI Navigation Bar
+    [GCAppSetup configureNavigationViewController:self withNavigationTitle:@"Activity Detail"];
+    
+    // Add Activity Detail Scroll View
+    self.detailScrollView = [[GCEventDetailScrollView alloc] initWithParentController:self];
+    [self.detailScrollView setNeedsUpdateConstraints];
+    [self.detailScrollView updateConstraintsIfNeeded];
+    
+    [[self.detailScrollView.btn_join rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        NSLog(@"Join button tapped");
+        //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
+        //        [self.navigationController pushViewController:registerViewController animated:YES];
+    }];
+    
+    // Progress HUD
+    if (!_hud) {
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.color = [GCAppAPI getColorWithRGBAinHex:BackgroundWhiteShade];
+        self.hud.activityIndicatorColor = [UIColor grayColor];
+    }
+    
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    DDLogVerbose(@"GCActivity Detail View Controller touchesBegan:withEvent:");
+    [super touchesBegan:touches withEvent:event];
+}
+
+
 @end

@@ -17,6 +17,7 @@
 @property GCAppData *appData;
 @property NSMutableArray *sortedEventsBasicsAll;
 @property NSMutableArray *sortedEventsBasicsMy;
+@property GCEventDetail *eventDetail;
 
 //@property 
 

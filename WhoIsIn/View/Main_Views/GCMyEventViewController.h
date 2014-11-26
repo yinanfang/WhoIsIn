@@ -13,5 +13,8 @@
 
 @property GCEventTableViewController *eventTableViewController;
 
+@property BOOL hasLoadDataBefore;
+
+
 
 @end
