@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GCEventTableViewController.h"
+#import "GCNewEventViewController.h"
 
 @interface GCMyEventViewController : UIViewController
 
 @property GCEventTableViewController *eventTableViewController;
+@property GCNewEventViewController *addEventViewController;
 
 @property BOOL hasLoadDataBefore;
 

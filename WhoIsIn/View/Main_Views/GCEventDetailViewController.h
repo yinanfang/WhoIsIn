@@ -17,5 +17,4 @@
 
 @property MBProgressHUD *hud;
 
-
 @end

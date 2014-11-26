@@ -24,16 +24,8 @@
     
     [[self.detailScrollView.btn_join rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         NSLog(@"Join button tapped");
-        //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
-        //        [self.navigationController pushViewController:registerViewController animated:YES];
+
     }];
-    
-    // Progress HUD
-    if (!_hud) {
-        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        self.hud.color = [GCAppAPI getColorWithRGBAinHex:BackgroundWhiteShade];
-        self.hud.activityIndicatorColor = [UIColor grayColor];
-    }
     
 }
 

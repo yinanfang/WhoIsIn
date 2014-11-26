@@ -39,11 +39,12 @@
         [GCAppSetup configureNavigationViewController:self.allEventViewController withNavigationTitle:@"Nearby Events"];
         navigationController01.tabBarItem.title = @"All Events";
         //        navigationController01.tabBarItem.image = [UIImage imageNamed:@"leaf"];
+        [GCAppSetup configureRightButtonOfNavigationViewController:self.allEventViewController];
         navigationController01.viewControllers = [NSArray arrayWithObjects:self.allEventViewController, nil];
 
         UINavigationController *navigationController02 = [[UINavigationController alloc] init];
         self.myEventViewController = [[GCMyEventViewController alloc] init];
-        [GCAppSetup configureNavigationViewController:self.myEventViewController withNavigationTitle:@"My Events"];
+        [GCAppSetup configureNavigationViewController:self.myEventViewController withNavigationTitle:@"My Events"];        
         navigationController02.tabBarItem.title = @"My Events";
         navigationController02.viewControllers = [NSArray arrayWithObjects:self.myEventViewController, nil];
         

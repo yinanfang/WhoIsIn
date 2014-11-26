@@ -14,6 +14,7 @@
 {
     [super viewDidLoad];
     // Initialize Variables
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createEvent:)];
     
     // Event table view controller
     self.eventTableViewController = [[GCEventTableViewController alloc] initWithParentController:self];
@@ -26,6 +27,17 @@
     [self.eventTableViewController updateViewConstraints];
     // Refresh control
     [self.eventTableViewController.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];
+    
+}
+
+- (void)createEvent:(id)sender
+{
+    DDLogVerbose(@"push create event view");
+    if (!_addEventViewController) {
+        _addEventViewController = [[GCNewEventViewController alloc] init];
+    }
+//    [self clearContentOfEventDetailViewController];
+    [self.navigationController pushViewController:self.addEventViewController animated:YES];
     
 }
 
@@ -80,6 +92,10 @@
     self.navigationController.navigationBar.barTintColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01];
     self.navigationController.navigationBar.hidden = NO;
     
+    // UIBarButtonItem
+    DDLogVerbose(@"asdf my: %@", self.navigationController);
+    DDLogVerbose(@"asdf parent: %@", self.parentViewController.parentViewController);
+
     // Reload table view
     //    NSLog(@"reload..");
     //    [self.surveyScrollView.orderTableView reloadData];

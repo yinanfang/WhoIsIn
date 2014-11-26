@@ -39,11 +39,6 @@
         
         // Buttons
         self.btn_join = [self addFUIButtonWithTitle:@"I'm In"];
-        [[self.btn_join rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            NSLog(@"Join button tapped");
-            //        GCRegisterViewController *registerViewController = [[GCRegisterViewController alloc] init];
-            //        [self.navigationController pushViewController:registerViewController animated:YES];
-        }];
         self.btn_maybe = [self addFUIButtonWithTitle:@"Maybe"];
         
         // Separator 01
@@ -112,8 +107,7 @@
             make.top.equalTo(self.separator01.mas_bottom).with.offset(mas_Padding_Page_Default.top);
             make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Default.left);
             make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Default.right);
-            //            make.height.mas_equalTo(self.textviewDescription.contentSize.height);
-            CGSize sizeFit = [self.textviewDescription sizeThatFits:CGSizeMake(ScreenWidth, MAXFLOAT)];
+            CGSize sizeFit = [self.textviewDescription sizeThatFits:CGSizeMake([self getTextViewDescriptionAdjustedWidth], MAXFLOAT)];
             make.height.mas_equalTo(sizeFit.height);
         }];
         
@@ -125,12 +119,14 @@
             make.height.mas_equalTo(250);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(mas_Padding_Page_Default.right);
         }];
-        
-        
-        
         self.didSetupConstraints = YES;
     }
     [super updateConstraints];
+}
+
+- (CGFloat)getTextViewDescriptionAdjustedWidth
+{
+    return ScreenWidth - 2*mas_Padding_Page_Default.left;
 }
 
 - (void)pinView:(UIView *)view toUpperview:(UIView *)upperview

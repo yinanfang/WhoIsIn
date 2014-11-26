@@ -48,6 +48,6 @@
 
 #pragma mark - View Method
 - (instancetype)initWithParentController:(GCEventDetailViewController *)controller;
-
+- (CGFloat)getTextViewDescriptionAdjustedWidth;
 
 @end

@@ -101,11 +101,15 @@ typedef NS_ENUM(NSInteger, PagePaddingOption) {
 };
 //@property StoryDisplayStyleMode storyDisplayStyleMode;
 
-#pragma mark - Events Sorted by
+#pragma mark - Events ENUM
 typedef NS_ENUM(NSInteger, GCEventSortMethod) {
     EventSortedByDistance,
     EventSortedByAllTime,
     EventSortedByUpComing,
 };
 
+typedef NS_ENUM(NSInteger, GCStateLoadingData) {
+    LoadingInProgress,
+    LoadingFinished,
+};
 @end
