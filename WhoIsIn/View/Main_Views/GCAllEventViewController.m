@@ -32,7 +32,37 @@
     // Refresh control
     [self.eventTableViewController.refreshControl addTarget:self action:@selector(fetchEvents) forControlEvents:UIControlEventValueChanged];
 
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    if (IS_IOS8_OR_LATER) {
+//        [self.locationManager requestAlwaysAuthorization];
+//        [self.locationManager requestWhenInUseAuthorization];
+//        [self.locationManager startUpdatingLocation];
+    } else {
+//        [self.locationManager startUpdatingLocation];
+    }
+}
 
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"didUpdateToLocation: %@", locations);
+    CLLocation *currentLocation = [locations lastObject];
+    if (currentLocation != nil) {
+        //        longitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        //        latitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+    }
 }
 
 - (void)segmentAction:(id)sender {
@@ -59,6 +89,10 @@
     }
     
     // decide show expired
+    
+    
+
+    
     
     // Init parameter
     NSMutableDictionary *parameter = [@{

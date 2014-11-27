@@ -40,6 +40,7 @@
 		D4E243921A20DFC10032FFD2 /* GCAllEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E243911A20DFC10032FFD2 /* GCAllEventViewController.m */; };
 		D4E90AA11A2660FC00A6BF3C /* GCNewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E90AA01A2660FC00A6BF3C /* GCNewEventViewController.m */; };
 		D4E90AA41A26611B00A6BF3C /* GCNewEventScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4E90AA31A26611B00A6BF3C /* GCNewEventScrollView.m */; };
+		D4E90AA61A26ADD700A6BF3C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E90AA51A26ADD700A6BF3C /* CoreLocation.framework */; };
 		D4F070F31A201325008843C4 /* GCSortControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F070F21A201325008843C4 /* GCSortControlViewController.m */; };
 		D4F071001A2022C9008843C4 /* GCEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F070FF1A2022C9008843C4 /* GCEventTableViewController.m */; };
 		D4F071031A202316008843C4 /* GCEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F071021A202316008843C4 /* GCEventTableViewCell.m */; };
@@ -127,6 +128,7 @@
 		D4E90AA01A2660FC00A6BF3C /* GCNewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCNewEventViewController.m; path = View/Main_Views/GCNewEventViewController.m; sourceTree = "<group>"; };
 		D4E90AA21A26611B00A6BF3C /* GCNewEventScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCNewEventScrollView.h; path = View/Main_Views/GCNewEventScrollView.h; sourceTree = "<group>"; };
 		D4E90AA31A26611B00A6BF3C /* GCNewEventScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCNewEventScrollView.m; path = View/Main_Views/GCNewEventScrollView.m; sourceTree = "<group>"; };
+		D4E90AA51A26ADD700A6BF3C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D4F070F11A201325008843C4 /* GCSortControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCSortControlViewController.h; path = View/Main_Views/GCSortControlViewController.h; sourceTree = "<group>"; };
 		D4F070F21A201325008843C4 /* GCSortControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCSortControlViewController.m; path = View/Main_Views/GCSortControlViewController.m; sourceTree = "<group>"; };
 		D4F070FE1A2022C9008843C4 /* GCEventTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCEventTableViewController.h; path = View/Main_Views/GCEventTableViewController.h; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4E90AA61A26ADD700A6BF3C /* CoreLocation.framework in Frameworks */,
 				67F3EAE0513DED44226A7BEC /* libPods-WhoIsIn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +177,7 @@
 		70D115765CC952EBB5DFDFF9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4E90AA51A26ADD700A6BF3C /* CoreLocation.framework */,
 				D01F22DB612F9228894D4173 /* libPods-WhoIsIn.a */,
 			);
 			name = Frameworks;

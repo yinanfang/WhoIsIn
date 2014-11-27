@@ -10,12 +10,12 @@
 #import "GCSortControlViewController.h"
 #import "GCEventTableViewController.h"
 
-@interface GCAllEventViewController : UIViewController
+@interface GCAllEventViewController : UIViewController <CLLocationManagerDelegate>
 
 @property GCSortControlViewController *sortController;
 @property GCEventTableViewController *eventTableViewController;
 
 @property BOOL hasLoadDataBefore;
 
-
+@property CLLocationManager *locationManager;
 @end

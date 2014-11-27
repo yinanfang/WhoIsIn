@@ -223,7 +223,7 @@
         CGSize sizeFit = [detailView.textviewDescription sizeThatFits:CGSizeMake([detailView getTextViewDescriptionAdjustedWidth] , MAXFLOAT)];
         make.height.mas_equalTo(sizeFit.height);
     }];
-
+    
 //    // Map View
 //    detailView.mapView = [self addMapView];
 

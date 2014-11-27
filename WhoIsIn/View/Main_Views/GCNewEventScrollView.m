@@ -42,11 +42,11 @@
         self.entry_TimeEnd.tag = 3;
         self.separator_TimeEnd = [self addSeparator];
         // Phone
-        self.entry_PhoneNumber = [self addLabeledTextFieldWithPlaceHolder:@"Phone Number"];
+        self.entry_PhoneNumber = [self addLabeledTextFieldWithPlaceHolder:@"Phone Number of Host"];
         self.entry_PhoneNumber.tag = 4;
         self.separator_PhoneNumber = [self addSeparator];
         // Email
-        self.entry_Email = [self addLabeledTextFieldWithPlaceHolder:@"Email"];
+        self.entry_Email = [self addLabeledTextFieldWithPlaceHolder:@"Email of Host"];
         self.entry_Email.tag = 5;
         self.separator_Email = [self addSeparator];
         
