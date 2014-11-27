@@ -205,6 +205,7 @@
     detailView.label_location.text = @"        ";
     detailView.label_distanceText.text = @"        ";
     detailView.textviewDescription.text = @"                                                                                                                                                                  ";
+    [detailView.mapView setRegion:[GCLocation getRegionWithDefaultValue] animated:NO];
 }
 
 - (void)updateEventDetailViewController:(GCEventDetail *)event
@@ -223,10 +224,8 @@
         CGSize sizeFit = [detailView.textviewDescription sizeThatFits:CGSizeMake([detailView getTextViewDescriptionAdjustedWidth] , MAXFLOAT)];
         make.height.mas_equalTo(sizeFit.height);
     }];
-    
-//    // Map View
-//    detailView.mapView = [self addMapView];
-
+    [detailView.mapView setRegion:[GCLocation getRegionWithLatitude:[event.latitude doubleValue] longitude:[event.longitude doubleValue]] animated:YES];
+    // Add annotation
 }
 
 @end

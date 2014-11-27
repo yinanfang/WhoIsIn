@@ -56,7 +56,7 @@
 #pragma mark - CocoaLumberjack Logging Constant
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #if DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+static const int ddLogLevel = DDLogLevelVerbose;
 #else
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif

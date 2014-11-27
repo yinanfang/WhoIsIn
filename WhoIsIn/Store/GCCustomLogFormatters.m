@@ -13,23 +13,23 @@
 - (NSString *)formatLogMessage:(DDLogMessage *)logMessage
 {
     //Alter the message to your liking
-    NSString *msg = [logMessage->logMsg stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+    NSString *msg = [logMessage->_message stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
     
     NSString *logLevel;
-    switch (logMessage->logFlag)
+    switch (logMessage->_flag)
     {
-        case LOG_FLAG_ERROR  : logLevel = @"E"; break;
-        case LOG_FLAG_WARN   : logLevel = @"W"; break;
-        case LOG_FLAG_INFO   : logLevel = @"I"; break;
-        case LOG_LEVEL_DEBUG : logLevel = @"D"; break;
+        case DDLogFlagError  : logLevel = @"E"; break;
+        case DDLogFlagWarning   : logLevel = @"W"; break;
+        case DDLogFlagInfo   : logLevel = @"I"; break;
+        case DDLogFlagDebug : logLevel = @"D"; break;
         default              : logLevel = @"V"; break;
     }
     
     //Also display the file the logging occurred in to ease later debugging
-    NSString *file = [[[NSString stringWithUTF8String:logMessage->file] lastPathComponent] stringByDeletingPathExtension];
+    NSString *file = [[logMessage->_file lastPathComponent] stringByDeletingPathExtension];
     
     //Format the message for the server-side log file parser
-    return [NSString stringWithFormat:@"%@ %x %@ %@ || [%@@%s@%i]", logMessage->timestamp, logMessage->machThreadID, logLevel, msg, file, logMessage->function, logMessage->lineNumber];
+    return [NSString stringWithFormat:@"%@ %@ %@ %@ || [%@@%@@%lu]", logMessage->_timestamp, logMessage->_threadID, logLevel, msg, file, logMessage->_function, (unsigned long)logMessage->_line];
 }
 
 @end

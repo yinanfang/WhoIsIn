@@ -26,6 +26,7 @@
 		D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998519FD28C200BEECA8 /* GCAccountController.m */; };
 		D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998B19FD32E400BEECA8 /* GCActivityController.m */; };
 		D476998F19FD37E100BEECA8 /* leaf.png in Resources */ = {isa = PBXBuildFile; fileRef = D476998E19FD37E100BEECA8 /* leaf.png */; };
+		D47DACC51A27786F00028B5F /* GCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D47DACC41A27786F00028B5F /* GCLocation.m */; };
 		D49055B11A217FFA0081FB68 /* GCEventBasics.m in Sources */ = {isa = PBXBuildFile; fileRef = D49055B01A217FFA0081FB68 /* GCEventBasics.m */; };
 		D49055B41A21800D0081FB68 /* GCEventDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D49055B31A21800D0081FB68 /* GCEventDetail.m */; };
 		D49055B71A2185090081FB68 /* GCActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D49055B61A2185090081FB68 /* GCActivityTableViewCell.m */; };
@@ -100,6 +101,8 @@
 		D476998A19FD32E400BEECA8 /* GCActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActivityController.h; path = View/Main_Views/GCActivityController.h; sourceTree = "<group>"; };
 		D476998B19FD32E400BEECA8 /* GCActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActivityController.m; path = View/Main_Views/GCActivityController.m; sourceTree = "<group>"; };
 		D476998E19FD37E100BEECA8 /* leaf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf.png; sourceTree = "<group>"; };
+		D47DACC31A27786F00028B5F /* GCLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCLocation.h; sourceTree = "<group>"; };
+		D47DACC41A27786F00028B5F /* GCLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCLocation.m; sourceTree = "<group>"; };
 		D49055AF1A217FFA0081FB68 /* GCEventBasics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCEventBasics.h; path = Model/GCEventBasics.h; sourceTree = "<group>"; };
 		D49055B01A217FFA0081FB68 /* GCEventBasics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCEventBasics.m; path = Model/GCEventBasics.m; sourceTree = "<group>"; };
 		D49055B21A21800D0081FB68 /* GCEventDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCEventDetail.h; path = Model/GCEventDetail.h; sourceTree = "<group>"; };
@@ -259,6 +262,8 @@
 				D4F777E119F410630061F62C /* GCAppSetup.m */,
 				D4F777E219F410630061F62C /* GCNetwork.h */,
 				D4F777E319F410630061F62C /* GCNetwork.m */,
+				D47DACC31A27786F00028B5F /* GCLocation.h */,
+				D47DACC41A27786F00028B5F /* GCLocation.m */,
 			);
 			path = AppAPI;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				D4B604511A2198E8008F3C8F /* GCEventDetailScrollView.m in Sources */,
 				D40F168F1A0E7F13008AB059 /* GCActivityDetailViewController.m in Sources */,
 				D49055B41A21800D0081FB68 /* GCEventDetail.m in Sources */,
+				D47DACC51A27786F00028B5F /* GCLocation.m in Sources */,
 				D49055B11A217FFA0081FB68 /* GCEventBasics.m in Sources */,
 				D4F777E419F410630061F62C /* GCAppAPI.m in Sources */,
 				D4C767EC19F461F5005B2683 /* GCRegisterScrollView.m in Sources */,

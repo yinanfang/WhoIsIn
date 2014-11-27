@@ -38,7 +38,8 @@ typedef NS_ENUM(NSInteger, testEnum) {
 #define KeyboardSizeLandscape       CGRectMake(480, 162)       // iPhone 4
 #define KeyboardHeightLandscape     162.0f
 
-
+#pragma mark - Math
+#define METERS_PER_MILE 1609.344
 
 #pragma mark - Image Types
 @property NSString *PNGTypeAndSuffix;

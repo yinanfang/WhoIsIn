@@ -75,7 +75,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 FXBlurView
 
-Version 1.6.2, July 17th, 2014
+Version 1.6.3, November 1st, 2014
 
 Copyright (C) 2013 Charcoal Design
 

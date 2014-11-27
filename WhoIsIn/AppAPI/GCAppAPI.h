@@ -56,6 +56,7 @@
 #import "GCAppConfig.h"
 #import "GCConstant.h"
 #import "GCNetwork.h"
+#import "GCLocation.h"
 
 
 @interface GCAppAPI : NSObject

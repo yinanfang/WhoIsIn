@@ -50,4 +50,16 @@
     
 }
 
+// Hide keyboard when touching the background
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    DDLogVerbose(@"GCRegisterViewController touchesBegan:withEvent:");
+    UITouch *touch = [[event allTouches] anyObject];
+    UIView *responder = [GCAppAPI getFirstResponderFromView:self.eventScrollView.view_Event];
+    if (responder && [touch view] != responder) {
+        [responder resignFirstResponder];
+    }
+//    [self restoreContentOffset];
+    [super touchesBegan:touches withEvent:event];
+}
+
 @end
