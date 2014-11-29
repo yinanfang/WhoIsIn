@@ -16,6 +16,7 @@
     self = [super init];
     if (self) {
         self.parentController = controller;
+//        self.backgroundColor = [GCAppAPI getColorWithRGBAinHex:BackgroundWhiteShade];
         self.backgroundColor = [UIColor whiteColor];
         [self.parentController.view addSubview:self];
         
@@ -33,12 +34,12 @@
         self.separator_Description = [self addSeparator];
         // Start Time
         self.label_TimeStart = [self addLabelTitleWithString:@"Start"];
-        self.entry_TimeStart = [self addLabeledTextFieldWithPlaceHolder:@"          "];
+        self.entry_TimeStart = [self addLabeledTextFieldWithPlaceHolder:@"Start"];
         self.entry_TimeStart.tag = 3;
         self.separator_TimeStart = [self addSeparator];
         // End Time
         self.label_TimeEnd = [self addLabelTitleWithString:@"End"];
-        self.entry_TimeEnd = [self addLabeledTextFieldWithPlaceHolder:@"          "];
+        self.entry_TimeEnd = [self addLabeledTextFieldWithPlaceHolder:@"End"];
         self.entry_TimeEnd.tag = 3;
         self.separator_TimeEnd = [self addSeparator];
         // Phone
@@ -81,6 +82,8 @@
     return self;
 }
 
+const static CGFloat kEntryFieldHeight = 40.0f;
+const static CGFloat kLabelTimeWidth = 100.0f;
 - (void)updateConstraints
 {
     if(!self.didSetupConstraints) {
@@ -101,7 +104,7 @@
             make.top.equalTo(self.view_Event.mas_top).with.offset(mas_Padding_Page_Small.top);
             make.left.equalTo(self.view_Event.mas_left).with.offset(mas_Padding_Page_Small.left);
             make.right.equalTo(self.view_Event.mas_right).with.offset(mas_Padding_Page_Small.right);
-            make.height.mas_equalTo(40);
+            make.height.mas_equalTo(kEntryFieldHeight);
         }];
         [self pinView:self.separator_Title toUpperview:self.entry_Title];
         // Desctiption
@@ -112,23 +115,30 @@
             make.height.mas_equalTo(200);
 //            self.entry_Description.contentOffset = CGPointZero;
         }];
-//        [self.entry_Description.]
         [self pinView:self.separator_Description toUpperview:self.entry_Description];
+        
         // Time Start & End
         [self.label_TimeStart mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.separator_Description.mas_bottom).with.offset(mas_Padding_Page_Small.top);
             make.left.equalTo(self.view_Event.mas_left).with.offset(mas_Padding_Page_Small.left);
+//            make.height.mas_equalTo(kEntryFieldHeight);
+            make.size.mas_equalTo(CGSizeMake(kLabelTimeWidth, kEntryFieldHeight));
+        }];
+        [self.entry_TimeStart mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.label_TimeStart.mas_top);
+            make.left.equalTo(self.label_TimeStart.mas_right).with.offset(mas_Padding_Page_Small.left);
             make.right.equalTo(self.view_Event.mas_right).with.offset(mas_Padding_Page_Small.right);
-            make.height.mas_equalTo(40);
+            make.height.mas_equalTo(kEntryFieldHeight);
         }];
         [self pinView:self.separator_TimeStart toUpperview:self.label_TimeStart];
         [self.label_TimeEnd mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.separator_TimeStart.mas_bottom).with.offset(mas_Padding_Page_Small.top);
             make.left.equalTo(self.view_Event.mas_left).with.offset(mas_Padding_Page_Small.left);
             make.right.equalTo(self.view_Event.mas_right).with.offset(mas_Padding_Page_Small.right);
-            make.height.mas_equalTo(40);
+            make.height.mas_equalTo(kEntryFieldHeight);
         }];
         [self pinView:self.separator_TimeEnd toUpperview:self.label_TimeEnd];
+        
         // Phone Number
         [self pinView:self.entry_PhoneNumber toUpperview:self.separator_TimeEnd];
         [self pinView:self.separator_PhoneNumber toUpperview:self.entry_PhoneNumber];
@@ -163,7 +173,7 @@
         make.left.equalTo(self.view_Event.mas_left).with.offset(mas_Padding_Page_Small.left);
         make.right.equalTo(self.view_Event.mas_right).with.offset(mas_Padding_Page_Small.right);
         if ([view isMemberOfClass:[JVFloatLabeledTextField class]]) {
-            make.height.mas_equalTo(40);
+            make.height.mas_equalTo(kEntryFieldHeight);
         } else {
             make.height.mas_equalTo(1);
         }

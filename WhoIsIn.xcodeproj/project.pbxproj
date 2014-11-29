@@ -479,6 +479,7 @@
 				TargetAttributes = {
 					D425455519E189EC004B5AE3 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = AU55AR8N9R;
 					};
 					D425456819E189EC004B5AE3 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -716,6 +717,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = WhoIsIn/PrefixHeader.pch;
 				INFOPLIST_FILE = WhoIsIn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -732,6 +734,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = WhoIsIn/PrefixHeader.pch;
 				INFOPLIST_FILE = WhoIsIn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
