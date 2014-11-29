@@ -66,7 +66,7 @@
     [defaults synchronize];
 }
 
-#pragma mark - Log In & Register
+#pragma mark - API Calls
 + (void)loginWithCredential:(NSMutableDictionary *)credential completion:(void (^)(BOOL succeeded))completion
 {
     DDLogVerbose(@"start to login...");
@@ -127,7 +127,6 @@
     [controller.navigationController pushViewController:mainContainerViewController animated:YES];
 }
 
-#pragma mark - Fetch Data
 + (void)getEventsAllWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion
 {
     DDLogVerbose(@"getCurrentActivities");
@@ -186,6 +185,24 @@
             //            DDLogVerbose(@"activities new value: %@", eventArray);
             DDLogVerbose(@"new eventDetail: %@", eventDetail);
             completion(YES);
+        }
+    }];
+}
+
++ (void)createEventWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion
+{
+    DDLogVerbose(@"createEventWithParameter");
+    NSURL *url = [NSURL URLWithString:URLToServicePHP];
+    [GCNetwork requestGETWithURL:url parameter:parameter completion:^(BOOL succeeded, NSData *data){
+        if (succeeded) {
+            NSDictionary *dataDic = (NSDictionary *)data;
+            if ([dataDic[@"response"] isEqualToString:@"0"]) {
+                DDLogVerbose(@"Create Event failed...");
+                completion(NO);
+            } else if ([dataDic[@"response"] isEqualToString:@"1"]) {
+                DDLogVerbose(@"Create Event successfully!");
+                completion(YES);
+            }
         }
     }];
 }

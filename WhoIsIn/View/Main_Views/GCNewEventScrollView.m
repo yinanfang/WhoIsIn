@@ -32,23 +32,31 @@
         self.entry_Description = [self addLabeledTextViewWithPlaceHolder:@"Details"];
         self.entry_Description.tag = 2;
         self.separator_Description = [self addSeparator];
+        
+        // Location
+        self.entry_Location = [self addLabeledTextFieldWithPlaceHolder:@"Location"];
+        self.entry_Location.tag = 3;
+        self.separator_Location = [self addSeparator];
+        
         // Start Time
-        self.label_TimeStart = [self addLabelTitleWithString:@"Start"];
         self.entry_TimeStart = [self addLabeledTextFieldWithPlaceHolder:@"Start"];
-        self.entry_TimeStart.tag = 3;
+        self.picker_TimeStart = [self addDataPickerToEntry:self.entry_TimeStart];
+        self.entry_TimeStart.tag = 4;
         self.separator_TimeStart = [self addSeparator];
         // End Time
-        self.label_TimeEnd = [self addLabelTitleWithString:@"End"];
         self.entry_TimeEnd = [self addLabeledTextFieldWithPlaceHolder:@"End"];
-        self.entry_TimeEnd.tag = 3;
+        self.picker_TimeEnd = [self addDataPickerToEntry:self.entry_TimeEnd];
+        self.entry_TimeEnd.tag = 5;
         self.separator_TimeEnd = [self addSeparator];
+        
         // Phone
         self.entry_PhoneNumber = [self addLabeledTextFieldWithPlaceHolder:@"Phone Number of Host"];
-        self.entry_PhoneNumber.tag = 4;
+        self.entry_PhoneNumber.tag = 6;
         self.separator_PhoneNumber = [self addSeparator];
         // Email
         self.entry_Email = [self addLabeledTextFieldWithPlaceHolder:@"Email of Host"];
-        self.entry_Email.tag = 5;
+        self.entry_Email.returnKeyType = UIReturnKeyDone;
+        self.entry_Email.tag = 7;
         self.separator_Email = [self addSeparator];
         
         
@@ -77,13 +85,12 @@
         self.label_ErrorMessage = [self addLabelTitleWithString:@""];
         
         // Register Button
-        self.btn_Register = [self addFUIButtonWithTitle:@"Register"];
+        self.btn_Done = [self addFUIButtonWithTitle:@"Done"];
     }
     return self;
 }
 
 const static CGFloat kEntryFieldHeight = 40.0f;
-const static CGFloat kLabelTimeWidth = 100.0f;
 - (void)updateConstraints
 {
     if(!self.didSetupConstraints) {
@@ -96,8 +103,6 @@ const static CGFloat kLabelTimeWidth = 100.0f;
             make.top.equalTo(self.mas_top).with.offset(mas_Padding_Page_Small.top);
             make.left.equalTo(self.mas_left).with.offset(mas_Padding_Page_Large.left);
             make.right.equalTo(self.mas_right).with.offset(mas_Padding_Page_Large.right);
-
-//            make.size.mas_equalTo(CGSizeMake(ScreenWidth-2*mas_Padding_Page_Large.left, 570));
         }];
         // Title
         [self.entry_Title mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -112,32 +117,20 @@ const static CGFloat kLabelTimeWidth = 100.0f;
             make.top.equalTo(self.separator_Title.mas_bottom).with.offset(mas_Padding_Page_Small.top);
             make.left.equalTo(self.view_Event.mas_left).with.offset(mas_Padding_Page_Small.left);
             make.right.equalTo(self.view_Event.mas_right).with.offset(mas_Padding_Page_Small.right);
-            make.height.mas_equalTo(200);
+            make.height.mas_equalTo(150);
 //            self.entry_Description.contentOffset = CGPointZero;
         }];
         [self pinView:self.separator_Description toUpperview:self.entry_Description];
         
+        // Location
+        [self pinView:self.entry_Location toUpperview:self.separator_Description];
+        [self pinView:self.separator_Location toUpperview:self.entry_Location];
+        
         // Time Start & End
-        [self.label_TimeStart mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.separator_Description.mas_bottom).with.offset(mas_Padding_Page_Small.top);
-            make.left.equalTo(self.view_Event.mas_left).with.offset(mas_Padding_Page_Small.left);
-//            make.height.mas_equalTo(kEntryFieldHeight);
-            make.size.mas_equalTo(CGSizeMake(kLabelTimeWidth, kEntryFieldHeight));
-        }];
-        [self.entry_TimeStart mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.label_TimeStart.mas_top);
-            make.left.equalTo(self.label_TimeStart.mas_right).with.offset(mas_Padding_Page_Small.left);
-            make.right.equalTo(self.view_Event.mas_right).with.offset(mas_Padding_Page_Small.right);
-            make.height.mas_equalTo(kEntryFieldHeight);
-        }];
-        [self pinView:self.separator_TimeStart toUpperview:self.label_TimeStart];
-        [self.label_TimeEnd mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.separator_TimeStart.mas_bottom).with.offset(mas_Padding_Page_Small.top);
-            make.left.equalTo(self.view_Event.mas_left).with.offset(mas_Padding_Page_Small.left);
-            make.right.equalTo(self.view_Event.mas_right).with.offset(mas_Padding_Page_Small.right);
-            make.height.mas_equalTo(kEntryFieldHeight);
-        }];
-        [self pinView:self.separator_TimeEnd toUpperview:self.label_TimeEnd];
+        [self pinView:self.entry_TimeStart toUpperview:self.separator_Location];
+        [self pinView:self.separator_TimeStart toUpperview:self.entry_TimeStart];
+        [self pinView:self.entry_TimeEnd toUpperview:self.separator_TimeStart];
+        [self pinView:self.separator_TimeEnd toUpperview:self.entry_TimeEnd];
         
         // Phone Number
         [self pinView:self.entry_PhoneNumber toUpperview:self.separator_TimeEnd];
@@ -154,7 +147,7 @@ const static CGFloat kLabelTimeWidth = 100.0f;
         }];
         
         // Register Button
-        [self.btn_Register mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.btn_Done mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view_Event.mas_bottom).with.offset(mas_Padding_Page_Large.top);
             make.centerX.equalTo(self.mas_centerX);
             make.size.mas_equalTo(CGSizeMake(250, 50));
@@ -219,7 +212,7 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 12.0f;
     textView.floatingLabel.font = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
     textView.floatingLabelTextColor = [UIColor lightGrayColor];        // Label color when not editing
     textView.clearsOnInsertion = NO;
-    textView.returnKeyType = UIReturnKeyNext;
+    textView.returnKeyType = UIReturnKeyDefault;
     textView.placeholderYPadding = 0;
     textView.contentOffset = CGPointZero;
     [self.view_Event addSubview:textView];
@@ -262,4 +255,11 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 12.0f;
     return label;
 }
 
+- (UIDatePicker *)addDataPickerToEntry:(JVFloatLabeledTextField *)textField
+{
+    UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    picker.backgroundColor = [GCAppAPI getColorWithRGBAinHex:ThemeColor01_Variation01];
+    textField.inputView = picker;
+    return picker;
+}
 @end

@@ -34,5 +34,6 @@
 + (void)getEventsAllWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
 + (void)getEventsMyWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
 + (void)getEventDetailWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
++ (void)createEventWithParameter:(NSMutableDictionary *)parameter completion:(void (^)(BOOL succeeded))completion;
 
 @end

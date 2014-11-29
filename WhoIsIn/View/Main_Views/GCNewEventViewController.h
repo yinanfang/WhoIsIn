@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GCNewEventScrollView.h"
 
-@interface GCNewEventViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface GCNewEventViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property GCNewEventScrollView *eventScrollView;
 

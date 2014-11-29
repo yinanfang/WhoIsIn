@@ -24,11 +24,12 @@
 @property JVFloatLabeledTextView *entry_Description;
 @property UIView *separator_Description;
 
-@property UILabel *label_TimeStart;
+@property JVFloatLabeledTextField *entry_Location;
+@property UIView *separator_Location;
+
 @property JVFloatLabeledTextField *entry_TimeStart;
 @property UIDatePicker *picker_TimeStart;
 @property UIView *separator_TimeStart;
-@property UILabel *label_TimeEnd;
 @property JVFloatLabeledTextField *entry_TimeEnd;
 @property UIDatePicker *picker_TimeEnd;
 @property UIView *separator_TimeEnd;
@@ -44,7 +45,7 @@
 @property UILabel *label_ErrorMessage;
 
 // Register Button
-@property FUIButton *btn_Register;
+@property FUIButton *btn_Done;
 
 #pragma mark - View Method
 - (instancetype)initWithParentController:(GCNewEventViewController *)controller;

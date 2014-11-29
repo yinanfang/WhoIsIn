@@ -238,7 +238,18 @@ static NSString *const kAFViewShakerAnimationKey = @"kAFViewShakerAnimationKey";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         kDateFormatter = [[NSDateFormatter alloc] init];
-        kDateFormatter.DateFormat = @"MMM d, h:mm a";
+        kDateFormatter.DateFormat = @"MMM d, h:mm a";   //Sep 15, 11:00 PM
+    });
+    return kDateFormatter;
+}
+
++ (NSDateFormatter *)dateFormatter03
+{
+    static NSDateFormatter *kDateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        kDateFormatter = [[NSDateFormatter alloc] init];
+        kDateFormatter.DateFormat = @"EEE MMM d, h:mm a";
     });
     return kDateFormatter;
 }
