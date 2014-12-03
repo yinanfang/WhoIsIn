@@ -93,16 +93,16 @@
                                          @"firstName": self.eventScrollView.entry_PhoneNumber.text,
                                          @"lastName": self.eventScrollView.entry_Email.text,
                                          } mutableCopy];
-    [GCAppViewModel registerWithCredential:parameter completion:^(BOOL succeeded) {
-        if (succeeded) {
-            [GCAppViewModel createEventWithParameter:parameter completion:^(BOOL succeeded) {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }];
-        } else {
-            DDLogVerbose(@"Create event failed. Need to enter again");
-            self.eventScrollView.label_ErrorMessage.text = @"Eamil exists. Register Failed.";
-        }
-    }];
+//    [GCAppViewModel registerWithCredential:parameter completion:^(BOOL succeeded) {
+//        if (succeeded) {
+//            [GCAppViewModel createEventWithParameter:parameter completion:^(BOOL succeeded) {
+//                [self dismissViewControllerAnimated:YES completion:nil];
+//            }];
+//        } else {
+//            DDLogVerbose(@"Create event failed. Need to enter again");
+//            self.eventScrollView.label_ErrorMessage.text = @"Eamil exists. Register Failed.";
+//        }
+//    }];
 }
 
 

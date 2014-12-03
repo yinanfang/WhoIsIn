@@ -54,7 +54,12 @@
     [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor brownColor] backgroundColor:nil forFlag:DDLogFlagInfo];
     [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor blackColor] backgroundColor:nil forFlag:DDLogFlagDebug];
     [[DDTTYLogger sharedInstance] setForegroundColor:[UIColor grayColor] backgroundColor:nil forFlag:DDLogFlagVerbose];
+    [[DDTTYLogger sharedInstance] setLogFormatter:[[CustomLogFormatters01 alloc] init]];
     // Test logger color
+    NSLog(@"NSLog");
+    DLog(@"DDLog");
+    ALog(@"ALog");
+//    ULog(@"ULog");
     DDLogError(@"DDLogError");
     DDLogWarn(@"DDLogWarn");
     DDLogInfo(@"DDLogInfo");
@@ -69,7 +74,7 @@
     [fileLogger setRollingFrequency:60 * 60 * 24];   // roll every day
     [fileLogger setMaximumFileSize:1024 * 1024 * 2]; // max 2mb file size
     [fileLogger.logFileManager setMaximumNumberOfLogFiles:7];
-    [fileLogger setLogFormatter:[[CustomLogFormatters alloc] init]];
+    [fileLogger setLogFormatter:[[CustomLogFormatters02 alloc] init]];
     
     [DDLog addLogger:fileLogger];
     DDLogInfo(@"Logging is setup (\"%@\")", [fileLogger.logFileManager logsDirectory]);
