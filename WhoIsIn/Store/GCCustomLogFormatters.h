@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import <CocoaLumberjack/CocoaLumberjack.h>
-
 // For console
 @interface CustomLogFormatters01 : NSObject <DDLogFormatter>
 @end
@@ -35,3 +33,4 @@
 
 
 //Add other custom formatters if you want the messages displayed differently in say the console vs. the log file
+

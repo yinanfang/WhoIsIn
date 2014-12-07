@@ -155,7 +155,7 @@
     if (!_eventDetailViewController) {
         _eventDetailViewController = [[GCEventDetailViewController alloc] init];
     }
-    [self clearContentOfEventDetailViewController];
+    [self.eventDetailViewController clearContentOfEventDetailViewController];
     // Start progress HUD
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.eventDetailViewController.view animated:YES];
     hud.color = [GCAppAPI getColorWithRGBAinHex:BackgroundWhiteShade];
@@ -179,7 +179,7 @@
     [GCAppViewModel getEventDetailWithParameter:parameter completion:^(BOOL succeeded) {
         if (succeeded) {
             // Re-configure eventDetailViewController
-            [self updateEventDetailViewController:[GCAppViewModel sharedInstance].eventDetail];
+            [self.eventDetailViewController updateEventDetailViewController:[GCAppViewModel sharedInstance].eventDetail];
             [self.eventDetailViewController.detailScrollView setNeedsUpdateConstraints];
             [self.eventDetailViewController.detailScrollView updateConstraintsIfNeeded];
             // Hide progress HUD
@@ -194,38 +194,6 @@
     // Set event detail and update constraints
     
 
-}
-
-- (void)clearContentOfEventDetailViewController
-{
-    GCEventDetailScrollView *detailView = self.eventDetailViewController.detailScrollView;
-    detailView.label_title.text = @"        ";
-    detailView.label_host.text = @"        ";
-    detailView.label_timeStart.text = @"        ";
-    detailView.label_location.text = @"        ";
-    detailView.label_distanceText.text = @"        ";
-    detailView.textviewDescription.text = @"                                                                                                                                                                  ";
-    [detailView.mapView setRegion:[GCLocation getRegionWithDefaultValue] animated:NO];
-}
-
-- (void)updateEventDetailViewController:(GCEventDetail *)event
-{
-    // update EventDetail
-    self.eventDetailViewController.eventDetail = event;
-    // update content
-    GCEventDetailScrollView *detailView = self.eventDetailViewController.detailScrollView;
-    detailView.label_title.text = event.eventTitle;
-    detailView.label_host.text = [NSString stringWithFormat:@"Hosted by %@ %@", event.nameFirst, event.nameLast];
-    detailView.label_timeStart.text = [[GCAppAPI dateFormatter02] stringFromDate:event.timeToStart];
-    detailView.label_location.text = event.locationString;
-    detailView.label_distanceText.text = event.distanceString;
-    detailView.textviewDescription.text = event.eventDescription;
-    [detailView.textviewDescription mas_updateConstraints:^(MASConstraintMaker *make) {
-        CGSize sizeFit = [detailView.textviewDescription sizeThatFits:CGSizeMake([detailView getTextViewDescriptionAdjustedWidth] , MAXFLOAT)];
-        make.height.mas_equalTo(sizeFit.height);
-    }];
-    [detailView.mapView setRegion:[GCLocation getRegionWithLatitude:[event.latitude doubleValue] longitude:[event.longitude doubleValue]] animated:YES];
-    // Add annotation
 }
 
 @end

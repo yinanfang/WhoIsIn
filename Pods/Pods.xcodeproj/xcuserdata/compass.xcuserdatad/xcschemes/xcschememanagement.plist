@@ -39,6 +39,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-WhoIsIn-JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-WhoIsIn-JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WhoIsIn-JVFloatLabeledTextField.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,87 +102,97 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0B8E91ABDFF5985023DF0225</key>
+		<key>27E1B4E6D937F3A6DF9793A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>14CAEF9796BBE36CFB752735</key>
+		<key>2DD407A87B2220CA8D8219C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29E0A3E85E407E07BF5E1D99</key>
+		<key>3DBEF3F185443251B43B0C94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5DB81BACE5CF537F45324A1E</key>
+		<key>5853C1802F036790D64391D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62AAD6540CE3E73A98C69B61</key>
+		<key>58E05998426ACF425EAEBFA6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6369C7A567623B4E4E2B2367</key>
+		<key>5DB92E1D5E398E6DDDCF3EE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>71288C29C9AE9C3C8FD5DC83</key>
+		<key>65D14C8DD960ADA4DA98DE15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7217FF69C1735551F65F14D1</key>
+		<key>69E22E1A3509A089BE76F038</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7B454084AF5E1E4350FB44D0</key>
+		<key>735B143E9737864C409AF044</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>93F72085B1BCD1E5438860FF</key>
+		<key>907D981C578DB6864C34A2C9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A576A68EA5857BE53DD66595</key>
+		<key>A4C43C62999C9E28303742D2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B49560B76B1BAD4E35A12FCE</key>
+		<key>B93310A2398F3E49157BF771</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B9518ABF6430B2348427E847</key>
+		<key>C3B6754558C74185F1189E85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BEA9E4D4B22E9B48CD263938</key>
+		<key>C7746CED6B80F979E57BD4ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D3E70E10747CC774B5218BC4</key>
+		<key>D40235C8E60643DAAD2CD1FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E74642426C0FFFA0CD9FE6FC</key>
+		<key>D6D3389E30909E20368D241A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC8640FE0CE81BC2A413D6C5</key>
+		<key>DA01ACAD099AE179D69FF3D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECF19CF3922BC181D3EEF605</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA7531B01E293221ECD1B286</key>
 		<dict>
 			<key>primary</key>
 			<true/>

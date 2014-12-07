@@ -54,11 +54,10 @@
 
 // Don't change this
 #pragma mark - CocoaLumberjack Logging Constant
-#import <CocoaLumberjack/CocoaLumberjack.h>
 #if DEBUG
-static const int ddLogLevel = DDLogLevelVerbose;
+    static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
-static const int ddLogLevel = LOG_LEVEL_WARN;
+    static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 // Add a testing color for XcodeColors
 #define XCODE_COLORS_ESCAPE @"\033["

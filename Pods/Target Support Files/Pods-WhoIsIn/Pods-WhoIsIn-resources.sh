@@ -31,6 +31,10 @@ install_resource()
       echo "xcrun momc \"${PODS_ROOT}/$1\" \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodeld`.momd\""
       xcrun momc "${PODS_ROOT}/$1" "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcdatamodeld`.momd"
       ;;
+    *.xcmappingmodel)
+      echo "xcrun mapc \"${PODS_ROOT}/$1\" \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcmappingmodel`.cdm\""
+      xcrun mapc "${PODS_ROOT}/$1" "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename "$1" .xcmappingmodel`.cdm"
+      ;;
     *.xcassets)
       ;;
     /*)
@@ -47,6 +51,28 @@ install_resource()
                     install_resource "FlatUIKit/Resources/Lato-Italic.ttf"
                     install_resource "FlatUIKit/Resources/Lato-Light.ttf"
                     install_resource "FlatUIKit/Resources/Lato-Regular.ttf"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/JSQMessagesAssets.bundle"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/Base.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/de.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/en.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/es.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/fr.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/he.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/it.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/nl.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/pl.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/pt.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/ro.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/ru.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/tr.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/zh-Hans.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Assets/Strings/zh-Hant.lproj"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesViewController.xib"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellIncoming.xib"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellOutgoing.xib"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesLoadEarlierHeaderView.xib"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesToolbarContentView.xib"
+                    install_resource "JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesTypingIndicatorFooterView.xib"
                     install_resource "TSMessages/Pod/Assets/NotificationBackgroundError.png"
                     install_resource "TSMessages/Pod/Assets/NotificationBackgroundError@2x.png"
                     install_resource "TSMessages/Pod/Assets/NotificationBackgroundErrorIcon.png"

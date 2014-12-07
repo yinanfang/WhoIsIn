@@ -17,4 +17,9 @@
 
 @property MBProgressHUD *hud;
 
+
+// Method
+- (void)clearContentOfEventDetailViewController;
+- (void)updateEventDetailViewController:(GCEventDetail *)event;
+
 @end

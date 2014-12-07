@@ -22,6 +22,8 @@
 		D425458919E1ABF2004B5AE3 /* GCConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458519E1ABF2004B5AE3 /* GCConstant.m */; };
 		D425458A19E1ABF2004B5AE3 /* GCCustomLogFormatters.m in Sources */ = {isa = PBXBuildFile; fileRef = D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */; };
 		D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = D441BCCC19FC932D00311151 /* GCMainTabController.m */; };
+		D454859B1A33DEDE00B30903 /* GCMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D454859A1A33DEDE00B30903 /* GCMessageViewController.m */; };
+		D454859D1A33E87500B30903 /* Comment_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = D454859C1A33E87500B30903 /* Comment_64x64.png */; };
 		D476998319FD28B000BEECA8 /* GCUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998219FD28B000BEECA8 /* GCUserInfoController.m */; };
 		D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998519FD28C200BEECA8 /* GCAccountController.m */; };
 		D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998B19FD32E400BEECA8 /* GCActivityController.m */; };
@@ -94,6 +96,9 @@
 		D425458719E1ABF2004B5AE3 /* GCCustomLogFormatters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCCustomLogFormatters.m; sourceTree = "<group>"; };
 		D441BCCB19FC932D00311151 /* GCMainTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCMainTabController.h; path = View/Main_Views/GCMainTabController.h; sourceTree = "<group>"; };
 		D441BCCC19FC932D00311151 /* GCMainTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCMainTabController.m; path = View/Main_Views/GCMainTabController.m; sourceTree = "<group>"; };
+		D45485991A33DEDE00B30903 /* GCMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCMessageViewController.h; path = View/Main_Views/GCMessageViewController.h; sourceTree = "<group>"; };
+		D454859A1A33DEDE00B30903 /* GCMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCMessageViewController.m; path = View/Main_Views/GCMessageViewController.m; sourceTree = "<group>"; };
+		D454859C1A33E87500B30903 /* Comment_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Comment_64x64.png; sourceTree = "<group>"; };
 		D476998119FD28B000BEECA8 /* GCUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCUserInfoController.h; path = View/Main_Views/GCUserInfoController.h; sourceTree = "<group>"; };
 		D476998219FD28B000BEECA8 /* GCUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCUserInfoController.m; path = View/Main_Views/GCUserInfoController.m; sourceTree = "<group>"; };
 		D476998419FD28C200BEECA8 /* GCAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAccountController.h; path = View/Main_Views/GCAccountController.h; sourceTree = "<group>"; };
@@ -318,6 +323,8 @@
 				D4B6044D1A2198CE008F3C8F /* GCEventDetailViewController.m */,
 				D4B6044F1A2198E8008F3C8F /* GCEventDetailScrollView.h */,
 				D4B604501A2198E8008F3C8F /* GCEventDetailScrollView.m */,
+				D45485991A33DEDE00B30903 /* GCMessageViewController.h */,
+				D454859A1A33DEDE00B30903 /* GCMessageViewController.m */,
 			);
 			name = "Base & Control";
 			sourceTree = "<group>";
@@ -357,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				D476998E19FD37E100BEECA8 /* leaf.png */,
+				D454859C1A33E87500B30903 /* Comment_64x64.png */,
 			);
 			name = Images;
 			path = Store;
@@ -407,10 +415,10 @@
 			isa = PBXGroup;
 			children = (
 				D4F070F41A201516008843C4 /* Container */,
-				D431B78E1A17CAE500CF55BF /* Base & Control */,
 				D431B78F1A17CB1100CF55BF /* All Events */,
 				D431B7901A17CB2B00CF55BF /* My Events */,
 				D431B7911A17CB3400CF55BF /* Account Info */,
+				D431B78E1A17CAE500CF55BF /* Base & Control */,
 				D49055B81A2188F10081FB68 /* Recycled */,
 			);
 			name = Main_Views;
@@ -513,6 +521,7 @@
 			files = (
 				D425456419E189EC004B5AE3 /* LaunchScreen.xib in Resources */,
 				D425456119E189EC004B5AE3 /* Images.xcassets in Resources */,
+				D454859D1A33E87500B30903 /* Comment_64x64.png in Resources */,
 				D476998F19FD37E100BEECA8 /* leaf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,6 +595,7 @@
 				D4F071031A202316008843C4 /* GCEventTableViewCell.m in Sources */,
 				D4C767EF19F461F5005B2683 /* GCSignInViewController.m in Sources */,
 				D4E90AA11A2660FC00A6BF3C /* GCNewEventViewController.m in Sources */,
+				D454859B1A33DEDE00B30903 /* GCMessageViewController.m in Sources */,
 				D4C767DF19F457C9005B2683 /* GCAppViewModel.m in Sources */,
 				D425455C19E189EC004B5AE3 /* main.m in Sources */,
 				D4F071001A2022C9008843C4 /* GCEventTableViewController.m in Sources */,

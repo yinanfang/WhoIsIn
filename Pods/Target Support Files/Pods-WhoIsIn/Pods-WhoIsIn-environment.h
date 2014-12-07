@@ -56,27 +56,21 @@
 
 // CocoaLumberjack
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack 0
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 1
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack 9
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack 2
 
 // CocoaLumberjack/Core
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Core
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Core 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Core 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Core 0
-
-// CocoaLumberjack/Default
-#define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Default
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Default 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Default 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Default 0
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Core 1
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Core 9
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Core 2
 
 // CocoaLumberjack/Extensions
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack_Extensions
-#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Extensions 2
-#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 0
-#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 0
+#define COCOAPODS_VERSION_MAJOR_CocoaLumberjack_Extensions 1
+#define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 9
+#define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 2
 
 // FXBlurView
 #define COCOAPODS_POD_AVAILABLE_FXBlurView
@@ -101,6 +95,18 @@
 #define COCOAPODS_VERSION_MAJOR_HexColors 2
 #define COCOAPODS_VERSION_MINOR_HexColors 2
 #define COCOAPODS_VERSION_PATCH_HexColors 1
+
+// JSQMessagesViewController
+#define COCOAPODS_POD_AVAILABLE_JSQMessagesViewController
+#define COCOAPODS_VERSION_MAJOR_JSQMessagesViewController 6
+#define COCOAPODS_VERSION_MINOR_JSQMessagesViewController 1
+#define COCOAPODS_VERSION_PATCH_JSQMessagesViewController 0
+
+// JSQSystemSoundPlayer
+#define COCOAPODS_POD_AVAILABLE_JSQSystemSoundPlayer
+#define COCOAPODS_VERSION_MAJOR_JSQSystemSoundPlayer 2
+#define COCOAPODS_VERSION_MINOR_JSQSystemSoundPlayer 0
+#define COCOAPODS_VERSION_PATCH_JSQSystemSoundPlayer 0
 
 // JVFloatLabeledTextField
 #define COCOAPODS_POD_AVAILABLE_JVFloatLabeledTextField

@@ -11,7 +11,7 @@
 // AFNetworking
 #import <AFNetworking.h>
 // CocoaLumberjack
-#import <CocoaLumberjack/CocoaLumberjack.h>
+#import <CocoaLumberjack/DDLog.h>
 #import <DDTTYLogger.h>
 #import <DDASLLogger.h>
 #import <DDFileLogger.h>
