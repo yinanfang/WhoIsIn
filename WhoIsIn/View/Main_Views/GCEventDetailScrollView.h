@@ -31,15 +31,20 @@
 @property UIView *separator01;
 
 @property UITextView *textviewDescription;
-@property MKMapView *mapView;
 
 @property UIView *separator02;
+
+@property FUIButton *btn_comment;
+
+@property UIView *separator03;
+
+@property MKMapView *mapView;
+
 
 // Participants
 @property UILabel *label_participants;
 @property UITableView *tableParticipants;
 
-@property UIView *separator03;
 
 // Discussion
 @property UILabel *label_discussion;

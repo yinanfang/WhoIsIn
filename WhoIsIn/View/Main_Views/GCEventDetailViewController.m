@@ -7,6 +7,7 @@
 //
 
 #import "GCEventDetailViewController.h"
+#import "GCMessageViewController.h"
 
 @implementation GCEventDetailViewController
 
@@ -22,11 +23,24 @@
     [self.detailScrollView setNeedsUpdateConstraints];
     [self.detailScrollView updateConstraintsIfNeeded];
     
-    [[self.detailScrollView.btn_join rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        NSLog(@"Join button tapped");
+    [self handleButtonEvent];
+    
+}
 
+- (void)handleButtonEvent
+{
+    [[self.detailScrollView.btn_join rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        DDLogVerbose(@"Join button tapped");
+        
     }];
     
+    [[self.detailScrollView.btn_comment rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        DDLogVerbose(@"Comment button tapped");
+        GCMessageViewController *vc = [GCMessageViewController messagesViewController];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

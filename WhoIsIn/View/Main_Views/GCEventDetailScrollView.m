@@ -27,7 +27,7 @@
         self.label_title = [self addLabelTitleWithString:@"        " bold:NO fontSize:kDetailViewFontSizeLarge];
         
         // Host
-        self.label_host = [self addLabelTitleWithString:[NSString stringWithFormat:@"Hosted by %@ %@", @"      ", @"      "] bold:NO fontSize:kDetailViewFontSizeSmall];
+        self.label_host = [self addLabelTitleWithString:@"      " bold:NO fontSize:kDetailViewFontSizeSmall];
         // Start Time
         self.label_timeStart = [self addLabelTitleWithString:@"      " bold:NO fontSize:kDetailViewFontSizeSmall];
         // Location
@@ -46,6 +46,15 @@
         
         // Description
         self.textviewDescription = [self addTextViewWithString:@"                                                                                                                                                                  "];
+        
+        // Separator 02
+        self.separator02 = [self addSeparator];
+        
+        // Comment button
+        self.btn_comment = [self addFUIButtonWithImage:[UIImage imageNamed:@"Comment_64x64"]];
+        
+        // Separator 03
+        self.separator03 = [self addSeparator];
         
         // Map View
         self.mapView = [self addMapView];
@@ -69,7 +78,7 @@
             make.left.equalTo(self.mas_left);
             make.bottom.equalTo(self.mas_bottom);
             make.right.equalTo(self.mas_right);
-            make.width.mas_equalTo(ScreenWidth);
+            make.width.mas_equalTo(ScreenWidth); // Need this. Nothing else specified the scrollview width
         }];
         
         // View Items
@@ -111,9 +120,23 @@
             make.height.mas_equalTo(sizeFit.height);
         }];
         
+        // Separator 02
+        [self pinSeparator:self.separator02 toUpperview:self.textviewDescription];
+        
+        // Comment button
+        [self.btn_comment mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.separator02.mas_bottom).with.offset(mas_Padding_Page_Default.top);
+            make.left.equalTo(self.mas_left).with.offset(mas_Padding_Page_Default.left);
+            make.size.mas_equalTo(CGSizeMake(100, 40));
+//            make.height.mas_equalTo(40);
+        }];
+        
+        // Separator 03
+        [self pinSeparator:self.separator03 toUpperview:self.btn_comment];
+        
         // Map View
         [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.textviewDescription.mas_bottom).with.offset(mas_Padding_Page_Default.top);
+            make.top.equalTo(self.separator03.mas_bottom).with.offset(mas_Padding_Page_Default.top);
             make.left.equalTo(self.contentView.mas_left).with.offset(mas_Padding_Page_Default.left);
             make.right.equalTo(self.contentView.mas_right).offset(mas_Padding_Page_Default.right);
             make.height.mas_equalTo(250);
@@ -189,6 +212,22 @@ static const CGFloat kDetailViewFontSizeSmall = 13.0f;
     button.cornerRadius = 6.0f;
     button.titleLabel.font = [UIFont fontWithName:FontTheme01_Bold size:kDetailViewFontSizeLarge];
     [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    [self.contentView addSubview:button];
+    return button;
+}
+
+
+- (FUIButton *)addFUIButtonWithImage:(UIImage *)image
+{
+    FUIButton *button = [[FUIButton alloc] init];
+    button.buttonColor = [UIColor clearColor];
+    button.shadowColor = [UIColor clearColor];
+    button.shadowHeight = 1.0f;
+    button.cornerRadius = 6.0f;
+    [button setImage:image forState:UIControlStateNormal];
+    button.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.contentView addSubview:button];

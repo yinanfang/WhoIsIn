@@ -24,6 +24,8 @@
 		D441BCCD19FC932D00311151 /* GCMainTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = D441BCCC19FC932D00311151 /* GCMainTabController.m */; };
 		D454859B1A33DEDE00B30903 /* GCMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D454859A1A33DEDE00B30903 /* GCMessageViewController.m */; };
 		D454859D1A33E87500B30903 /* Comment_64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = D454859C1A33E87500B30903 /* Comment_64x64.png */; };
+		D45485A01A33F09A00B30903 /* GCMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D454859F1A33F09A00B30903 /* GCMessageViewModel.m */; };
+		D45485A61A33F15800B30903 /* NSUserDefaults+DemoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D45485A51A33F15800B30903 /* NSUserDefaults+DemoSettings.m */; };
 		D476998319FD28B000BEECA8 /* GCUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998219FD28B000BEECA8 /* GCUserInfoController.m */; };
 		D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998519FD28C200BEECA8 /* GCAccountController.m */; };
 		D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = D476998B19FD32E400BEECA8 /* GCActivityController.m */; };
@@ -99,6 +101,10 @@
 		D45485991A33DEDE00B30903 /* GCMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCMessageViewController.h; path = View/Main_Views/GCMessageViewController.h; sourceTree = "<group>"; };
 		D454859A1A33DEDE00B30903 /* GCMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCMessageViewController.m; path = View/Main_Views/GCMessageViewController.m; sourceTree = "<group>"; };
 		D454859C1A33E87500B30903 /* Comment_64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Comment_64x64.png; sourceTree = "<group>"; };
+		D454859E1A33F09A00B30903 /* GCMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCMessageViewModel.h; path = ViewModel/GCMessageViewModel.h; sourceTree = "<group>"; };
+		D454859F1A33F09A00B30903 /* GCMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCMessageViewModel.m; path = ViewModel/GCMessageViewModel.m; sourceTree = "<group>"; };
+		D45485A41A33F15800B30903 /* NSUserDefaults+DemoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+DemoSettings.h"; sourceTree = "<group>"; };
+		D45485A51A33F15800B30903 /* NSUserDefaults+DemoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+DemoSettings.m"; sourceTree = "<group>"; };
 		D476998119FD28B000BEECA8 /* GCUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCUserInfoController.h; path = View/Main_Views/GCUserInfoController.h; sourceTree = "<group>"; };
 		D476998219FD28B000BEECA8 /* GCUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCUserInfoController.m; path = View/Main_Views/GCUserInfoController.m; sourceTree = "<group>"; };
 		D476998419FD28C200BEECA8 /* GCAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCAccountController.h; path = View/Main_Views/GCAccountController.h; sourceTree = "<group>"; };
@@ -325,6 +331,10 @@
 				D4B604501A2198E8008F3C8F /* GCEventDetailScrollView.m */,
 				D45485991A33DEDE00B30903 /* GCMessageViewController.h */,
 				D454859A1A33DEDE00B30903 /* GCMessageViewController.m */,
+				D454859E1A33F09A00B30903 /* GCMessageViewModel.h */,
+				D454859F1A33F09A00B30903 /* GCMessageViewModel.m */,
+				D45485A41A33F15800B30903 /* NSUserDefaults+DemoSettings.h */,
+				D45485A51A33F15800B30903 /* NSUserDefaults+DemoSettings.m */,
 			);
 			name = "Base & Control";
 			sourceTree = "<group>";
@@ -605,8 +615,10 @@
 				D4F777E619F410630061F62C /* GCNetwork.m in Sources */,
 				D476998C19FD32E400BEECA8 /* GCActivityController.m in Sources */,
 				D476998619FD28C200BEECA8 /* GCAccountController.m in Sources */,
+				D45485A61A33F15800B30903 /* NSUserDefaults+DemoSettings.m in Sources */,
 				D4E243921A20DFC10032FFD2 /* GCAllEventViewController.m in Sources */,
 				D425457B19E1AA45004B5AE3 /* GCAppDelegate.m in Sources */,
+				D45485A01A33F09A00B30903 /* GCMessageViewModel.m in Sources */,
 				D4F071061A202780008843C4 /* GCMyEventViewController.m in Sources */,
 				D4C767ED19F461F5005B2683 /* GCRegisterViewController.m in Sources */,
 				D40F16831A0D997C008AB059 /* GCAppData.m in Sources */,

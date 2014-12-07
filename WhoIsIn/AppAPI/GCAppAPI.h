@@ -22,6 +22,8 @@
 #import <FlatUIKit/FlatUIKit.h>
 // LBBlurredImage
 #import <FXBlurView/FXBlurView.h>
+// JSQMessagesViewController
+#import <JSQMessagesViewController/JSQMessages.h>
 // JVFloatLabeledTextView.h
 #import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
 #import <JVFloatLabeledTextField/JVFloatLabeledTextView.h>

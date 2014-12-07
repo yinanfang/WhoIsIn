@@ -205,8 +205,8 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 12.0f;
 - (JVFloatLabeledTextView *)addLabeledTextViewWithPlaceHolder:(NSString *)string
 {
 //    JVFloatLabeledTextView *textView = [[JVFloatLabeledTextView alloc] init];
+//    textView.placeholder = NSLocalizedString(string, @"");
     JVFloatLabeledTextView *textView = [[JVFloatLabeledTextView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    textView.placeholder = NSLocalizedString(string, @"");
     textView.placeholderTextColor = [UIColor lightGrayColor];
     textView.font = [UIFont systemFontOfSize:kJVFieldFontSize];
     textView.floatingLabel.font = [UIFont boldSystemFontOfSize:kJVFieldFloatingLabelFontSize];
@@ -215,6 +215,7 @@ const static CGFloat kJVFieldFloatingLabelFontSize = 12.0f;
     textView.returnKeyType = UIReturnKeyDefault;
     textView.placeholderYPadding = 0;
     textView.contentOffset = CGPointZero;
+    textView.placeholder = NSLocalizedString(string, @"");
     [self.view_Event addSubview:textView];
     return textView;
 }
